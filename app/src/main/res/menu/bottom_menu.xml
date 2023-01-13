@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/vectorhome"
+        android:title="Home"
+        android:visible="true" />
+    <item
+        android:icon="@drawable/today_icon"
+        android:title="Oggi" />
+    <item
+        android:icon="@drawable/tomorrow_icon"
+        android:title="Domani" />
+    <item
+        android:icon="@drawable/search_1"
+        android:title="Cerca" />
+</menu>
