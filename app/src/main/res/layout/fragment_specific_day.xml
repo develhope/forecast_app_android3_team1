@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".specificDay.SpecificDayFragment">
+
+   <TextView
+       android:id="@+id/title_giorno"
+       android:text="@string/today"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:layout_constraintTop_toToptOf="parent"
+       app:layout_constraintBottom_toTopOf="@+id/title_data"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       />
+
+   <TextView
+       android:id="@+id/title_data"
+       android:text="@string/data_today"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:layout_constraintBottom_toTopOf="@+id/today_hour_textview"
+       app:layout_constraintTop_toBottomtOf="@id/title_giorno"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent" />
+
+   <androidx.recyclerview.widget.RecyclerView
+       app:layout_constraintTop_toBottomtOf="@id/title_data"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+       android:scrollbars="vertical">
+
+   </androidx.recyclerview.widget.RecyclerView>
+
+</FrameLayout>

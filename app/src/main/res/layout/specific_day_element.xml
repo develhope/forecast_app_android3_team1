@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/today_hour_textview"
+        android:text="@string/ora_giorno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/icon_weather_imageview"
+        android:padding="16dp"/>
+
+    <ImageView
+        android:id="@+id/icon_weather_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/temperature_textview"
+        app:layout_constraintStart_toEndOf="@+id/today_hour_textview"
+        app:srcCompat="@drawable/ic_icon_weather_provvisoria"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/temperature_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperatura_giorno"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/icon_humidity_imageview"
+        app:layout_constraintStart_toEndOf="@+id/icon_weather_imageview"
+        android:padding="16dp"/>
+
+    <ImageView
+        android:id="@+id/icon_humidity_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toStartOf="@+id/humidity_textview"
+        app:layout_constraintStart_toEndOf="@+id/temperature_textview"
+        app:srcCompat="@drawable/ic_icon_umidity_provvisoria"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/humidity_textview"
+        android:text="@string/humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintStart_toEndOf="@+id/icon_humidity_imageview"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
