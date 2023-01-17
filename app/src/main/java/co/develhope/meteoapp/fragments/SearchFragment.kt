@@ -15,22 +15,22 @@ import co.develhope.meteoapp.model.RecentSearch
 
 class SearchFragment : Fragment() {
 
-    private lateinit var recentSearchList  :  List<RecentSearch>
-    private lateinit var recentSearchRecyclerView : RecyclerView
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        recentSearchList = RecentSearchDataSet.loadRecentSearch()
+
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        recentSearchRecyclerView = view.findViewById(R.id.recentsearchlist)
-        val adapter = RecentSearchAdapter(recentSearchList)
+        val recentSearchRecyclerView = view.findViewById<RecyclerView>(R.id.recentsearchlist)
+        val adapter = RecentSearchAdapter(RecentSearchDataSet.loadRecentSearch())
         recentSearchRecyclerView.adapter = adapter
         recentSearchRecyclerView.layoutManager = LinearLayoutManager(view.context)
 
