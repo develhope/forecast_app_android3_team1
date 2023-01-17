@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.develhope.meteoapp.R
+import co.develhope.meteoapp.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
