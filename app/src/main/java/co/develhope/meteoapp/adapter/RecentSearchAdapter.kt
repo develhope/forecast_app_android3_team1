@@ -14,13 +14,11 @@ class RecentSearchAdapter(val data : List<RecentSearch>) : RecyclerView.Adapter<
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val nameCity : TextView
-        val temperature : TextView
-        val meteostate : TextView
+
 
         init {
             nameCity = view.findViewById(R.id.citynametextview)
-            temperature = view.findViewById(R.id.temperaturetextview)
-            meteostate = view.findViewById(R.id.meteostatetextview)
+
         }
 
 
@@ -33,8 +31,7 @@ class RecentSearchAdapter(val data : List<RecentSearch>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.nameCity.text = data[position].cityName
-        holder.temperature.text = data[position].temperature + "°"
-        holder.meteostate.text = data[position].state
+
     }
 
     override fun getItemCount(): Int {

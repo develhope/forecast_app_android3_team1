@@ -14,18 +14,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/side_margin"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/search_bar_padding_top"
         android:layout_marginEnd="@dimen/side_margin"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/fragment_search_marginbottom"
         android:background="@drawable/search_bar_background"
         android:drawableStart="@drawable/search_1"
-        android:drawablePadding="12dp"
+        android:drawablePadding="@dimen/search_bar_drawablepadding"
         android:ems="10"
         android:fontFamily="@font/inter"
         android:hint="@string/search_bar_hint"
         android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:paddingLeft="24dp"
+        android:minHeight="@dimen/search_bar_min_height"
+        android:paddingLeft="@dimen/search_bar_padding_left"
         android:textColor="@color/black" />
 
     <TextView
@@ -36,14 +36,14 @@
         android:fontFamily="@font/inter"
         android:text="@string/ricerche_recenti"
         android:textColor="@color/app_font"
-        android:textSize="16sp"
+        android:textSize="@dimen/recent_search_tw_textsize"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recentsearchlist"
         android:layout_width="match_parent"
-        android:layout_height="603dp"
+        android:layout_height="@dimen/recent_search_recycler_layoutheight"
         android:layout_marginStart="@dimen/side_margin"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/recent_search_recycler_margintop"
         android:layout_marginEnd="@dimen/side_margin" />
 </LinearLayout>

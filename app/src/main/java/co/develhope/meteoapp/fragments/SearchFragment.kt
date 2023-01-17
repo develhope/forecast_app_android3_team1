@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.adapter.RecentSearchAdapter
-import co.develhope.meteoapp.data.DataSet
+import co.develhope.meteoapp.data.RecentSearchDataSet
 import co.develhope.meteoapp.model.RecentSearch
 
 
@@ -23,7 +23,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        recentSearchList = DataSet.loadRecentSearch()
+        recentSearchList = RecentSearchDataSet.loadRecentSearch()
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
