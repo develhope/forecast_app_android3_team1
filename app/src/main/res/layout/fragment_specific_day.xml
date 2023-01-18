@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,32 +8,39 @@
 
    <TextView
        android:id="@+id/title_giorno"
-       android:text="@string/today"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       app:layout_constraintTop_toToptOf="parent"
-       app:layout_constraintBottom_toTopOf="@+id/title_data"
-       app:layout_constraintStart_toStartOf="parent"
+       android:layout_marginStart="24dp"
+       android:layout_marginTop="16dp"
+       android:layout_marginEnd="24dp"
+       android:text="@string/today"
        app:layout_constraintEnd_toEndOf="parent"
-       />
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
 
    <TextView
        android:id="@+id/title_data"
-       android:text="@string/data_today"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       app:layout_constraintBottom_toTopOf="@+id/today_hour_textview"
-       app:layout_constraintTop_toBottomtOf="@id/title_giorno"
+       android:layout_marginStart="24dp"
+       android:layout_marginEnd="24dp"
+       android:text="@string/data_today"
+       app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toEndOf="parent" />
+       app:layout_constraintTop_toBottomOf="@+id/title_giorno" />
 
    <androidx.recyclerview.widget.RecyclerView
-       app:layout_constraintTop_toBottomtOf="@id/title_data"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:layout_marginStart="24dp"
+       android:layout_marginTop="24dp"
+       android:layout_marginEnd="24dp"
+       android:scrollbars="vertical"
        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-       android:scrollbars="vertical">
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/title_data">
 
    </androidx.recyclerview.widget.RecyclerView>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
