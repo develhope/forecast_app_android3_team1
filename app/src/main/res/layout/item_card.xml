@@ -7,8 +7,6 @@
     android:padding="16dp"
     android:orientation="horizontal">
 
-
-
    <!-- card -->
 
     <com.google.android.material.card.MaterialCardView
@@ -45,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="40°"
+                android:text="@string/percepita_40"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintStart_toStartOf="@+id/percepita"
@@ -68,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="5/10"
+                android:text="@string/UV_5_10"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintStart_toStartOf="@+id/indice_UV"
@@ -80,10 +78,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-
                 app:dividerInsetEnd="16dp"
                 app:dividerInsetStart="16dp"
-
                 app:layout_constraintEnd_toEndOf="@+id/val_UV"
                 app:layout_constraintStart_toStartOf="@+id/val_percep"
                 app:layout_constraintTop_toBottomOf="@+id/val_percep" />
@@ -104,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="60%"
+                android:text="@string/umidità_60"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintStart_toStartOf="@+id/umidità"
@@ -126,7 +122,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="SSE 7km/h"
+                android:text="@string/vento_7"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintStart_toStartOf="@+id/vento"
@@ -159,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="24%"
+                android:text="@string/copertura_24"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintStart_toStartOf="@+id/copertura"
@@ -182,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
-                android:text="0cm"
+                android:text="@string/pioggia_0cm"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintBottom_toBottomOf="parent"

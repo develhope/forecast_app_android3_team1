@@ -23,7 +23,12 @@
     <string name="humidity_10">10%</string>
     <string name="humidity_20">20%</string>
     <string name="humidity_30">30%</string>
-
+    <string name="percepita_40">40°</string>
+    <string name="UV_5_10">5/10</string>
+    <string name="umidità_60">60%</string>
+    <string name="vento_7">SSE 7km/h</string>
+    <string name="copertura_24">24%</string>
+    <string name="pioggia_0cm">0cm</string>
 
 
 </resources>

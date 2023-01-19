@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
     android:orientation="horizontal">
@@ -27,12 +27,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="24dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="@+id/temperature_textview"
         app:layout_constraintEnd_toStartOf="@+id/temperature_textview"
         app:layout_constraintStart_toEndOf="@+id/today_hour_textview"
         app:layout_constraintTop_toTopOf="@+id/temperature_textview"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_icon_sun" />
+        app:srcCompat="@drawable/ic_icon_sun"
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/temperature_textview"
