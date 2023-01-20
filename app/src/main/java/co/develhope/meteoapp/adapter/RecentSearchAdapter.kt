@@ -6,26 +6,65 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Recycler
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.databinding.RecentSearchItemBinding
-import co.develhope.meteoapp.model.RecentSearch
+import co.develhope.meteoapp.data.RecentSearchDataSet
 
 
-class RecentSearchAdapter(val data: List<RecentSearch>) :
-    RecyclerView.Adapter<RecentSearchAdapter.ViewHolder>() {
+import co.develhope.meteoapp.model.RecyclerViewData
+
+const val SEARCHITEM = 1
+const val SEARCHTITLE = 0
 
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {}
+class RecentSearchAdapter(val data: List<RecyclerViewData>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    class RecentSearchTitleHolder(view : View) : RecyclerView.ViewHolder(view){
+        private val title = view.findViewById<TextView>(R.id.recent_search_title)
 
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.recent_search_item, parent, false)
-        return ViewHolder(view)
+        fun bind(searchtitle : RecyclerViewData.RecentSearchTitle){
+           title.text = searchtitle.title
+        }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    class SearchTermViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val searchTerm = view.findViewById<TextView>(R.id.citynametextview)
 
+        fun bind(city : RecyclerViewData.RecentSearch){
+            searchTerm.text = city.cityName
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return when(data[position]){
+            is RecyclerViewData.RecentSearch -> 1
+            is RecyclerViewData.RecentSearchTitle -> 0
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when(viewType){
+             SEARCHTITLE -> RecentSearchTitleHolder(
+                LayoutInflater.from(parent.context).inflate(R.layout.recent_search_title, parent, false)
+             )
+             SEARCHITEM -> SearchTermViewHolder(
+                LayoutInflater.from(parent.context).inflate(R.layout.recent_search_item, parent, false)
+             )
+
+            else -> SearchTermViewHolder(
+                LayoutInflater.from(parent.context).inflate(R.layout.recent_search_item, parent, false)
+            )
+
+        }
+
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when(holder){
+            is RecentSearchTitleHolder -> holder.bind(data[position] as RecyclerViewData.RecentSearchTitle)
+            is SearchTermViewHolder -> holder.bind(data[position] as RecyclerViewData.RecentSearch)
+        }
 
     }
 

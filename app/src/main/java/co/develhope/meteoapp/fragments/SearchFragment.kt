@@ -12,7 +12,7 @@ import co.develhope.meteoapp.R
 import co.develhope.meteoapp.adapter.RecentSearchAdapter
 import co.develhope.meteoapp.data.RecentSearchDataSet
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
-import co.develhope.meteoapp.model.RecentSearch
+import co.develhope.meteoapp.model.RecyclerViewData
 
 
 class SearchFragment : Fragment() {
