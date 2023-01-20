@@ -6,8 +6,6 @@ import androidx.annotation.StringRes
 sealed class SealedClassSpecyfDay {
 
 
-
-
 //--- titolo per palermo, data, ora etc ---
     data class DetailsTitle (
         @StringRes val titleGiorno: Int,
