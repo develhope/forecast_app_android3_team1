@@ -10,12 +10,12 @@
     <!-- barra specifiche ora -->
     <TextView
         android:id="@+id/today_hour_textview"
+        style="@style/styleRowTextHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:text="@string/ora_giorno_12"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/icon_weather_imageview"
         app:layout_constraintEnd_toStartOf="@+id/icon_weather_imageview"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="24dp"
-        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="@+id/temperature_textview"
         app:layout_constraintEnd_toStartOf="@+id/temperature_textview"
         app:layout_constraintStart_toEndOf="@+id/today_hour_textview"
@@ -38,12 +37,12 @@
 
     <TextView
         android:id="@+id/temperature_textview"
+        style="@style/styleRowTextTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:text="@string/temperatura_giorno_20"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/humidity_textview"
         app:layout_constraintEnd_toStartOf="@+id/humidity_textview"
         app:layout_constraintStart_toEndOf="@+id/icon_weather_imageview"
@@ -52,6 +51,7 @@
 
     <TextView
         android:id="@+id/humidity_textview"
+        style="@style/styleRowTextHumidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -59,7 +59,6 @@
         android:layout_marginEnd="32dp"
         android:drawablePadding="4dp"
         android:text="@string/humidity_10"
-        android:textSize="20sp"
         app:drawableStartCompat="@drawable/ic_icon_humidity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/temperature_textview"
