@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">meteoapp</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="today">Oggi</string>
-    <string name="date">10/09</string>
-    <string name="tempMax">31°</string>
+    <string name="today">%s</string>
+    <string name="date">%s</string>
+    <string name="tempMax">%s°</string>
     <string name="text_temp1">min</string>
-    <string name="tempMin">22°</string>
+    <string name="tempMin">%s°</string>
     <string name="text_temp2">max</string>
-    <string name="title">Palermo,Sicilia</string>
-    <string name="rainfallPercent">0%</string>
+    <string name="title">%s</string>
+    <string name="rainfallPercent">%s</string>
     <string name="rainfall">precip.</string>
-    <string name="windKmh">12 km/h</string>
+    <string name="windKmh">%s</string>
     <string name="wind">vento</string>
-    <string name="nextDays">Prossimi 5 giorni</string>
+    <string name="nextDays">%s</string>
 </resources>
 
