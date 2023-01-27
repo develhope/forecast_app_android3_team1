@@ -2,6 +2,7 @@ package co.develhope.meteoapp.model_specyficDay
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import co.develhope.meteoapp.data_specyficDay.HourlyForecast
 
 sealed class SealedClassSpecyfDay {
 abstract val viewType: Int
@@ -34,6 +35,12 @@ abstract val viewType: Int
         @StringRes val datoValPioggia: Int
     ): SealedClassSpecyfDay() {
     override val viewType: Int = 2
+    }
+
+    data class Row (
+        val hourlyForecast: HourlyForecast
+            ) : SealedClassSpecyfDay() {
+        override val viewType: Int = 3
     }
 
 }

@@ -2,8 +2,33 @@ package co.develhope.meteoapp.data_specyficDay
 
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.model_specyficDay.SealedClassSpecyfDay
+import java.util.Date
+
+data class HourlyForecast(
+    val time: Date,
+    val weatherCondition : WeatherConditions,
+    val rain : Int,
+    val temp : Int,
+)
+
+enum class WeatherConditions {
+    SUNNY, FOG, RAIN
+}
+
 
 object DatasourceSpecificDay {
+
+    fun getSpecificDayForecast() : List<HourlyForecast> {
+        return listOf(
+            HourlyForecast(
+                time = Date(),
+                weatherCondition = WeatherConditions.FOG,
+                rain = 0,
+                temp = 5
+            )
+        )
+    }
+
     fun loadSealedClass(): List<SealedClassSpecyfDay> {
        return listOf<SealedClassSpecyfDay>(
            SealedClassSpecyfDay.DetailsTitle(

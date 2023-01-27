@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
+import co.develhope.meteoapp.data_specyficDay.WeatherConditions
 import co.develhope.meteoapp.model_specyficDay.SealedClassSpecyfDay
 
 //--- row ---
@@ -16,8 +17,12 @@ import co.develhope.meteoapp.model_specyficDay.SealedClassSpecyfDay
         private val textViewRow3: TextView = view.findViewById(R.id.humidity_textview)
 
         fun bind(detailsRow: SealedClassSpecyfDay.DetailsRow) {
+
+
             textViewRow.text = view.context.resources.getString(detailsRow.todayHour)
             imageViewRow.setImageResource(detailsRow.iconWeather)
+
+
             textViewRow2.text = view.context.resources.getString(detailsRow.temperature)
             textViewRow3.text = view.context.resources.getString(detailsRow.humidity)
         }
