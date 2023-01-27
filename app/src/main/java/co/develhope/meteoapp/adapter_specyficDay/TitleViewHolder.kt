@@ -8,12 +8,12 @@ import co.develhope.meteoapp.model_specyficDay.SealedClassSpecyfDay
 
 class TitleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
-//--- title ---
-        private val textViewTitle: TextView = view.findViewById(R.id.title_giorno)
-        private val textViewTitle2: TextView = view.findViewById(R.id.title_data)
+    //--- title ---
+    private val textViewTitle: TextView = view.findViewById(R.id.title_giorno)
+    private val textViewTitle2: TextView = view.findViewById(R.id.title_data)
 
-        fun bind(detailsTitle: SealedClassSpecyfDay.DetailsTitle) {
-            textViewTitle.text = view.context.resources.getString(detailsTitle.titleGiorno)
-            textViewTitle2.text = view.context.resources.getString(detailsTitle.titleData)
-        }
+    fun bind(detailsTitle: SealedClassSpecyfDay.DetailsTitle) {
+        textViewTitle.text = view.context.resources.getString(detailsTitle.titleGiorno)
+        textViewTitle2.text = view.context.resources.getString(detailsTitle.titleData)
     }
+}

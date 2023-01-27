@@ -28,13 +28,15 @@ class ItemAdapter(private val context: Int, private val dataset: List<SealedClas
             }
             1 -> {
                 RowViewHolder(
-                    LayoutInflater.from(parent.context).inflate( R.layout.item_row, parent, false
+                    LayoutInflater.from(parent.context).inflate(
+                        R.layout.item_row, parent, false
                     )
                 )
             }
             2 -> {
                 CardViewHolder(
-                    LayoutInflater.from(parent.context).inflate( R.layout.item_card, parent, false
+                    LayoutInflater.from(parent.context).inflate(
+                        R.layout.item_card, parent, false
                     )
                 )
             }
@@ -42,7 +44,8 @@ class ItemAdapter(private val context: Int, private val dataset: List<SealedClas
                 Log.e("item adapter", "error type")
                 CardViewHolder(
 
-                    LayoutInflater.from(parent.context).inflate( R.layout.item_blank, parent, false
+                    LayoutInflater.from(parent.context).inflate(
+                        R.layout.item_blank, parent, false
                     )
                 )
             }

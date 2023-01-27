@@ -14,6 +14,13 @@
     <string name="humidity_10">10%</string>
 
     //--- card ---
+    <string name="percepita_card">percepita</string>
+    <string name="indice_uv_card">indice UV</string>
+    <string name="umidit_card">umidità</string>
+    <string name="vento_card">vento</string>
+    <string name="copertura_card">copertura</string>
+    <string name="pioggia_card">pioggia</string>
+
     <string name="percepita_40">40°</string>
     <string name="UV_5_10">5/10</string>
     <string name="umidità_60">60%</string>

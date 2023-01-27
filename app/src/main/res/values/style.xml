@@ -3,7 +3,7 @@
 
     //--- style text specyfic day ---
 
-//--- title ---
+    //--- title ---
     <style name="styleTitleText1">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/color_text_SD</item>
@@ -19,7 +19,7 @@
     </style>
 
 
-//--- row ---
+    //--- row ---
     <style name="styleRowTextHours">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/color_text_SD</item>
@@ -42,7 +42,7 @@
     </style>
 
 
-//--- card ---
+    //--- card ---
     <style name="styleCardText1">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/black</item>
