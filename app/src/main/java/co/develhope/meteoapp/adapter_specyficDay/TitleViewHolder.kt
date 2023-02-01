@@ -13,7 +13,9 @@ class TitleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
     private val textViewTitle2: TextView = view.findViewById(R.id.title_data)
 
     fun bind(detailsTitle: SealedClassSpecyfDay.DetailsTitle) {
-        textViewTitle.text = view.context.resources.getString(detailsTitle.titleGiorno)
-        textViewTitle2.text = view.context.resources.getString(detailsTitle.titleData)
+        textViewTitle.text = detailsTitle.titleForecast.titleGiorno.toString()
+        textViewTitle2.text = detailsTitle.titleForecast.titleData.toString()
+
     }
+
 }

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.adapter_specyficDay.ItemAdapter
-import co.develhope.meteoapp.data_specyficDay.DatasourceSpecificDay.loadSealedClass
+import co.develhope.meteoapp.data_specyficDay.DatasourceSpecificDay
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
 
 class SpecificDayFragment : Fragment() {
@@ -27,17 +27,10 @@ class SpecificDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val adapter1 = ItemAdapter(0, loadSealedClass())
-        binding.recyclerView.adapter = adapter1
+        val adapter = ItemAdapter(DatasourceSpecificDay.loadData())
+        binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
 
-        val adapter2 = ItemAdapter(1, loadSealedClass())
-        binding.recyclerView.adapter = adapter2
-        binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
-
-        val adapter3 = ItemAdapter(2, loadSealedClass())
-        binding.recyclerView.adapter = adapter3
-        binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
     }
 
     override fun onDestroyView() {

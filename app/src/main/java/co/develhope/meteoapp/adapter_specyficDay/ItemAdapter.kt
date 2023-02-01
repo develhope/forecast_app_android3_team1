@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.model_specyficDay.SealedClassSpecyfDay
 
-class ItemAdapter(private val context: Int, private val dataset: List<SealedClassSpecyfDay>) :
+class ItemAdapter(private val dataset: List<SealedClassSpecyfDay>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
