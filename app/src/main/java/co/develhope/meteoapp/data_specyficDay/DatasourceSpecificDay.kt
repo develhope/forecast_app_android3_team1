@@ -1,14 +1,14 @@
 package co.develhope.meteoapp.data_specyficDay
 
-import co.develhope.meteoapp.R
 import co.develhope.meteoapp.model_specyficDay.SealedClassSpecyfDay
 import java.util.*
 
- sealed class  Bho {
+ sealed class  DataClassForecast {
+
      data class TitleForecast(
          val titleGiorno: Day,
          val titleData: Date
-     )
+     ): DataClassForecast()
 
      enum class Day {
          TODAY, TOMORROW
@@ -19,7 +19,7 @@ import java.util.*
          val weatherCondition: WeatherCondition,
          val humidity: Int,
          val temp: Int
-     )
+     ): DataClassForecast()
 
      enum class WeatherCondition {
          SUNNY, CLOUDY, RAIN
@@ -33,32 +33,36 @@ import java.util.*
          val uv: Int,
          val vento: Int,
          val pioggia: Int
-     )
+     ): DataClassForecast()
  }
+
 
 object DatasourceSpecificDay {
 
-    fun loadData(): List<SealedClassSpecyfDay> {
-        return listOf<SealedClassSpecyfDay> {
-            Bho.TitleForecast(
-                titleGiorno = Bho.Day.TODAY,
+    fun loadData(): List<DataClassForecast> {
+        return listOf(
+            DataClassForecast.TitleForecast(
+                titleGiorno = DataClassForecast.Day.TODAY,
                 titleData = Date()
-            )
-            Bho.RowForecast(
+            ),
+            DataClassForecast.RowForecast(
                 time = Date(),
-                weatherCondition = Bho.WeatherCondition,
+                weatherCondition = DataClassForecast.WeatherCondition.SUNNY,
                 humidity = 0,
                 temp = 31
-            )
-            Bho.CardForecast(
+        ),
+            DataClassForecast.CardForecast(
                 percepita = 45,
                 humidity = 60,
                 copertura = 24,
                 uv = 5,
                 vento = 7,
                 pioggia = 0
-            )
-        }
-    }
+        )
+        )
 
+    }
 }
+
+
+

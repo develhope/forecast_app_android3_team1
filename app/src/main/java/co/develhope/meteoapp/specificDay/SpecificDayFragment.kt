@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.develhope.meteoapp.R
 import co.develhope.meteoapp.adapter_specyficDay.ItemAdapter
+import co.develhope.meteoapp.adapter_specyficDay.TitleViewHolder
+import co.develhope.meteoapp.data_specyficDay.DataClassForecast
 import co.develhope.meteoapp.data_specyficDay.DatasourceSpecificDay
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
+import kotlinx.coroutines.NonDisposableHandle.parent
 
 class SpecificDayFragment : Fragment() {
 
@@ -31,7 +35,9 @@ class SpecificDayFragment : Fragment() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
 
+
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
