@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.HomeScreenAdapter
-import co.develhope.meteoapp.R
-import co.develhope.meteoapp.data.DataItem.dioCunnuto
+import co.develhope.meteoapp.adapter.HomeScreenItem
+import co.develhope.meteoapp.data.DatasourceHomeScreen
+import co.develhope.meteoapp.data.HourlyForecast
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 
 
@@ -24,25 +25,25 @@ class HomeFragment : Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val adapterTitle = HomeScreenAdapter (0,dioCunnuto())
-        bindingHomeScreen.recycleViewHomeScreen.adapter = adapterTitle
+        val listHomeScreen = listToShow(DatasourceHomeScreen.loadData())
+        val adapter = HomeScreenAdapter (listHomeScreen,listHomeScreen)
+        bindingHomeScreen.recycleViewHomeScreen.adapter = adapter
         bindingHomeScreen.recycleViewHomeScreen.layoutManager = LinearLayoutManager(view.context)
-
-        val adapterCard = HomeScreenAdapter (1,dioCunnuto())
-        bindingHomeScreen.recycleViewHomeScreen.adapter = adapterCard
-        bindingHomeScreen.recycleViewHomeScreen.layoutManager = LinearLayoutManager(view.context)
-
-        val adapterNextDays = HomeScreenAdapter (2,dioCunnuto())
-        bindingHomeScreen.recycleViewHomeScreen.adapter = adapterNextDays
-        bindingHomeScreen.recycleViewHomeScreen.layoutManager = LinearLayoutManager(view.context)
-
-
 
 
 
     }
 
+    private fun listToShow(hourlyForecast: List<HourlyForecast>): List<HomeScreenItem> {
+        val list = mutableListOf<HomeScreenItem>()
+        list.add(HomeScreenItem.Title)
+        list.add(HomeScreenItem.ForecastDetail(hourlyForecast.first()))
+        list.add(HomeScreenItem.Next5Days)
+        val otherDays: MutableList<HomeScreenItem.ForecastDetail> = hourlyForecast.map {
+            HomeScreenItem.ForecastDetail(it)
+        }.toMutableList()
+        list.addAll(otherDays)
+        return list
 
+    }
 }
