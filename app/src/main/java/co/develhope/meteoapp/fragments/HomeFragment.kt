@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.HomeScreenAdapter
-import co.develhope.meteoapp.data.DatasourceHomeScreen
+import co.develhope.meteoapp.data.Data
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 
 
@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val adapter = HomeScreenAdapter(DatasourceHomeScreen.loadData())
+        val adapter = HomeScreenAdapter(Data.DatasourceHomeScreen.loadData())
         binding.recycleViewHomeScreen.adapter = adapter
         binding.recycleViewHomeScreen.layoutManager = LinearLayoutManager(view.context)
 
