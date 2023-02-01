@@ -18,11 +18,10 @@ class RowViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(detailsRow: SealedClassSpecyfDay.DetailsRow) {
         textViewRow.text = detailsRow.rowForecast.time.toString()
-        when (detailsRow.rowForecast.weatherCondition){
-            Bho.WeatherCondition.SUNNY-> imageViewRow?.setImageResource(R.drawable.ic_icon_sun)
+        when (detailsRow.rowForecast.weatherCondition) {
+            Bho.WeatherCondition.SUNNY -> imageViewRow?.setImageResource(R.drawable.ic_icon_sun)
             Bho.WeatherCondition.RAIN -> imageViewRow?.setImageResource(R.drawable.ic_icon_rain)
             Bho.WeatherCondition.CLOUDY -> imageViewRow?.setImageResource(R.drawable.ic_icon_cloudy)
-
         }
         textViewRow2.text = detailsRow.rowForecast.temp.toString()
         textViewRow3.text = detailsRow.rowForecast.humidity.toString()

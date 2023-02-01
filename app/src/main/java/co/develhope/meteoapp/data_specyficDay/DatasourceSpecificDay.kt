@@ -1,7 +1,6 @@
 package co.develhope.meteoapp.data_specyficDay
 
-
-import android.provider.ContactsContract.Data
+import co.develhope.meteoapp.R
 import co.develhope.meteoapp.model_specyficDay.SealedClassSpecyfDay
 import java.util.*
 
@@ -61,4 +60,5 @@ object DatasourceSpecificDay {
             )
         }
     }
+
 }
