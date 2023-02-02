@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_bar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundapp"
+    android:orientation="vertical"
     tools:context=".fragments.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/editTextTextPersonName"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/side_margin"
+        android:layout_marginTop="@dimen/search_bar_padding_top"
+        android:layout_marginEnd="@dimen/side_margin"
+        android:layout_marginBottom="@dimen/fragment_search_marginbottom"
+        android:background="@drawable/search_bar_background"
+        android:drawableStart="@drawable/search_1"
+        android:drawablePadding="@dimen/search_bar_drawablepadding"
+        android:ems="10"
+        android:fontFamily="@font/inter"
+        android:hint="@string/search_bar_hint"
+        android:inputType="textPersonName"
+        android:minHeight="@dimen/search_bar_min_height"
+        android:paddingLeft="@dimen/search_bar_padding_left"
+        android:textColor="@color/black" />
 
-</FrameLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recentsearchlist"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recent_search_recycler_layoutheight"
+        android:layout_marginStart="@dimen/side_margin"
+        android:layout_marginTop="@dimen/recent_search_recycler_margintop"
+        android:layout_marginEnd="@dimen/side_margin" />
+</LinearLayout>
