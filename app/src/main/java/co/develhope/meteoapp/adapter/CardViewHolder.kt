@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
+import co.develhope.meteoapp.data.HomeScreenItems
 
 class CardViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
     private val textViewCardMinTemp: TextView = view.findViewById(R.id.minTempCard)
@@ -13,11 +14,11 @@ class CardViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
     private val textViewCardWind: TextView = view.findViewById(R.id.windKmhCard)
 
 
-    fun bind(cardDetail: HomeScreenItem.ForecastDetail) {
-        textViewCardDate.text = cardDetail.forecastDetail.date.toString()
-        textViewCardMinTemp.text = cardDetail.forecastDetail.minTemp.toString()
-        textViewCardMaxTemp.text = cardDetail.forecastDetail.maxTemp.toString()
-        textViewCardRainfall.text = cardDetail.forecastDetail.rainfall.toString()
-        textViewCardWind.text = cardDetail.forecastDetail.wind.toString()
+    fun bind(cardDetail: HomeScreenItems.Forecast) {
+        textViewCardDate.text = "02/02"
+        textViewCardMinTemp.text = cardDetail.forecastSummary.forecast.minTemp.toString() //%s°
+        textViewCardMaxTemp.text = cardDetail.forecastSummary.forecast.maxTemp.toString()
+        textViewCardRainfall.text = cardDetail.forecastSummary.forecast.rainfall.toString()
+        textViewCardWind.text = cardDetail.forecastSummary.forecast.wind.toString()
     }
 }

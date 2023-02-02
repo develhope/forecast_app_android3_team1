@@ -7,12 +7,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.adapter.CardViewHolder
-import co.develhope.meteoapp.adapter.HomeScreenItem
 import co.develhope.meteoapp.adapter.NextDaysViewHolder
 import co.develhope.meteoapp.adapter.TitleViewHolder
-import co.develhope.meteoapp.data.Data
+import co.develhope.meteoapp.data.HomeScreenItems
 
-class HomeScreenAdapter( private val list: List<Data>
+class HomeScreenAdapter( private val list: List<HomeScreenItems>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -55,9 +54,9 @@ class HomeScreenAdapter( private val list: List<Data>
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is TitleViewHolder -> holder.bind(list[position] as HomeScreenItem.TitleDetail)
-            is CardViewHolder -> holder.bind(list[position] as HomeScreenItem.ForecastDetail)
-            is NextDaysViewHolder -> holder.bind(list[position] as HomeScreenItem.NextDays)
+            is TitleViewHolder -> holder.bind(list[position] as HomeScreenItems.HomeScreenTitle)
+            is CardViewHolder -> holder.bind(list[position] as HomeScreenItems.Forecast)
+            is NextDaysViewHolder -> holder.bind(list[position] as HomeScreenItems.NextDays)
         }
     }
 

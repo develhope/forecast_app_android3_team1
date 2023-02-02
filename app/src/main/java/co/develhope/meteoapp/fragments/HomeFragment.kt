@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.HomeScreenAdapter
-import co.develhope.meteoapp.data.Data
+import co.develhope.meteoapp.data.DailyForecastSummary
+import co.develhope.meteoapp.data.Datasource
+import co.develhope.meteoapp.data.HomeScreenItems
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 
 
@@ -26,10 +28,23 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val adapter = HomeScreenAdapter(Data.DatasourceHomeScreen.loadData())
+        val forecastSummaryList = Datasource.loadData()
+
+        val listCreated = createHomeScreenItems(forecastSummaryList)
+
+        val adapter = HomeScreenAdapter(listCreated)
         binding.recycleViewHomeScreen.adapter = adapter
         binding.recycleViewHomeScreen.layoutManager = LinearLayoutManager(view.context)
 
 
+    }
+
+    private fun createHomeScreenItems(forecastSummaryList: List<DailyForecastSummary>): List<HomeScreenItems> {
+        val listToShow = mutableListOf<HomeScreenItems>()
+        listToShow.add(HomeScreenItems.HomeScreenTitle(forecastSummaryList.first().place))
+        listToShow.add(HomeScreenItems.Forecast(forecastSummaryList.first()))
+        listToShow.add(HomeScreenItems.NextDays)
+        listToShow.addAll( forecastSummaryList.map { HomeScreenItems.Forecast(it) })
+        return listToShow
     }
 }

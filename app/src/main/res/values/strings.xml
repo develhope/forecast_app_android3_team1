@@ -13,5 +13,6 @@
     <string name="windKmh">%s</string>
     <string name="wind">vento</string>
     <string name="nextDays">%s</string>
+    <string name="next_days">PROSSIMI 5 GIORNI</string>
 </resources>
 
