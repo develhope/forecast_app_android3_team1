@@ -14,6 +14,10 @@ import co.develhope.meteoapp.data.HomeScreenItems
 class HomeScreenAdapter( private val list: List<HomeScreenItems>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    override fun getItemViewType(position: Int): Int {
+        return list[position].type
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             0 -> {
@@ -40,9 +44,8 @@ class HomeScreenAdapter( private val list: List<HomeScreenItems>
             }
 
             else ->{
-                Log.e("item adapter", "error type")
+                Log.d("item adapter", "error type")
                 CardViewHolder(
-
                     LayoutInflater.from(parent.context).inflate(
                         R.layout.error_type, parent, false
                     )
