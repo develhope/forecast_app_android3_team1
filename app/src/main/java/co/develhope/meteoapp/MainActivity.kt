@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.setupWithNavController(navController)
 
 
-
     }
 
 

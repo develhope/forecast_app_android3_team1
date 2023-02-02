@@ -34,9 +34,7 @@ class HomeFragment : Fragment() {
 
         val adapter = HomeScreenAdapter(listCreated)
         binding.recycleViewHomeScreen.adapter = adapter
-        binding.recycleViewHomeScreen.layoutManager = LinearLayoutManager(view.context)
-
-
+        binding.recycleViewHomeScreen.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun createHomeScreenItems(forecastSummaryList: List<DailyForecastSummary>): List<HomeScreenItems> {

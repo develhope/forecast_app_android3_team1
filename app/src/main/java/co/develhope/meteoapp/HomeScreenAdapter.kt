@@ -10,9 +10,9 @@ import co.develhope.meteoapp.adapter.CardViewHolder
 import co.develhope.meteoapp.adapter.NextDaysViewHolder
 import co.develhope.meteoapp.adapter.TitleViewHolder
 import co.develhope.meteoapp.data.HomeScreenItems
+import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
 
-class HomeScreenAdapter( private val list: List<HomeScreenItems>
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeScreenAdapter( private val list: List<HomeScreenItems>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return list[position].type
@@ -22,10 +22,9 @@ class HomeScreenAdapter( private val list: List<HomeScreenItems>
         return when (viewType) {
             0 -> {
                 TitleViewHolder(
-                    LayoutInflater.from(parent.context).inflate(
-                        R.layout.title_home_screen_item, parent, false
+                    TitleHomeScreenItemBinding.inflate(
+                        LayoutInflater.from(parent.context), parent, false
                     )
-
                 )
             }
             1 -> {
@@ -44,12 +43,7 @@ class HomeScreenAdapter( private val list: List<HomeScreenItems>
             }
 
             else ->{
-                Log.d("item adapter", "error type")
-                CardViewHolder(
-                    LayoutInflater.from(parent.context).inflate(
-                        R.layout.error_type, parent, false
-                    )
-                )
+                throw java.lang.IllegalArgumentException("error")
             }
         }
     }
