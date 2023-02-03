@@ -16,7 +16,7 @@ class CardViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(cardDetail: HomeScreenItems.Forecast) {
         textViewCardDate.text = "02/02"
-        textViewCardMinTemp.text = cardDetail.forecastSummary.forecast.minTemp.toString() //%s°
+        textViewCardMinTemp.text = itemView.context.getString(R.id.minTempCard,cardDetail.forecastSummary.forecast.minTemp)
         textViewCardMaxTemp.text = cardDetail.forecastSummary.forecast.maxTemp.toString()
         textViewCardRainfall.text = cardDetail.forecastSummary.forecast.rainfall.toString()
         textViewCardWind.text = cardDetail.forecastSummary.forecast.wind.toString()

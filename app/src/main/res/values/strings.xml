@@ -10,7 +10,7 @@
     <string name="text_temp1">min</string>
     <string name="tempMin">%s°</string>
     <string name="text_temp2">max</string>
-    <string name="title">%s</string>
+    <string name="title">%s,%s</string>
     <string name="rainfallPercent">%s</string>
     <string name="rainfall">precip.</string>
     <string name="windKmh">%s</string>
