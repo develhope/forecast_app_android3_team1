@@ -4,6 +4,13 @@
     //--- style text specyfic day ---
 
     //--- title ---
+    <style name="styleTitleText3">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/color_text_SD</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <style name="styleTitleText1">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/color_text_SD</item>

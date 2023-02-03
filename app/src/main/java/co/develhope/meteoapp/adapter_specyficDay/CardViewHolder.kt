@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.model_specyficDay.SealedClassSpecyfDay
+import co.develhope.meteoapp.model_specyficDay.SpecyfDayScreenItem
 
 
 //--- card ---
@@ -17,12 +17,12 @@ class CardViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
     private val textViewCard5: TextView = view.findViewById(R.id.val_vento)
     private val textViewCard6: TextView = view.findViewById(R.id.val_pioggia)
 
-    fun bind(detailsCard: SealedClassSpecyfDay.DetailsCard) {
-        textViewCard.text = detailsCard.cardForecast.percepita.toString()
-        textViewCard2.text = detailsCard.cardForecast.uv.toString()
-        textViewCard3.text = detailsCard.cardForecast.humidity.toString()
-        textViewCard4.text = detailsCard.cardForecast.vento.toString()
-        textViewCard5.text = detailsCard.cardForecast.copertura.toString()
-        textViewCard6.text = detailsCard.cardForecast.pioggia.toString()
+    fun bind(detailsCard: SpecyfDayScreenItem.DetailsCard) {
+        textViewCard.text = itemView.context.getString(R.string.simbol_gradi, detailsCard.cardForecast.percepita.toString())
+        textViewCard2.text = itemView.context.getString(R.string.simbol_percentuale, detailsCard.cardForecast.uv.toString())
+        textViewCard3.text = itemView.context.getString(R.string.simbol_percentuale, detailsCard.cardForecast.humidity.toString())
+        textViewCard4.text = itemView.context.getString(R.string.simbol_UV,detailsCard.cardForecast.vento.toString())
+        textViewCard5.text = itemView.context.getString(R.string.simbol_SSE, detailsCard.cardForecast.copertura.toString())
+        textViewCard6.text = itemView.context.getString(R.string.simbol_cm, detailsCard.cardForecast.pioggia.toString())
     }
 }

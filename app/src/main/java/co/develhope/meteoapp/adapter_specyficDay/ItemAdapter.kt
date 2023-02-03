@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.model_specyficDay.SealedClassSpecyfDay
+import co.develhope.meteoapp.model_specyficDay.SpecyfDayScreenItem
 
-class ItemAdapter(private val dataset: List<SealedClassSpecyfDay>) :
+class ItemAdapter(private val dataset: List<SpecyfDayScreenItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
@@ -54,9 +54,9 @@ class ItemAdapter(private val dataset: List<SealedClassSpecyfDay>) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is TitleViewHolder -> holder.bind(dataset[position] as SealedClassSpecyfDay.DetailsTitle)
-            is CardViewHolder -> holder.bind(dataset[position] as SealedClassSpecyfDay.DetailsCard)
-            is RowViewHolder -> holder.bind(dataset[position] as SealedClassSpecyfDay.DetailsRow)
+            is TitleViewHolder -> holder.bind(dataset[position] as SpecyfDayScreenItem.DetailsTitle)
+            is CardViewHolder -> holder.bind(dataset[position] as SpecyfDayScreenItem.DetailsCard)
+            is RowViewHolder -> holder.bind(dataset[position] as SpecyfDayScreenItem.DetailsRow)
         }
     }
 

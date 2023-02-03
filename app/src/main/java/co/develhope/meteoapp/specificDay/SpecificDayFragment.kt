@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.develhope.meteoapp.R
 import co.develhope.meteoapp.adapter_specyficDay.ItemAdapter
-import co.develhope.meteoapp.adapter_specyficDay.TitleViewHolder
-import co.develhope.meteoapp.data_specyficDay.DataClassForecast
 import co.develhope.meteoapp.data_specyficDay.DatasourceSpecificDay
+import co.develhope.meteoapp.data_specyficDay.SpecyficDayForecastSummary
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
-import kotlinx.coroutines.NonDisposableHandle.parent
+import co.develhope.meteoapp.model_specyficDay.SpecyfDayScreenItem
 
 class SpecificDayFragment : Fragment() {
 
@@ -31,11 +29,25 @@ class SpecificDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val adapter = ItemAdapter(DatasourceSpecificDay.loadData())
+        val forecastSummaryList = DatasourceSpecificDay.loadData()
+        val createdList = createSpecyfDayScreenItem(forecastSummaryList)
+
+        val adapter = ItemAdapter(createdList)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
 
 
+    }
+
+    private fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
+        val listShowItem = mutableListOf<SpecyfDayScreenItem>()
+        listShowItem.add(SpecyfDayScreenItem.DetailsTitle(forecastSummaryList.first().title))
+        listShowItem.add(SpecyfDayScreenItem.DetailsRow(forecastSummaryList.first()))
+        listShowItem.add(SpecyfDayScreenItem.DetailsCard(forecastSummaryList.first().card))
+
+        listShowItem.addAll(forecastSummaryList.map { SpecyfDayScreenItem.DetailsRow(it) })
+
+        return listShowItem
     }
 
 

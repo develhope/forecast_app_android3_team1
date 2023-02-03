@@ -35,6 +35,16 @@
     <string name="temperatura_giorno_25">25°</string>
     <string name="humidity_30">30%</string>
     <string name="temperatura_giorno_30">30°</string>
+    <string name="place">Torino, Piemonte</string>
+
+    //--- simboli ---
+    <string name="simbol_gradi">%s°</string>
+    <string name="simbol_percentuale">%s%%</string>
+    <string name="simbol_UV">%s/10</string>
+    <string name="simbol_SSE">SSE %s km/h</string>
+    <string name="simbol_cm">%scm</string>
+    <string name="simbol_virgola">%s,</string>
+
 
 
 </resources>
