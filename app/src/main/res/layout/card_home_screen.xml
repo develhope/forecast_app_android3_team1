@@ -6,22 +6,23 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:layout_marginTop="19dp"
-        app:cardBackgroundColor="#948CEF"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp">
+        android:layout_marginStart="@dimen/card_margin"
+        android:layout_marginEnd="@dimen/card_margin"
+        android:layout_marginTop="@dimen/card_marginTop"
+        app:cardBackgroundColor="@color/card"
+        app:cardCornerRadius="@dimen/card_corner"
+        app:cardElevation="@dimen/card_elevation">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="24dp">
+            android:padding="@dimen/card_paddingLayout">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/dayCard"
                 android:layout_alignParentStart="true"
                 android:text="@string/today"
-                android:textSize="@dimen/dimen_text_day"
+                android:textSize="@dimen/dimen_cardText"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:fontFamily="@font/inter"/>
@@ -31,7 +32,7 @@
                 android:id="@+id/minTempCard"
                 android:layout_centerHorizontal="true"
                 android:text="@string/tempMin"
-                android:textSize="20sp"
+                android:textSize="@dimen/dimen_cardText"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:fontFamily="@font/inter"/>
@@ -41,7 +42,7 @@
                 android:id="@+id/maxTempCard"
                 android:layout_alignParentEnd="true"
                 android:text="@string/tempMax"
-                android:textSize="20sp"
+                android:textSize="@dimen/dimen_cardText"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:fontFamily="@font/inter" />
@@ -52,7 +53,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/dayCard"
                 android:text="@string/date"
-                android:textSize="16sp"
+                android:textSize="@dimen/dimen_cardText_info"
                 android:textColor="@color/white"
                 android:fontFamily="@font/inter"/>
             <TextView
@@ -62,7 +63,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/minTempCard"
                 android:text="@string/text_temp1"
-                android:textSize="16sp"
+                android:textSize="@dimen/dimen_cardText_info"
                 android:textColor="@color/white"
                 android:fontFamily="@font/inter"/>
             <TextView
@@ -72,26 +73,26 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/maxTempCard"
                 android:text="@string/text_temp2"
-                android:textSize="16sp"
+                android:textSize="@dimen/dimen_cardText_info"
                 android:textColor="@color/white"
                 android:fontFamily="@font/inter"/>
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/iconSize"
+                android:layout_height="@dimen/iconSize"
                 android:src="@drawable/sun_icon"
                 android:layout_below="@id/dateCard"
-                android:layout_marginTop="24dp"/>
+                android:layout_marginTop="@dimen/marginTop_Icon"/>
             <TextView
                 android:id="@+id/rainfallPercent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/minTemp_text"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/card_margin"
                 android:fontFamily="@font/inter"
                 android:text="@string/tempMin"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="@dimen/dimen_cardText"
                 android:textStyle="bold" />
 
             <TextView
@@ -103,18 +104,18 @@
                 android:fontFamily="@font/inter"
                 android:text="@string/rainfall"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="@dimen/dimen_cardText_info" />
             <TextView
                 android:id="@+id/windKmhCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                android:layout_alignParentEnd="true"
                 android:layout_below="@+id/minTemp_text"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/card_margin"
                 android:fontFamily="@font/inter"
                 android:text="@string/windKmh"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="@dimen/dimen_cardText"
                 android:textStyle="bold" />
 
             <TextView
@@ -126,7 +127,7 @@
                 android:fontFamily="@font/inter"
                 android:text="@string/wind"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="@dimen/dimen_cardText_info" />
 
 
 
