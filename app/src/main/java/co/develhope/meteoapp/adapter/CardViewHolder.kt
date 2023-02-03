@@ -5,20 +5,26 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.data.HomeScreenItems
+import co.develhope.meteoapp.databinding.CardHomeScreenBinding
+import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
 
-class CardViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-    private val textViewCardMinTemp: TextView = view.findViewById(R.id.minTempCard)
-    private val textViewCardMaxTemp: TextView = view.findViewById(R.id.maxTempCard)
-    private val textViewCardDate: TextView = view.findViewById(R.id.dateCard)
-    private val textViewCardRainfall: TextView = view.findViewById(R.id.rainfallPercent)
-    private val textViewCardWind: TextView = view.findViewById(R.id.windKmhCard)
-
-
+class CardViewHolder(private val binding: CardHomeScreenBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(cardDetail: HomeScreenItems.Forecast) {
-        textViewCardDate.text = "02/02"
-        textViewCardMinTemp.text = itemView.context.getString(R.id.minTempCard,cardDetail.forecastSummary.forecast.minTemp)
-        textViewCardMaxTemp.text = cardDetail.forecastSummary.forecast.maxTemp.toString()
-        textViewCardRainfall.text = cardDetail.forecastSummary.forecast.rainfall.toString()
-        textViewCardWind.text = cardDetail.forecastSummary.forecast.wind.toString()
+        binding.dayCard.text = "Lunedì"
+        binding.dateCard.text = "02/02"
+        binding.minTempCard.text = itemView.context.getString(R.string.tempMin, cardDetail.forecastSummary.forecast.minTemp.toString())
+        binding.maxTempCard.text = itemView.context.getString(R.string.tempMax, cardDetail.forecastSummary.forecast.maxTemp.toString())
+        binding.rainfallPercent.text = itemView.context.getString(R.string.rainfallPercent, cardDetail.forecastSummary.forecast.rainfall.toString())
+        binding.windKmhCard.text = itemView.context.getString(R.string.windKmh, cardDetail.forecastSummary.forecast.wind.toString())
+
+
+
+
+
+
+
     }
+
+
+
 }

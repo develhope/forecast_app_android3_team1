@@ -9,7 +9,7 @@ enum class WeatherCondition {
 
 data class DailyForecastSummary(
     val place: Place,
-    val date: Date,
+    val date: String,
     val forecast: Forecast
 )
 
@@ -35,7 +35,7 @@ object Datasource {
         return listOf<DailyForecastSummary>(
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
-                date = Date(),
+                date = "03/02",
                 forecast = Forecast(
                     minTemp = 1,
                     maxTemp = 13,
@@ -46,7 +46,7 @@ object Datasource {
             ),
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
-                date = Date(),
+                date = "04/02",
                 forecast = Forecast(
                     minTemp = 1,
                     maxTemp = 13,
@@ -57,7 +57,7 @@ object Datasource {
             ),
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
-                date = Date(),
+                date = "04/02",
                 forecast = Forecast(
                     minTemp = 1,
                     maxTemp = 13,
@@ -68,7 +68,7 @@ object Datasource {
             ),
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
-                date = Date(),
+                date = "06/02",
                 forecast = Forecast(
                     minTemp = 1,
                     maxTemp = 13,
@@ -79,7 +79,7 @@ object Datasource {
             ),
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
-                date = Date(),
+                date = "07/02",
                 forecast = Forecast(
                     minTemp = 1,
                     maxTemp = 13,

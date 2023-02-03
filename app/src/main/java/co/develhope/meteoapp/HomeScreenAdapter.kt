@@ -1,7 +1,6 @@
 package co.develhope.meteoapp
 
 
-
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,9 +9,12 @@ import co.develhope.meteoapp.adapter.CardViewHolder
 import co.develhope.meteoapp.adapter.NextDaysViewHolder
 import co.develhope.meteoapp.adapter.TitleViewHolder
 import co.develhope.meteoapp.data.HomeScreenItems
+import co.develhope.meteoapp.databinding.CardHomeScreenBinding
+import co.develhope.meteoapp.databinding.Next5daysHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
 
-class HomeScreenAdapter( private val list: List<HomeScreenItems>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeScreenAdapter(private val list: List<HomeScreenItems>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return list[position].type
@@ -29,20 +31,20 @@ class HomeScreenAdapter( private val list: List<HomeScreenItems>) : RecyclerView
             }
             1 -> {
                 CardViewHolder(
-                    LayoutInflater.from(parent.context).inflate(
-                        R.layout.card_home_screen, parent, false
+                    CardHomeScreenBinding.inflate(
+                        LayoutInflater.from(parent.context), parent, false
                     )
                 )
             }
             2 -> {
                 NextDaysViewHolder(
-                    LayoutInflater.from(parent.context).inflate(
-                        R.layout.next5days_home_screen_item, parent, false
+                    Next5daysHomeScreenItemBinding.inflate(
+                        LayoutInflater.from(parent.context), parent, false
                     )
                 )
             }
 
-            else ->{
+            else -> {
                 throw java.lang.IllegalArgumentException("error")
             }
         }
