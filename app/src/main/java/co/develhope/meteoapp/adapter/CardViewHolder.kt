@@ -10,8 +10,8 @@ import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
 
 class CardViewHolder(private val binding: CardHomeScreenBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(cardDetail: HomeScreenItems.Forecast) {
-        binding.dayCard.text = "Lunedì"
-        binding.dateCard.text = "02/02"
+        binding.dayCard.text = "Oggi"
+        binding.dateCard.text = itemView.context.getString(R.string.date, cardDetail.forecastSummary.date)
         binding.minTempCard.text = itemView.context.getString(R.string.tempMin, cardDetail.forecastSummary.forecast.minTemp.toString())
         binding.maxTempCard.text = itemView.context.getString(R.string.tempMax, cardDetail.forecastSummary.forecast.maxTemp.toString())
         binding.rainfallPercent.text = itemView.context.getString(R.string.rainfallPercent, cardDetail.forecastSummary.forecast.rainfall.toString())

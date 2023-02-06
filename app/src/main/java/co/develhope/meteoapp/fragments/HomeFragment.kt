@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.HomeScreenAdapter
 import co.develhope.meteoapp.data.DailyForecastSummary
 import co.develhope.meteoapp.data.Datasource
+import co.develhope.meteoapp.data.Forecast
 import co.develhope.meteoapp.data.HomeScreenItems
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 
@@ -42,7 +43,12 @@ class HomeFragment : Fragment() {
         listToShow.add(HomeScreenItems.HomeScreenTitle(forecastSummaryList.first().place))
         listToShow.add(HomeScreenItems.Forecast(forecastSummaryList.first()))
         listToShow.add(HomeScreenItems.NextDays)
-        listToShow.addAll( forecastSummaryList.map { HomeScreenItems.Forecast(it) })
+
+        listToShow.addAll(
+            forecastSummaryList.map {
+                HomeScreenItems.Forecast(it)
+            }
+        )
         return listToShow
     }
 }
