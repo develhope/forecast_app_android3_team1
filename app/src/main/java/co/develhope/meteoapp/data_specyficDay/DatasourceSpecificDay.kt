@@ -83,7 +83,7 @@ object DatasourceSpecificDay {
                     temp = 21
                 ),
                 card = CardForecast(
-                    percepita = 45,
+                    percepita = 4,
                     humidity = 60,
                     copertura = 24,
                     uv = 5,
@@ -107,7 +107,7 @@ object DatasourceSpecificDay {
                     temp = 41
                 ),
                 card = CardForecast(
-                    percepita = 45,
+                    percepita = 5,
                     humidity = 60,
                     copertura = 24,
                     uv = 5,

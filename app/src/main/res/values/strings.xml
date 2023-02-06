@@ -43,7 +43,7 @@
     <string name="simbol_UV">%s/10</string>
     <string name="simbol_SSE">SSE %s km/h</string>
     <string name="simbol_cm">%scm</string>
-    <string name="simbol_virgola">%s,</string>
+    <string name="simbol_virgola">%s, %s</string>
 
 
 
