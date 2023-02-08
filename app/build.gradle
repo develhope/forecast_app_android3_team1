@@ -6,9 +6,7 @@ plugins {
 android {
     compileSdk 33
 
-    buildFeatures {
-        viewBinding true
-    }
+
     defaultConfig {
         applicationId "co.develhope.meteoapp"
         minSdk 23
@@ -33,6 +31,11 @@ android {
         jvmTarget = '1.8'
     }
     namespace 'co.develhope.meteoapp'
+
+    buildFeatures{
+        viewBinding = true
+
+    }
 }
 
 dependencies {

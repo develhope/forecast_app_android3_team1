@@ -1,8 +1,22 @@
 <resources>
     <string name="app_name">meteoapp</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_bar_hint">Cerca città</string>
     <string name="ricerche_recenti">Ricerche recenti</string>
+    <string name="today">%s</string>
+    <string name="date">%s</string>
+    <string name="tempMax">%s °</string>
+    <string name="text_temp1">min</string>
+    <string name="tempMin">%s °</string>
+    <string name="text_temp2">max</string>
+    <string name="title">%s,%s</string>
+    <string name="rainfallPercent">%s %%</string>
+    <string name="rainfall">precip.</string>
+    <string name="windKmh">%s Km/h</string>
+    <string name="wind">vento</string>
+    <string name="nextDays">%s</string>
+    <string name="next_days">PROSSIMI 5 GIORNI</string>
 
     //=== string Specyfic day ===
 
@@ -48,3 +62,4 @@
 
 
 </resources>
+

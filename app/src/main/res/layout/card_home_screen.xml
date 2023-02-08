@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_margin"
+        android:layout_marginEnd="@dimen/card_margin"
+        android:layout_marginTop="@dimen/card_marginTop"
+        app:cardBackgroundColor="@color/card"
+        app:cardCornerRadius="@dimen/card_corner"
+        app:cardElevation="@dimen/card_elevation">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/card_paddingLayout">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dayCard"
+                android:layout_alignParentStart="true"
+                android:text="@string/today"
+                android:textSize="@dimen/dimen_cardText"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:fontFamily="@font/inter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minTempCard"
+                android:layout_centerHorizontal="true"
+                android:text="@string/tempMin"
+                android:textSize="@dimen/dimen_cardText"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:fontFamily="@font/inter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/maxTempCard"
+                android:layout_alignParentEnd="true"
+                android:text="@string/tempMax"
+                android:textSize="@dimen/dimen_cardText"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:fontFamily="@font/inter" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dateCard"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/dayCard"
+                android:text="@string/date"
+                android:textSize="@dimen/dimen_cardText_info"
+                android:textColor="@color/white"
+                android:fontFamily="@font/inter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minTemp_text"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/minTempCard"
+                android:text="@string/text_temp1"
+                android:textSize="@dimen/dimen_cardText_info"
+                android:textColor="@color/white"
+                android:fontFamily="@font/inter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/maxTempText"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/maxTempCard"
+                android:text="@string/text_temp2"
+                android:textSize="@dimen/dimen_cardText_info"
+                android:textColor="@color/white"
+                android:fontFamily="@font/inter"/>
+            <ImageView
+                android:layout_width="@dimen/iconSize"
+                android:layout_height="@dimen/iconSize"
+                android:src="@drawable/sun_icon"
+                android:layout_below="@id/dateCard"
+                android:layout_marginTop="@dimen/marginTop_Icon"/>
+            <TextView
+                android:id="@+id/rainfallPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/minTemp_text"
+                android:layout_marginTop="@dimen/card_margin"
+                android:fontFamily="@font/inter"
+                android:text="@string/tempMin"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_cardText"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/rainfall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rainfallPercent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/inter"
+                android:text="@string/rainfall"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_cardText_info" />
+            <TextView
+                android:id="@+id/windKmhCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_alignParentEnd="true"
+                android:layout_below="@+id/minTemp_text"
+                android:layout_marginTop="@dimen/card_margin"
+                android:fontFamily="@font/inter"
+                android:text="@string/windKmh"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_cardText"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/windCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rainfallPercent"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/inter"
+                android:text="@string/wind"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_cardText_info" />
+
+
+
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
