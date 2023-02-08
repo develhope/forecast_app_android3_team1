@@ -35,10 +35,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    /**
-     * Questo metodo controlla le destinazioni della bottom navigation
-     */
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
-    }
 }
