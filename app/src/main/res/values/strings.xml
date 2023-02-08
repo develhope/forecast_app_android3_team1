@@ -21,7 +21,7 @@
     //=== string Specyfic day ===
 
     //--- titile ---
-    <string name="today">Oggi</string>
+
     <string name="data_today">10.01.2023</string>
 
     //--- row ---
