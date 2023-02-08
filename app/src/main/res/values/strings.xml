@@ -17,5 +17,49 @@
     <string name="wind">vento</string>
     <string name="nextDays">%s</string>
     <string name="next_days">PROSSIMI 5 GIORNI</string>
+
+    //=== string Specyfic day ===
+
+    //--- titile ---
+
+    <string name="data_today">10.01.2023</string>
+
+    //--- row ---
+    <string name="ora_giorno_12">12.00</string>
+    <string name="temperatura_giorno_20">20°</string>
+    <string name="humidity_10">10%</string>
+
+    //--- card ---
+    <string name="percepita_card">percepita</string>
+    <string name="indice_uv_card">indice UV</string>
+    <string name="umidit_card">umidità</string>
+    <string name="vento_card">vento</string>
+    <string name="copertura_card">copertura</string>
+    <string name="pioggia_card">pioggia</string>
+
+    <string name="percepita_40">40°</string>
+    <string name="UV_5_10">5/10</string>
+    <string name="umidità_60">60%</string>
+    <string name="vento_7">SSE 7km/h</string>
+    <string name="copertura_24">24%</string>
+    <string name="pioggia_0cm">0cm</string>
+    <string name="ora_giorno_13">13.00</string>
+    <string name="humidity_20">20%</string>
+    <string name="ora_giorno_14">14.00</string>
+    <string name="temperatura_giorno_25">25°</string>
+    <string name="humidity_30">30%</string>
+    <string name="temperatura_giorno_30">30°</string>
+    <string name="place">Torino, Piemonte</string>
+
+    //--- simboli ---
+    <string name="simbol_gradi">%s°</string>
+    <string name="simbol_percentuale">%s%%</string>
+    <string name="simbol_UV">%s/10</string>
+    <string name="simbol_SSE">SSE %s km/h</string>
+    <string name="simbol_cm">%scm</string>
+    <string name="simbol_virgola">%s, %s</string>
+
+
+
 </resources>
 

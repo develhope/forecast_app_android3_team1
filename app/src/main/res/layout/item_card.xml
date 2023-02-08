@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_16">
+
+    <!-- card -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/radius_8"
+        app:cardElevation="@dimen/elevation_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Title, text _ sx1-->
+            <TextView
+                android:id="@+id/percepita"
+                style="@style/styleCardText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_16"
+                android:text="@string/percepita_card"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/val_percep"
+                style="@style/styleCardText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:text="@string/simbol_gradi"
+                app:layout_constraintStart_toStartOf="@+id/percepita"
+                app:layout_constraintTop_toBottomOf="@+id/percepita" />
+
+            <!-- Title, text _ dx1 -->
+            <TextView
+                android:id="@+id/indice_UV"
+                style="@style/styleCardText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_46"
+                android:text="@string/indice_uv_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/val_UV"
+                style="@style/styleCardText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:text="@string/UV_5_10"
+                app:layout_constraintStart_toStartOf="@+id/indice_UV"
+                app:layout_constraintTop_toBottomOf="@+id/indice_UV" />
+
+            <!-- divider 1-->
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                app:dividerInsetEnd="@dimen/margin_16"
+                app:dividerInsetStart="@dimen/margin_16"
+                app:layout_constraintEnd_toEndOf="@+id/val_UV"
+                app:layout_constraintStart_toStartOf="@+id/val_percep"
+                app:layout_constraintTop_toBottomOf="@+id/val_percep" />
+
+            <!-- Title, text _ sx2-->
+            <TextView
+                android:id="@+id/umidità"
+                style="@style/styleCardText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:text="@string/umidit_card"
+                app:layout_constraintStart_toStartOf="@+id/val_percep"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+            <TextView
+                android:id="@+id/val_umidità"
+                style="@style/styleCardText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:text="@string/simbol_percentuale"
+                app:layout_constraintStart_toStartOf="@+id/umidità"
+                app:layout_constraintTop_toBottomOf="@+id/umidità" />
+
+            <!-- Title, text _ dx2 -->
+            <TextView
+                android:id="@+id/vento"
+                style="@style/styleCardText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:text="@string/vento_card"
+                app:layout_constraintStart_toStartOf="@+id/val_UV"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+            <TextView
+                android:id="@+id/val_vento"
+                style="@style/styleCardText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:text="@string/vento_7"
+                app:layout_constraintStart_toStartOf="@+id/vento"
+                app:layout_constraintTop_toBottomOf="@+id/vento" />
+
+            <!-- divider 2 -->
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                app:dividerInsetEnd="@dimen/margin_16"
+                app:layout_constraintEnd_toEndOf="@+id/val_vento"
+                app:layout_constraintStart_toStartOf="@+id/val_umidità"
+                app:layout_constraintTop_toBottomOf="@+id/val_umidità" />
+
+            <!-- Title, text _ sx3-->
+            <TextView
+                android:id="@+id/copertura"
+                style="@style/styleCardText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:text="@string/copertura_card"
+                app:layout_constraintStart_toStartOf="@+id/val_umidità"
+                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+            <TextView
+                android:id="@+id/val_copertura"
+                style="@style/styleCardText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:text="@string/copertura_24"
+                app:layout_constraintStart_toStartOf="@+id/copertura"
+                app:layout_constraintTop_toBottomOf="@+id/copertura" />
+
+            <!-- Title, text _ dx3 -->
+            <TextView
+                android:id="@+id/pioggia"
+                style="@style/styleCardText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:text="@string/pioggia_card"
+                app:layout_constraintStart_toStartOf="@+id/val_vento"
+                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+            <TextView
+                android:id="@+id/val_pioggia"
+                style="@style/styleCardText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:text="@string/pioggia_0cm"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/pioggia"
+                app:layout_constraintTop_toBottomOf="@+id/pioggia" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

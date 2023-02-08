@@ -9,5 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="backgroundapp">#F0EFFF</color>
     <color name="app_font">#230EA5</color>
+
+    //--- color specyfic day ---
+    <color name="color_text_SD">#230EA5</color>
     <color name="card">#948CEF</color>
 </resources>

@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_specificDayFragment"
+            app:destination="@id/specificDayFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -20,6 +23,15 @@
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/specificDayFragment"
+        android:name="co.develhope.meteoapp.specificDay.SpecificDayFragment"
+        android:label="fragment_specific_day"
+        tools:layout="@layout/fragment_specific_day" >
+        <action
+            android:id="@+id/action_specificDayFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

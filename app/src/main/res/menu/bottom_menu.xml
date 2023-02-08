@@ -7,6 +7,7 @@
         android:title="Home"
         android:visible="true" />
     <item
+        android:id="@id/specificDayFragment"
         android:icon="@drawable/today_icon"
         android:title="Oggi" />
     <item

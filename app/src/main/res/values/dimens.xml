@@ -26,4 +26,14 @@
     <dimen name="dimen_cardText_info">16sp</dimen>
     <dimen name="iconSize">50dp</dimen>
     <dimen name="marginTop_Icon">24dp</dimen>
+
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_46">46dp</dimen>
+
+    <dimen name="padding_16">16dp</dimen>
+
+    <dimen name="radius_8">8dp</dimen>
+    <dimen name="elevation_12">12dp</dimen>
 </resources>
