@@ -12,6 +12,7 @@ import co.develhope.meteoapp.data_specyficDay.SpecyficDayForecastSummary
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
 import co.develhope.meteoapp.model_specyficDay.SpecyfDayScreenItem
 
+
 class SpecificDayFragment : Fragment() {
 
 
@@ -41,6 +42,7 @@ class SpecificDayFragment : Fragment() {
 
     private fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
         val listShowItem = mutableListOf<SpecyfDayScreenItem>()
+
         listShowItem.add(SpecyfDayScreenItem.DetailsTitle(forecastSummaryList.first().title))
         listShowItem.add(SpecyfDayScreenItem.DetailsRow(forecastSummaryList.first()))
         listShowItem.add(SpecyfDayScreenItem.DetailsCard(forecastSummaryList.first().card))
@@ -57,6 +59,8 @@ class SpecificDayFragment : Fragment() {
     }
 
 }
+
+
 
 
 

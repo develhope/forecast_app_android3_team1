@@ -14,7 +14,7 @@ class TitleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
     private val textViewTitle3: TextView = view.findViewById(R.id.title_place)
 
     fun bind(detailsTitle: SpecyfDayScreenItem.DetailsTitle) {
-        textViewTitle.text = detailsTitle.titleForecast.titleGiorno.toString()
+        textViewTitle.text = detailsTitle.titleForecast.titleGiorno
         textViewTitle2.text = detailsTitle.titleForecast.titleData.toString()
         textViewTitle3.text = itemView.context.getString(R.string.simbol_virgola, detailsTitle.titleForecast.city,detailsTitle.titleForecast.region)
 
