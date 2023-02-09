@@ -58,7 +58,10 @@
     <string name="simbol_SSE">SSE %s km/h</string>
     <string name="simbol_cm">%scm</string>
     <string name="simbol_virgola">%s, %s</string>
-
+    <string name="home">Home</string>
+    <string name="oggi">Oggi</string>
+    <string name="domani">Domani</string>
+    <string name="cerca">Cerca</string>
 
 
 </resources>

@@ -4,17 +4,17 @@
     <item
         android:id="@id/homeFragment"
         android:icon="@drawable/vectorhome"
-        android:title="Home"
+        android:title="@string/home"
         android:visible="true" />
     <item
         android:id="@id/specificDayFragment"
         android:icon="@drawable/today_icon"
-        android:title="Oggi" />
+        android:title="@string/oggi" />
     <item
         android:icon="@drawable/tomorrow_icon"
-        android:title="Domani" />
+        android:title="@string/domani" />
     <item
         android:id="@id/searchFragment"
         android:icon="@drawable/search_1"
-        android:title="Cerca" />
+        android:title="@string/cerca" />
 </menu>
