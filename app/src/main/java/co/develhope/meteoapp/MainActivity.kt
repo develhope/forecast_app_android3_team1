@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setContentView(R.layout.activity_main)
+
 
 
 
@@ -35,10 +35,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    /**
-     * Questo metodo controlla le destinazioni della bottom navigation
-     */
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
-    }
 }
