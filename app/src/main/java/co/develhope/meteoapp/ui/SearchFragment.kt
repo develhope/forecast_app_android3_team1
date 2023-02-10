@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.develhope.meteoapp.adapter.SearchAdapter
 import co.develhope.meteoapp.data.RecentSearchDataSet
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
+import co.develhope.meteoapp.ui.adapter.SearchAdapter
 
 
 class SearchFragment : Fragment() {
