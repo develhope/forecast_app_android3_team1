@@ -1,4 +1,4 @@
-package co.develhope.meteoapp.fragments
+package co.develhope.meteoapp.ui
 
 import android.os.Bundle
 import android.util.Log

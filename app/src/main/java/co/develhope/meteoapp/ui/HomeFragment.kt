@@ -1,4 +1,4 @@
-package co.develhope.meteoapp.fragments
+package co.develhope.meteoapp.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.HomeScreenAdapter
 import co.develhope.meteoapp.data.DailyForecastSummary
 import co.develhope.meteoapp.data.Datasource
-import co.develhope.meteoapp.data.Forecast
 import co.develhope.meteoapp.data.HomeScreenItems
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 

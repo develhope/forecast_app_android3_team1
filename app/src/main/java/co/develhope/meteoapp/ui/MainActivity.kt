@@ -1,10 +1,10 @@
-package co.develhope.meteoapp
+package co.develhope.meteoapp.ui
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import co.develhope.meteoapp.R
 import co.develhope.meteoapp.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

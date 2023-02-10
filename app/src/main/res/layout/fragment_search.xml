@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundapp"
     android:orientation="vertical"
-    tools:context=".fragments.SearchFragment">
+    tools:context=".ui.SearchFragment">
 
     <EditText
         android:id="@+id/editTextTextPersonName"

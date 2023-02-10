@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="co.develhope.meteoapp.fragments.HomeFragment"
+        android:name="co.develhope.meteoapp.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/card_home_screen" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="co.develhope.meteoapp.fragments.SearchFragment"
+        android:name="co.develhope.meteoapp.ui.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/specificDayFragment"
-        android:name="co.develhope.meteoapp.specificDay.SpecificDayFragment"
+        android:name="co.develhope.meteoapp.ui.SpecificDayFragment"
         android:label="fragment_specific_day"
         tools:layout="@layout/fragment_specific_day" >
         <action

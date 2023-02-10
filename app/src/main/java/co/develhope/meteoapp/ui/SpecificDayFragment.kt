@@ -1,4 +1,4 @@
-package co.develhope.meteoapp.specificDay
+package co.develhope.meteoapp.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
