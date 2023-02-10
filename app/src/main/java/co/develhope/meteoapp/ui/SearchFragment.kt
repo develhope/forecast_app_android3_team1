@@ -47,7 +47,7 @@ class SearchFragment : Fragment() {
 
     private fun transformDataForSearchAdapter(list : List<Place>) : List<SearchScreenItems> {
         val recentSearchList = mutableListOf<SearchScreenItems>()
-        recentSearchList.add(SearchScreenItems.RecentSearchTitle(requireContext().getString(R.string.recent_search)))
+        recentSearchList.add(SearchScreenItems.RecentSearchTitle(requireContext().getString(R.string.ricerche_recenti)))
         list.forEach {
             recentSearchList.add(SearchScreenItems.RecentSearch(it))
         }
