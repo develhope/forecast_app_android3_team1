@@ -1,4 +1,4 @@
-package co.develhope.meteoapp.adapter
+package co.develhope.meteoapp.ui.adapter.homescreen
 
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R

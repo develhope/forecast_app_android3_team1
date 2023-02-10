@@ -1,4 +1,4 @@
-package co.develhope.meteoapp.adapter.holder
+package co.develhope.meteoapp.ui.adapter.searchscreen
 
 import android.view.View
 import android.widget.TextView

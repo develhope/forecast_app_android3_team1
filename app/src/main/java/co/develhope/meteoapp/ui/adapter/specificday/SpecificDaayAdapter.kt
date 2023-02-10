@@ -1,13 +1,10 @@
-package co.develhope.meteoapp.ui.adapter
+package co.develhope.meteoapp.ui.adapter.specificday
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.adapter_specyficDay.CardViewHolder
-import co.develhope.meteoapp.adapter_specyficDay.RowViewHolder
-import co.develhope.meteoapp.adapter_specyficDay.TitleViewHolder
 import co.develhope.meteoapp.model_specyficDay.SpecyfDayScreenItem
 
 class SpecificDaayAdapter(private val dataset: List<SpecyfDayScreenItem>) :

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.develhope.meteoapp.ui.adapter.SpecificDaayAdapter
+import co.develhope.meteoapp.ui.adapter.specificday.SpecificDaayAdapter
 import co.develhope.meteoapp.data_specyficDay.DatasourceSpecificDay
 import co.develhope.meteoapp.data_specyficDay.SpecyficDayForecastSummary
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding

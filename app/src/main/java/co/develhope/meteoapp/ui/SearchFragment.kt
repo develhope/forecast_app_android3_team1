@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.data.RecentSearchDataSet
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
-import co.develhope.meteoapp.ui.adapter.SearchAdapter
+import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
 
 
 class SearchFragment : Fragment() {

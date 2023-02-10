@@ -1,12 +1,12 @@
-package co.develhope.meteoapp.ui.adapter
+package co.develhope.meteoapp.ui.adapter.searchscreen
 
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.adapter.holder.RecentSearchTitleHolder
-import co.develhope.meteoapp.adapter.holder.SearchTermViewHolder
+import co.develhope.meteoapp.ui.adapter.searchscreen.RecentSearchTitleHolder
+import co.develhope.meteoapp.ui.adapter.searchscreen.SearchTermViewHolder
 import co.develhope.meteoapp.model.RecyclerViewData
 
 const val SEARCHITEM = 1

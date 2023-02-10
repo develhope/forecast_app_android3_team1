@@ -1,4 +1,4 @@
-package co.develhope.meteoapp.adapter_specyficDay
+package co.develhope.meteoapp.ui.adapter.specificday
 
 import android.view.View
 import android.widget.TextView
