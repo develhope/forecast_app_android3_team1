@@ -2,7 +2,6 @@ package co.develhope.meteoapp.ui.adapter.homescreen
 
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.data.HomeScreenItems
 import co.develhope.meteoapp.databinding.CardHomeScreenBinding
 
 class CardViewHolder(private val binding: CardHomeScreenBinding) : RecyclerView.ViewHolder(binding.root) {

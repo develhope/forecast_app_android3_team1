@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenAdapter
 import co.develhope.meteoapp.data.DailyForecastSummary
 import co.develhope.meteoapp.data.Datasource
-import co.develhope.meteoapp.data.HomeScreenItems
+import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenItems
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 
 

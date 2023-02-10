@@ -1,21 +1,21 @@
 package co.develhope.meteoapp.data
 
 
-import co.develhope.meteoapp.model.RecyclerViewData
+import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
 
 
 object RecentSearchDataSet {
 
 
         private val recentSearchList = mutableListOf(
-           RecyclerViewData.RecentSearchTitle("Recent Search"),
-            RecyclerViewData.RecentSearch("Palermo"),
-            RecyclerViewData.RecentSearch("Catanzaro"),
-            RecyclerViewData.RecentSearch("Roma"),
-            RecyclerViewData.RecentSearch("Milano")
+            SearchScreenItems.RecentSearchTitle("Recent Search"),
+            SearchScreenItems.RecentSearch("Palermo"),
+            SearchScreenItems.RecentSearch("Catanzaro"),
+            SearchScreenItems.RecentSearch("Roma"),
+            SearchScreenItems.RecentSearch("Milano")
         )
 
-        fun loadRecentSearch() : List<RecyclerViewData> {
+        fun loadRecentSearch() : List<SearchScreenItems> {
             return recentSearchList
         }
 

@@ -1,43 +1,11 @@
 package co.develhope.meteoapp.data_specyficDay
 
+import co.develhope.meteoapp.data.domainmodel.CardForecast
+import co.develhope.meteoapp.data.domainmodel.RowForecast
+import co.develhope.meteoapp.data.domainmodel.SpecyficDayForecastSummary
+import co.develhope.meteoapp.data.domainmodel.TitleForecast
+import co.develhope.meteoapp.data.domainmodel.WeatherCondition
 import java.util.*
-
-     enum class WeatherCondition {
-         SUNNY, CLOUDY, RAIN
-     }
-
-//--- data ---
-data class  SpecyficDayForecastSummary(
-    val title: TitleForecast,
-    val row: RowForecast,
-    val card: CardForecast
-)
-
-     data class TitleForecast(
-         val city: String,
-         val region: String,
-         val lat: Double,
-         val long: Double,
-         val titleGiorno: String,
-         val titleData: Date
-     )
-
-     data class RowForecast(
-         val time: Int,
-         val weatherCondition: WeatherCondition,
-         val humidity: Int,
-         val temp: Int
-     )
-
-     data class CardForecast(
-         val percepita: Int,
-         val humidity: Int,
-         val copertura: Int,
-         val uv: Int,
-         val vento: Int,
-         val pioggia: Int
-     )
-
 
 object DatasourceSpecificDay {
 

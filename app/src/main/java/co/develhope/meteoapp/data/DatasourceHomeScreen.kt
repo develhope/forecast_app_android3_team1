@@ -1,11 +1,7 @@
 package co.develhope.meteoapp.data
 
+import co.develhope.meteoapp.data.domainmodel.WeatherCondition
 
-
-
-enum class WeatherCondition {
-    SUNNY, FOG, RAIN
-}
 
 data class DailyForecastSummary(
     val place: Place,

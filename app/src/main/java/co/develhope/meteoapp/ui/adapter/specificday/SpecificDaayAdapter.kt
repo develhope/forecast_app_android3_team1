@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.model_specyficDay.SpecyfDayScreenItem
 
 class SpecificDaayAdapter(private val dataset: List<SpecyfDayScreenItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

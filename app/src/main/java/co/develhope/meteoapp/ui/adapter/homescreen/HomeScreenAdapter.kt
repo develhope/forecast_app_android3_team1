@@ -4,7 +4,6 @@ package co.develhope.meteoapp.ui.adapter.homescreen
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import co.develhope.meteoapp.data.HomeScreenItems
 import co.develhope.meteoapp.databinding.CardHomeScreenBinding
 import co.develhope.meteoapp.databinding.Next5daysHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
