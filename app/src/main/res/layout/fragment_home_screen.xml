@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_homescreen"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewHomeScreen"
         tools:listitem="@layout/card_home_screen"

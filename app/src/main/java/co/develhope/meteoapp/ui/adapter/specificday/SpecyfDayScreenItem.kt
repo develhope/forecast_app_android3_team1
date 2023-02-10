@@ -1,8 +1,8 @@
-package co.develhope.meteoapp.model_specyficDay
+package co.develhope.meteoapp.ui.adapter.specificday
 
-import co.develhope.meteoapp.data_specyficDay.CardForecast
-import co.develhope.meteoapp.data_specyficDay.SpecyficDayForecastSummary
-import co.develhope.meteoapp.data_specyficDay.TitleForecast
+import co.develhope.meteoapp.data.domainmodel.CardForecast
+import co.develhope.meteoapp.data.domainmodel.SpecyficDayForecastSummary
+import co.develhope.meteoapp.data.domainmodel.TitleForecast
 
 
 sealed class SpecyfDayScreenItem {

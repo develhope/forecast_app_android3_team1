@@ -1,4 +1,7 @@
-package co.develhope.meteoapp.data
+package co.develhope.meteoapp.ui.adapter.homescreen
+
+import co.develhope.meteoapp.data.domainmodel.DailyForecastSummary
+import co.develhope.meteoapp.data.domainmodel.Place
 
 sealed class HomeScreenItems {
 

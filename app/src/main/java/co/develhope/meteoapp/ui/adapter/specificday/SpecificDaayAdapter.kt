@@ -1,13 +1,12 @@
-package co.develhope.meteoapp.adapter_specyficDay
+package co.develhope.meteoapp.ui.adapter.specificday
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.model_specyficDay.SpecyfDayScreenItem
 
-class ItemAdapter(private val dataset: List<SpecyfDayScreenItem>) :
+class SpecificDaayAdapter(private val dataset: List<SpecyfDayScreenItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {

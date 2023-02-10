@@ -1,16 +1,16 @@
-package co.develhope.meteoapp.specificDay
+package co.develhope.meteoapp.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.develhope.meteoapp.adapter_specyficDay.ItemAdapter
-import co.develhope.meteoapp.data_specyficDay.DatasourceSpecificDay
-import co.develhope.meteoapp.data_specyficDay.SpecyficDayForecastSummary
+import co.develhope.meteoapp.data.Datasource
+import co.develhope.meteoapp.data.domainmodel.SpecyficDayForecastSummary
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
-import co.develhope.meteoapp.model_specyficDay.SpecyfDayScreenItem
+import co.develhope.meteoapp.ui.adapter.specificday.SpecificDaayAdapter
+import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
 
 
 class SpecificDayFragment : Fragment() {
@@ -30,10 +30,10 @@ class SpecificDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val forecastSummaryList = DatasourceSpecificDay.loadData()
+        val forecastSummaryList = Datasource.loadData()
         val createdList = createSpecyfDayScreenItem(forecastSummaryList)
 
-        val adapter = ItemAdapter(createdList)
+        val adapter = SpecificDaayAdapter(createdList)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
 

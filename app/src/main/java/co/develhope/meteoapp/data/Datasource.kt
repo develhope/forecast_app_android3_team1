@@ -1,45 +1,92 @@
-package co.develhope.meteoapp.data_specyficDay
+package co.develhope.meteoapp.data
 
-import java.util.*
-
-     enum class WeatherCondition {
-         SUNNY, CLOUDY, RAIN
-     }
-
-//--- data ---
-data class  SpecyficDayForecastSummary(
-    val title: TitleForecast,
-    val row: RowForecast,
-    val card: CardForecast
-)
-
-     data class TitleForecast(
-         val city: String,
-         val region: String,
-         val lat: Double,
-         val long: Double,
-         val titleGiorno: String,
-         val titleData: Date
-     )
-
-     data class RowForecast(
-         val time: Int,
-         val weatherCondition: WeatherCondition,
-         val humidity: Int,
-         val temp: Int
-     )
-
-     data class CardForecast(
-         val percepita: Int,
-         val humidity: Int,
-         val copertura: Int,
-         val uv: Int,
-         val vento: Int,
-         val pioggia: Int
-     )
+import co.develhope.meteoapp.data.domainmodel.CardForecast
+import co.develhope.meteoapp.data.domainmodel.DailyForecastSummary
+import co.develhope.meteoapp.data.domainmodel.Forecast
+import co.develhope.meteoapp.data.domainmodel.Place
+import co.develhope.meteoapp.data.domainmodel.RowForecast
+import co.develhope.meteoapp.data.domainmodel.SpecyficDayForecastSummary
+import co.develhope.meteoapp.data.domainmodel.TitleForecast
+import co.develhope.meteoapp.data.domainmodel.WeatherCondition
+import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
+import java.util.Date
 
 
-object DatasourceSpecificDay {
+object Datasource {
+
+    fun loadDataFromScreen(): List<DailyForecastSummary> {
+        return listOf<DailyForecastSummary>(
+            DailyForecastSummary(
+                place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
+                date = "03/02",
+                forecast = Forecast(
+                    minTemp = 22,
+                    maxTemp = 31,
+                    rainfall = 0,
+                    wind = 12,
+                    weatherCondition = WeatherCondition.SUNNY
+                )
+            ),
+            DailyForecastSummary(
+                place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
+                date = "04/02",
+                forecast = Forecast(
+                    minTemp = 18,
+                    maxTemp = 22,
+                    rainfall = 15,
+                    wind = 28,
+                    weatherCondition = WeatherCondition.FOG
+                )
+            ),
+            DailyForecastSummary(
+                place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
+                date = "05/02",
+                forecast = Forecast(
+                    minTemp = 22,
+                    maxTemp = 31,
+                    rainfall = 0,
+                    wind = 12,
+                    weatherCondition = WeatherCondition.SUNNY
+                )
+            ),
+            DailyForecastSummary(
+                place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
+                date = "06/02",
+                forecast = Forecast(
+                    minTemp = 20,
+                    maxTemp = 25,
+                    rainfall = 90,
+                    wind = 32,
+                    weatherCondition = WeatherCondition.RAIN
+                )
+            ),
+            DailyForecastSummary(
+                place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
+                date = "07/02",
+                forecast = Forecast(
+                    minTemp = 24,
+                    maxTemp = 30,
+                    rainfall = 9,
+                    wind = 13,
+                    weatherCondition = WeatherCondition.FOG
+                )
+            )
+
+
+        )
+    }
+
+    private val recentSearchList = mutableListOf(
+        SearchScreenItems.RecentSearchTitle("Recent Search"),
+        SearchScreenItems.RecentSearch("Palermo"),
+        SearchScreenItems.RecentSearch("Catanzaro"),
+        SearchScreenItems.RecentSearch("Roma"),
+        SearchScreenItems.RecentSearch("Milano")
+    )
+
+    fun loadRecentSearch() : List<SearchScreenItems> {
+        return recentSearchList
+    }
 
     fun loadData(): List<SpecyficDayForecastSummary> {
         return listOf(
@@ -191,6 +238,3 @@ object DatasourceSpecificDay {
         )
     }
 }
-
-
-

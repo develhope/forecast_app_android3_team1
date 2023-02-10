@@ -1,19 +1,16 @@
-package co.develhope.meteoapp.adapter
+package co.develhope.meteoapp.ui.adapter.searchscreen
 
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.adapter.holder.RecentSearchTitleHolder
-import co.develhope.meteoapp.adapter.holder.SearchTermViewHolder
-import co.develhope.meteoapp.model.RecyclerViewData
 
 const val SEARCHITEM = 1
 const val SEARCHTITLE = 0
 
 
-class RecentSearchAdapter(val data: List<RecyclerViewData>) :
+class SearchAdapter(val data: List<SearchScreenItems>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
@@ -22,8 +19,8 @@ class RecentSearchAdapter(val data: List<RecyclerViewData>) :
 
     override fun getItemViewType(position: Int): Int {
         return when(data[position]){
-            is RecyclerViewData.RecentSearch -> 1
-            is RecyclerViewData.RecentSearchTitle -> 0
+            is SearchScreenItems.RecentSearch -> 1
+            is SearchScreenItems.RecentSearchTitle -> 0
         }
     }
 
@@ -46,8 +43,8 @@ class RecentSearchAdapter(val data: List<RecyclerViewData>) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
-            is RecentSearchTitleHolder -> holder.bind(data[position] as RecyclerViewData.RecentSearchTitle)
-            is SearchTermViewHolder -> holder.bind(data[position] as RecyclerViewData.RecentSearch)
+            is RecentSearchTitleHolder -> holder.bind(data[position] as SearchScreenItems.RecentSearchTitle)
+            is SearchTermViewHolder -> holder.bind(data[position] as SearchScreenItems.RecentSearch)
         }
 
     }

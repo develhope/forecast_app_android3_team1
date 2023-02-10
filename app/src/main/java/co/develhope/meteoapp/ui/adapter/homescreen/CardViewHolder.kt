@@ -1,12 +1,8 @@
-package co.develhope.meteoapp.adapter
+package co.develhope.meteoapp.ui.adapter.homescreen
 
-import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.data.HomeScreenItems
 import co.develhope.meteoapp.databinding.CardHomeScreenBinding
-import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
 
 class CardViewHolder(private val binding: CardHomeScreenBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(cardDetail: HomeScreenItems.Forecast) {

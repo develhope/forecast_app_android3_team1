@@ -1,10 +1,9 @@
-package co.develhope.meteoapp.adapter_specyficDay
+package co.develhope.meteoapp.ui.adapter.specificday
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.model_specyficDay.SpecyfDayScreenItem
 
 
 //--- card ---

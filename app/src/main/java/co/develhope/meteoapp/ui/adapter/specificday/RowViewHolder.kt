@@ -1,12 +1,11 @@
-package co.develhope.meteoapp.adapter_specyficDay
+package co.develhope.meteoapp.ui.adapter.specificday
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.data_specyficDay.WeatherCondition
-import co.develhope.meteoapp.model_specyficDay.SpecyfDayScreenItem
+import co.develhope.meteoapp.data.domainmodel.WeatherCondition
 
 //--- row ---
 class RowViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -22,6 +21,8 @@ class RowViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
             WeatherCondition.SUNNY -> imageViewRow.setImageResource(R.drawable.ic_icon_sun)
             WeatherCondition.RAIN -> imageViewRow.setImageResource(R.drawable.ic_icon_rain)
             WeatherCondition.CLOUDY -> imageViewRow.setImageResource(R.drawable.ic_icon_cloudy)
+            WeatherCondition.FOG -> imageViewRow.setImageResource(R.drawable.ic_icon_cloudy) //FOG
+            WeatherCondition.STORM -> imageViewRow.setImageResource(R.drawable.ic_icon_cloudy) //STORM
         }
         textViewRow2.text = itemView.context.getString(R.string.simbol_gradi, detailsRow.rowForecast.row.temp.toString())
         textViewRow3.text = itemView.context.getString(R.string.simbol_percentuale, detailsRow.rowForecast.row.humidity.toString())
