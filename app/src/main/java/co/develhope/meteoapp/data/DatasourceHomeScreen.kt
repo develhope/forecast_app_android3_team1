@@ -1,28 +1,9 @@
 package co.develhope.meteoapp.data
 
+import co.develhope.meteoapp.data.domainmodel.DailyForecastSummary
+import co.develhope.meteoapp.data.domainmodel.Forecast
+import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.data.domainmodel.WeatherCondition
-
-
-data class DailyForecastSummary(
-    val place: Place,
-    val date: String,
-    val forecast: Forecast
-)
-
-data class Place(
-    val city: String,
-    val region: String,
-    val lat: Double,
-    val log: Double
-)
-
-data class Forecast(
-    val minTemp: Int,
-    val maxTemp: Int,
-    val rainfall: Int,
-    val wind: Int,
-    val weatherCondition: WeatherCondition
-)
 
 
 object Datasource {
