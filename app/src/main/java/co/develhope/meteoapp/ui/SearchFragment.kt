@@ -1,18 +1,14 @@
 package co.develhope.meteoapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import co.develhope.meteoapp.R
-import co.develhope.meteoapp.adapter.RecentSearchAdapter
+import co.develhope.meteoapp.adapter.SearchAdapter
 import co.develhope.meteoapp.data.RecentSearchDataSet
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
-import co.develhope.meteoapp.model.RecyclerViewData
 
 
 class SearchFragment : Fragment() {
@@ -34,7 +30,7 @@ class SearchFragment : Fragment() {
 
 
 
-        val adapter = RecentSearchAdapter(RecentSearchDataSet.loadRecentSearch())
+        val adapter = SearchAdapter(RecentSearchDataSet.loadRecentSearch())
         binding.recentsearchlist.adapter = adapter
         binding.recentsearchlist.layoutManager = LinearLayoutManager(view.context)
 

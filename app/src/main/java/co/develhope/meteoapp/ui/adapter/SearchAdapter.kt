@@ -1,4 +1,4 @@
-package co.develhope.meteoapp.adapter
+package co.develhope.meteoapp.ui.adapter
 
 
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ const val SEARCHITEM = 1
 const val SEARCHTITLE = 0
 
 
-class RecentSearchAdapter(val data: List<RecyclerViewData>) :
+class SearchAdapter(val data: List<RecyclerViewData>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
