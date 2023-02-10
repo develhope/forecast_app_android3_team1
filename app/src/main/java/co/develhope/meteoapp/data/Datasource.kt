@@ -80,7 +80,8 @@ object Datasource {
         Place("Palermo","Sicily",0.0,0.0),
         Place("Catanzaro","Calabria",0.0,0.0),
         Place("Roma","Lazio",0.0,0.0),
-        Place("Milano","Lombardia",0.0,0.0)
+        Place("Milano","Lombardia",0.0,0.0),
+        Place("Napoli","Campania",0.0,0.0)
     )
 
     fun loadRecentSearch() : List<Place> {

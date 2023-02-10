@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_bar_hint">Cerca città</string>
-    <string name="ricerche_recenti">Ricerche recenti</string>
+    <string name="ricerche_recenti">Ricerche Recenti</string>
     <string name="today">%s</string>
     <string name="date">%s</string>
     <string name="tempMax">%s °</string>
@@ -62,6 +62,7 @@
     <string name="oggi">Oggi</string>
     <string name="domani">Domani</string>
     <string name="cerca">Cerca</string>
+    <string name="recent_search">Recent Search</string>
 
 
 </resources>
