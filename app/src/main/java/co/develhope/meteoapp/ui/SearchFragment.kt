@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.develhope.meteoapp.data.RecentSearchDataSet
+import co.develhope.meteoapp.data.Datasource
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
 
@@ -30,7 +30,7 @@ class SearchFragment : Fragment() {
 
 
 
-        val adapter = SearchAdapter(RecentSearchDataSet.loadRecentSearch())
+        val adapter = SearchAdapter(Datasource.loadRecentSearch())
         binding.recentsearchlist.adapter = adapter
         binding.recentsearchlist.layoutManager = LinearLayoutManager(view.context)
 

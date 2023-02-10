@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenAdapter
-import co.develhope.meteoapp.data.DailyForecastSummary
 import co.develhope.meteoapp.data.Datasource
+import co.develhope.meteoapp.data.domainmodel.DailyForecastSummary
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenItems
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 
@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val forecastSummaryList = Datasource.loadData()
+        val forecastSummaryList = Datasource.loadDataFromScreen()
 
         val listCreated = createHomeScreenItems(forecastSummaryList)
 
