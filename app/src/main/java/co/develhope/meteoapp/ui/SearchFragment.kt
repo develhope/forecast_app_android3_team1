@@ -74,7 +74,7 @@ class SearchFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 val filteredRecentSearch = recentSearch.filter {
-                    it.city.contains(s.toString())
+                    it.city.contains(s.toString().toRegex(setOf(RegexOption.IGNORE_CASE )))
                 }
                 adapter = SearchAdapter(transformDataForSearchAdapter(filteredRecentSearch))
                 binding.recentsearchlist.adapter = adapter
