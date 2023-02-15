@@ -30,7 +30,7 @@
     <style name="styleRowTextHours">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/color_text_SD</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textStyle">normal</item>
     </style>
 

@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            >
 
             <!-- Title, text _ sx1-->
             <TextView
@@ -34,8 +34,8 @@
                 style="@style/styleCardText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16"
-                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginStart="@dimen/margin_18"
+                android:layout_marginTop="@dimen/margin_18"
                 android:text="@string/percepita_card"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -56,10 +56,10 @@
                 style="@style/styleCardText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_16"
-                android:layout_marginEnd="@dimen/margin_46"
+                android:layout_marginStart="@dimen/margin_112"
+                android:layout_marginTop="@dimen/margin_18"
                 android:text="@string/indice_uv_card"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/percepita"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_8"
-                android:text="@string/UV_5_10"
+                android:text="@string/UV_valore"
                 app:layout_constraintStart_toStartOf="@+id/indice_UV"
                 app:layout_constraintTop_toBottomOf="@+id/indice_UV" />
 
@@ -77,7 +77,7 @@
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_14"
                 app:dividerInsetEnd="@dimen/margin_16"
                 app:dividerInsetStart="@dimen/margin_16"
                 app:layout_constraintEnd_toEndOf="@+id/val_UV"
@@ -90,7 +90,7 @@
                 style="@style/styleCardText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_14"
                 android:text="@string/umidit_card"
                 app:layout_constraintStart_toStartOf="@+id/val_percep"
                 app:layout_constraintTop_toBottomOf="@+id/divider2" />
@@ -111,7 +111,7 @@
                 style="@style/styleCardText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_14"
                 android:text="@string/vento_card"
                 app:layout_constraintStart_toStartOf="@+id/val_UV"
                 app:layout_constraintTop_toBottomOf="@+id/divider2" />
@@ -122,7 +122,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_8"
-                android:text="@string/vento_7"
+                android:text="@string/vento_valore"
                 app:layout_constraintStart_toStartOf="@+id/vento"
                 app:layout_constraintTop_toBottomOf="@+id/vento" />
 
@@ -131,7 +131,7 @@
                 android:id="@+id/divider3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_14"
                 app:dividerInsetEnd="@dimen/margin_16"
                 app:layout_constraintEnd_toEndOf="@+id/val_vento"
                 app:layout_constraintStart_toStartOf="@+id/val_umidità"
@@ -143,7 +143,7 @@
                 style="@style/styleCardText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_14"
                 android:text="@string/copertura_card"
                 app:layout_constraintStart_toStartOf="@+id/val_umidità"
                 app:layout_constraintTop_toBottomOf="@+id/divider3" />
@@ -154,7 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_8"
-                android:text="@string/copertura_24"
+                android:text="@string/simbol_percentuale"
                 app:layout_constraintStart_toStartOf="@+id/copertura"
                 app:layout_constraintTop_toBottomOf="@+id/copertura" />
 
@@ -164,7 +164,7 @@
                 style="@style/styleCardText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_14"
                 android:text="@string/pioggia_card"
                 app:layout_constraintStart_toStartOf="@+id/val_vento"
                 app:layout_constraintTop_toBottomOf="@+id/divider3" />
@@ -176,7 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_8"
                 android:layout_marginBottom="@dimen/margin_16"
-                android:text="@string/pioggia_0cm"
+                android:text="@string/pioggia_valore"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/pioggia"
                 app:layout_constraintTop_toBottomOf="@+id/pioggia" />

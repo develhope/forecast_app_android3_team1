@@ -62,6 +62,9 @@
     <string name="oggi">Oggi</string>
     <string name="domani">Domani</string>
     <string name="cerca">Cerca</string>
+    <string name="UV_valore">%s/10</string>
+    <string name="vento_valore">SSE %skm/h</string>
+    <string name="pioggia_valore">%scm</string>
 
 
 

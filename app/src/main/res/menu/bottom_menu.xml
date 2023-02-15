@@ -11,6 +11,7 @@
         android:icon="@drawable/today_icon"
         android:title="@string/oggi" />
     <item
+        android:id="@id/specificDayFragment"
         android:icon="@drawable/tomorrow_icon"
         android:title="@string/domani" />
     <item

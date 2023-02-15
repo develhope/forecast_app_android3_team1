@@ -89,7 +89,7 @@ object Datasource {
     }
 
     fun loadData(): List<SpecyficDayForecastSummary> {
-        return listOf(
+        return mutableListOf(
             SpecyficDayForecastSummary(
                 title = TitleForecast(
                     city = "Torino",
