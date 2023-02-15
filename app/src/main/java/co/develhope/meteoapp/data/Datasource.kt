@@ -77,14 +77,14 @@ object Datasource {
     }
 
     private val recentSearchList = mutableListOf(
-        SearchScreenItems.RecentSearchTitle("Recent Search"),
-        SearchScreenItems.RecentSearch("Palermo"),
-        SearchScreenItems.RecentSearch("Catanzaro"),
-        SearchScreenItems.RecentSearch("Roma"),
-        SearchScreenItems.RecentSearch("Milano")
+        Place("Palermo","Sicily",0.0,0.0),
+        Place("Catanzaro","Calabria",0.0,0.0),
+        Place("Roma","Lazio",0.0,0.0),
+        Place("Milano","Lombardia",0.0,0.0),
+        Place("Napoli","Campania",0.0,0.0)
     )
 
-    fun loadRecentSearch() : List<SearchScreenItems> {
+    fun loadRecentSearch() : List<Place> {
         return recentSearchList
     }
 
