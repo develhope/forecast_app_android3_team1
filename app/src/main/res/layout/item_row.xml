@@ -14,21 +14,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_24"
-        android:text="@string/ora_giorno_12"
-        app:layout_constraintBottom_toBottomOf="@+id/icon_weather_imageview"
-        app:layout_constraintEnd_toStartOf="@+id/icon_weather_imageview"
+        android:layout_marginTop="18dp"
+        android:text="@string/ora_giorno"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/icon_weather_imageview" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/icon_weather_imageview"
         android:layout_width="@dimen/margin_31"
         android:layout_height="@dimen/margin_32"
         android:layout_marginStart="@dimen/margin_38"
-        app:layout_constraintBottom_toBottomOf="@+id/temperature_textview"
-        app:layout_constraintEnd_toStartOf="@+id/temperature_textview"
+        android:layout_marginTop="14dp"
         app:layout_constraintStart_toEndOf="@+id/today_hour_textview"
-        app:layout_constraintTop_toTopOf="@+id/temperature_textview"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@drawable/ic_icon_sun" />
 
@@ -38,11 +36,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_38"
+        android:layout_marginTop="14dp"
         android:text="@string/temperatura_giorno_20"
-        app:layout_constraintBottom_toBottomOf="@+id/humidity_textview"
-        app:layout_constraintEnd_toStartOf="@+id/humidity_textview"
         app:layout_constraintStart_toEndOf="@+id/icon_weather_imageview"
-        app:layout_constraintTop_toTopOf="@+id/humidity_textview" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -52,11 +49,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_56"
         android:layout_marginTop="@dimen/margin_14"
-        android:layout_marginEnd="@dimen/margin_86"
         android:drawablePadding="@dimen/grandezza_5"
         android:text="@string/humidity_10"
         app:drawableStartCompat="@drawable/ic_icon_humidity"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/temperature_textview"
         app:layout_constraintTop_toTopOf="parent" />
 

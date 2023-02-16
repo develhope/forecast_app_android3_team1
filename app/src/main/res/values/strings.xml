@@ -22,12 +22,13 @@
 
     //--- titile ---
 
-    <string name="data_today">10.01.2023</string>
+    <string name="data_today">%s %s %s</string>
 
     //--- row ---
-    <string name="ora_giorno_12">12.00</string>
+    <string name="ora_giorno">%s:00</string>
     <string name="temperatura_giorno_20">20°</string>
     <string name="humidity_10">10%</string>
+
 
     //--- card ---
     <string name="percepita_card">percepita</string>

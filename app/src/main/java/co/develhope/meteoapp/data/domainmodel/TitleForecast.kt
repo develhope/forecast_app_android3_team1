@@ -1,5 +1,6 @@
 package co.develhope.meteoapp.data.domainmodel
 
+import org.threeten.bp.OffsetDateTime
 import java.util.Date
 
 data class TitleForecast(
@@ -8,5 +9,5 @@ data class TitleForecast(
     val lat: Double,
     val long: Double,
     val titleGiorno: String,
-    val titleData: Date
+    val titleData: OffsetDateTime
 )
