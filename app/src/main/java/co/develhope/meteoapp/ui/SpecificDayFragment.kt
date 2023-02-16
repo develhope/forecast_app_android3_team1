@@ -31,7 +31,7 @@ class SpecificDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val forecastSummaryList = Datasource.loadData()
-        val createdList = createSpecyfDayScreenItem(forecastSummaryList as MutableList<SpecyficDayForecastSummary>)  //?
+        val createdList = createSpecyfDayScreenItem(forecastSummaryList)
 
         val adapter = SpecificDaayAdapter(createdList)
         binding.recyclerView.adapter = adapter
@@ -40,16 +40,16 @@ class SpecificDayFragment : Fragment() {
 
     }
 
-    private fun createSpecyfDayScreenItem(forecastSummaryList: MutableList<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
+    private fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
         val listShowItem = mutableListOf<SpecyfDayScreenItem>()
 
         listShowItem.add(SpecyfDayScreenItem.DetailsTitle(forecastSummaryList.first().title))
         listShowItem.add(SpecyfDayScreenItem.DetailsRow(forecastSummaryList.first()))
         listShowItem.add(SpecyfDayScreenItem.DetailsCard(forecastSummaryList.first().card))
 
-        forecastSummaryList.removeFirst()
-
         listShowItem.addAll(forecastSummaryList.map { SpecyfDayScreenItem.DetailsRow(it) })
+
+        listShowItem.removeAt(3)
 
         return listShowItem
     }
