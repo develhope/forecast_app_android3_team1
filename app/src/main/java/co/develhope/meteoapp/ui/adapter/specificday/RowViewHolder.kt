@@ -16,7 +16,7 @@ class RowViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
     private val textViewRow3: TextView = view.findViewById(R.id.humidity_textview)
 
     fun bind(detailsRow: SpecyfDayScreenItem.DetailsRow) {
-        textViewRow.text = detailsRow.rowForecast.row.time.toString()
+        textViewRow.text = itemView.context.getString(R.string.ora_giorno, detailsRow.rowForecast.row.time.toString())
         when (detailsRow.rowForecast.row.weatherCondition) {
             WeatherCondition.SUNNY -> imageViewRow.setImageResource(R.drawable.ic_icon_sun)
             WeatherCondition.RAIN -> imageViewRow.setImageResource(R.drawable.ic_icon_rain)
