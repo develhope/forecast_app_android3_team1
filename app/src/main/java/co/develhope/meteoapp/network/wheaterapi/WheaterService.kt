@@ -12,5 +12,7 @@ interface WheaterService {
     suspend fun getDailyWehaterSummary(@Query("latitude") latitude : Double = 41.8955, @Query("longitude") longitude : Double = 12.4823) : DailySummary
 
     //endpoint per weeklysummary
+    @GET("forecast?daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,rain_sum&current_weather=true&timezone=Europe%2FBerlin")
+    suspend fun  getWeeklyWheaterSummary(@Query("latitude") latitude : Double = 41.8955, @Query("longitude") longitude : Double = 12.4823) : WeeklySummary
 
 }

@@ -1,25 +1,19 @@
 package co.develhope.meteoapp.ui
 
 import android.os.Bundle
-import android.provider.ContactsContract.Data
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.data.Datasource
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
-import co.develhope.meteoapp.network.wheaterapi.WheaterProvider
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 
 class SearchFragment : Fragment() {
@@ -43,12 +37,8 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        //test daily endpoint
-        val wheaterProvider = WheaterProvider().provideWheaterService()
-        val networkCall = GlobalScope.launch(Dispatchers.IO) {
-            val results = wheaterProvider.getDailyWehaterSummary()
-            Log.d("WheaterResults","results: $results")
-        }
+
+
 
         recentSearch = Datasource.loadRecentSearch()
         adapter = SearchAdapter(transformDataForSearchAdapter(recentSearch))
