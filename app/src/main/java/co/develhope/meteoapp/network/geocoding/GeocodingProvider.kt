@@ -9,7 +9,6 @@ class GeocodingProvider {
 
     val retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
 
-
     fun provideGeocodingService() : GeocodingService {
         return retrofit.create(GeocodingService::class.java)
     }
