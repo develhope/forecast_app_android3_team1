@@ -8,7 +8,7 @@ import co.develhope.meteoapp.databinding.CardHomeScreenBinding
 import co.develhope.meteoapp.databinding.Next5daysHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
 
-class HomeScreenAdapter(private val list: List<HomeScreenItems>) :
+class HomeScreenAdapter(private val list: List<HomeScreenItems>, private val listener: OnClickCardItem) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
@@ -49,9 +49,10 @@ class HomeScreenAdapter(private val list: List<HomeScreenItems>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is TitleViewHolder -> holder.bind(list[position] as HomeScreenItems.HomeScreenTitle)
-            is CardViewHolder -> holder.bind(list[position] as HomeScreenItems.Forecast)
+            is CardViewHolder -> holder.bind(list[position] as HomeScreenItems.Forecast, position, listener)
             is NextDaysViewHolder -> holder.bind(list[position] as HomeScreenItems.NextDays)
         }
+
     }
 
     override fun getItemCount(): Int {
