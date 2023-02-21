@@ -1,7 +1,7 @@
-package co.develhope.meteoapp.network.wheaterapi
+package co.develhope.meteoapp.network.service
 
-import co.develhope.meteoapp.network.wheaterapi.dto.DailySummary
-import co.develhope.meteoapp.network.wheaterapi.dto.WeeklySummary
+import co.develhope.meteoapp.network.dto.DailySummary
+import co.develhope.meteoapp.network.dto.WeeklySummary
 import retrofit2.http.GET
 import retrofit2.http.Query
 
