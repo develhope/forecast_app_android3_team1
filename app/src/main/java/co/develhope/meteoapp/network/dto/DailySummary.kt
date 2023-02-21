@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class DailySummary(
     @SerializedName("current_weather")
-    val currentWeather: CurrentWeatherX,
+    val currentWeather: CurrentWeather,
     @SerializedName("elevation")
     val elevation: Double,
     @SerializedName("generationtime_ms")
