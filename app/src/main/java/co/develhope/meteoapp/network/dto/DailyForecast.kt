@@ -3,7 +3,7 @@ package co.develhope.meteoapp.network.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class Daily(
+data class DailyForecast(
     @SerializedName("precipitation_sum")
     val precipitationSum: List<Double>,
     @SerializedName("rain_sum")

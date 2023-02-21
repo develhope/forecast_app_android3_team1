@@ -7,7 +7,7 @@ data class WeeklySummary(
     @SerializedName("current_weather")
     val currentWeather: CurrentWeather,
     @SerializedName("daily")
-    val daily: Daily,
+    val dailyForecast: DailyForecast,
     @SerializedName("daily_units")
     val dailyUnits: DailyUnits,
     @SerializedName("elevation")

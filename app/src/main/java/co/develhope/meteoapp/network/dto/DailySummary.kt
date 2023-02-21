@@ -11,9 +11,9 @@ data class DailySummary(
     @SerializedName("generationtime_ms")
     val generationtimeMs: Double,
     @SerializedName("hourly")
-    val hourly: Hourly,
+    val hourly: HourlyForecast,
     @SerializedName("hourly_units")
-    val hourlyUnits: HourlyUnits,
+    val hourlyUnits: HourlyUnits, //units presents  in the response (C, KMh, iso, timezone ecc)
     @SerializedName("latitude")
     val latitude: Double,
     @SerializedName("longitude")

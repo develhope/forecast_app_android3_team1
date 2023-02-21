@@ -3,7 +3,7 @@ package co.develhope.meteoapp.network.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class Hourly(
+data class HourlyForecast(
     @SerializedName("rain")
     val rain: List<Double>,
     @SerializedName("showers")
