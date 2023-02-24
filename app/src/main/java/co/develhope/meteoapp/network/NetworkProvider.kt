@@ -1,5 +1,7 @@
 package co.develhope.meteoapp.network
 
+import co.develhope.meteoapp.data.domainmodel.Place
+import co.develhope.meteoapp.network.dto.CityInfo
 import co.develhope.meteoapp.network.service.GeocodingService
 import co.develhope.meteoapp.network.service.WheaterService
 import com.google.gson.Gson
@@ -83,4 +85,9 @@ class NetworkProvider {
         .create()
 
     // mancano le funzioni che vanno usate per le chiamate di rete
+
+    suspend fun searchPlaceByName(name : String) : CityInfo {
+        val geocodingService = provideGeocodingService()
+        return geocodingService.getCityInfo(name)
+    }
 }
