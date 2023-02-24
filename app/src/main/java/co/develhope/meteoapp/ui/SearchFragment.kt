@@ -3,6 +3,7 @@ package co.develhope.meteoapp.ui
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +13,11 @@ import co.develhope.meteoapp.R
 import co.develhope.meteoapp.data.Datasource
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
+import co.develhope.meteoapp.network.NetworkProvider
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class SearchFragment : Fragment() {
@@ -47,6 +51,18 @@ class SearchFragment : Fragment() {
 
         //register listener for search location
         searchLocation()
+
+        val job = GlobalScope.launch {
+            val result = NetworkProvider().searchPlaceByName("Veneto")
+            Log.d("Mapping object","${result.toDomain()}")
+        }
+
+        job.invokeOnCompletion {
+            Log.d("Coroutines","Coroutines completa")
+
+
+            
+        }
     }
 
     override fun onDestroyView() {
