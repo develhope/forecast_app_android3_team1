@@ -2,6 +2,7 @@ package co.develhope.meteoapp.network
 
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.network.dto.CityInfo
+import co.develhope.meteoapp.network.dto.DailySummary
 import co.develhope.meteoapp.network.service.GeocodingService
 import co.develhope.meteoapp.network.service.WheaterService
 import com.google.gson.Gson
@@ -89,5 +90,10 @@ class NetworkProvider {
     suspend fun searchPlaceByName(name : String) : CityInfo {
         val geocodingService = provideGeocodingService()
         return geocodingService.getCityInfo(name)
+    }
+
+    suspend fun getDailySummary(latitude: Double, longitude : Double, startDate : OffsetDateTime, endDate : OffsetDateTime) : DailySummary{
+        val wheaterService = provideWeatherService()
+        return wheaterService.getDailyWehaterSummary(latitude,longitude,startDate,endDate)
     }
 }
