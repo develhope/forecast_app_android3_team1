@@ -4,7 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_bar_hint">Cerca città</string>
     <string name="ricerche_recenti">Ricerche Recenti</string>
-    <string name="today">%s</string>
+    <string name="today">%s,%s</string>
     <string name="date">%s</string>
     <string name="tempMax">%s °</string>
     <string name="text_temp1">min</string>
