@@ -72,6 +72,17 @@ object Datasource {
                     wind = 13,
                     weatherCondition = WeatherCondition.FOG
                 )
+            ),
+            DailyForecastSummary(
+                place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
+                date = "08/02",
+                forecast = Forecast(
+                    minTemp = 27,
+                    maxTemp = 31,
+                    rainfall = 0,
+                    wind = 10,
+                    weatherCondition = WeatherCondition.FOG
+                )
             )
 
 
