@@ -50,11 +50,12 @@ class HomeFragment : Fragment() {
         listToShow.add(HomeScreenItems.Forecast(forecastSummaryList.first()))
         listToShow.add(HomeScreenItems.NextDays)
 
-        listToShow.addAll(
-            forecastSummaryList.map {
-                HomeScreenItems.Forecast(it)
-            }
-        )
+        val nextDays: MutableList<HomeScreenItems.Forecast> = forecastSummaryList.map {
+            HomeScreenItems.Forecast(it)
+        }.toMutableList()
+
+        listToShow.addAll(nextDays)
+        listToShow.removeAt(3)
         return listToShow
     }
 }
