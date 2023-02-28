@@ -11,6 +11,7 @@ import co.develhope.meteoapp.data.domainmodel.WeatherCondition
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
 import org.threeten.bp.OffsetDateTime
 import java.util.Date
+import kotlin.time.Duration.Companion.days
 
 
 object Datasource {
@@ -19,7 +20,7 @@ object Datasource {
         return listOf<DailyForecastSummary>(
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
-                date = "03/02",
+                date ="03/02",
                 forecast = Forecast(
                     minTemp = 22,
                     maxTemp = 31,
