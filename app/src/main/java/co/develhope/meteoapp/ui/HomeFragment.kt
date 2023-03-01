@@ -37,6 +37,7 @@ class HomeFragment : Fragment() {
 
         val adapter = HomeScreenAdapter(listCreated, object: OnClickCardItem{
             override fun onCLickCard(cardDetail: HomeScreenItems.Forecast, position: Int) {
+
                 findNavController().navigate(R.id.action_homeFragment_to_specificDayFragment)
             }
         })
