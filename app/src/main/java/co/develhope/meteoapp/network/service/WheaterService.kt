@@ -1,5 +1,7 @@
 package co.develhope.meteoapp.network.service
 
+import co.develhope.meteoapp.network.dto.HomeSummary
+import co.develhope.meteoapp.network.dto.SpecificSummary
 import org.threeten.bp.OffsetDateTime
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -11,7 +13,7 @@ interface WheaterService {
     suspend fun getDailyWehaterSummary(
         @Query("latitude") latitude : Double = 41.8955,
         @Query("longitude") longitude : Double = 12.4823,
-    )
+    ) : HomeSummary
 
     //endpoint per weeklysummary
     @GET("forecast?hourly=temperature_2m,rain,showers,snowfall,weathercode,windspeed_10m&current_weather=true&timezone=Europe%2FBerlin")
@@ -19,6 +21,6 @@ interface WheaterService {
         @Query("latitude") latitude : Double = 41.8955,
         @Query("longitude") longitude : Double = 12.4823,
         @Query("start_date") startDate : OffsetDateTime,
-        @Query("end_date") endDate : OffsetDateTime)
+        @Query("end_date") endDate : OffsetDateTime) : SpecificSummary
 
 }
