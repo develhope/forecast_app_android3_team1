@@ -1,8 +1,6 @@
 package co.develhope.meteoapp.network.dto
 
 
-import co.develhope.meteoapp.data.domainmodel.Forecast
-import co.develhope.meteoapp.data.domainmodel.WeatherCondition
 import com.google.gson.annotations.SerializedName
 
 data class HomeSummary(
@@ -42,6 +40,7 @@ data class HomeSummary(
         return forecastObject
     }
 
+    //da modificare appena ci saranno più icone per gestire tutti i codici
     private fun decodeWMO(weatherCode : Int) : WeatherCondition {
         return when(weatherCode){
           in 59..69 -> return WeatherCondition.RAIN
