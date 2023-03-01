@@ -1,6 +1,8 @@
 package co.develhope.meteoapp.network.dto
 
 
+import co.develhope.meteoapp.data.domainmodel.Forecast
+import co.develhope.meteoapp.data.domainmodel.WeatherCondition
 import com.google.gson.annotations.SerializedName
 
 data class HomeSummary(
@@ -35,7 +37,8 @@ data class HomeSummary(
                         daily.rainSum[i].toInt(),
                         daily.windspeed[i].toInt(),
                         decodeWMO(daily.weathercode[i])
-            ))
+            )
+            )
         }
         return forecastObject
     }
