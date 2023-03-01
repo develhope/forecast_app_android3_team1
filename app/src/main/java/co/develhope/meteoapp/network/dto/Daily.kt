@@ -8,6 +8,8 @@ data class Daily(
     val precipitationSum: List<Double>,
     @SerializedName("rain_sum")
     val rainSum: List<Double>,
+    @SerializedName("windspeed_10m_max")
+    val windspeed : List<Double>,
     @SerializedName("sunrise")
     val sunrise: List<String>,
     @SerializedName("sunset")

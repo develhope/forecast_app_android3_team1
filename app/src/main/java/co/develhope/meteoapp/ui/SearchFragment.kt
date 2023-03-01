@@ -18,6 +18,7 @@ import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
 
 class SearchFragment : Fragment() {
@@ -53,16 +54,18 @@ class SearchFragment : Fragment() {
         searchLocation()
 
         val job = GlobalScope.launch {
-            val result = NetworkProvider().searchPlaceByName("Veneto")
-            Log.d("Mapping object","${result.toDomain()}")
+            val result = NetworkProvider().getDailySummary(
+                Place(
+                    city = "Roma",
+                    region = "Lazio",
+                    lat = 41.8955,
+                    log = 12.4823
+                )
+            )
+            Log.d("Wheatercoroutine","Result: ${result.toForecastObjects()}")
         }
 
-        job.invokeOnCompletion {
-            Log.d("Coroutines","Coroutines completa")
 
-
-            
-        }
     }
 
     override fun onDestroyView() {

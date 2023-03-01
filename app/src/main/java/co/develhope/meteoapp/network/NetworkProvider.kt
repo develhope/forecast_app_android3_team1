@@ -1,5 +1,6 @@
 package co.develhope.meteoapp.network
 
+import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.network.dto.CityInfo
 import co.develhope.meteoapp.network.dto.HomeSummary
 import co.develhope.meteoapp.network.dto.SpecificSummary
@@ -92,9 +93,9 @@ class NetworkProvider {
         return geocodingService.getCityInfo(name)
     }
 
-    suspend fun getDailySummary(latitude: Double, longitude : Double) : HomeSummary {
+    suspend fun getDailySummary(place : Place) : HomeSummary {
         val wheaterService = provideWeatherService()
-        return wheaterService.getDailyWehaterSummary(latitude,longitude)
+        return wheaterService.getDailyWehaterSummary(place.lat,place.log)
     }
 
     suspend fun getSpecificSummary(latitude : Double, longitude : Double, startDate: OffsetDateTime, endDate: OffsetDateTime) : SpecificSummary{

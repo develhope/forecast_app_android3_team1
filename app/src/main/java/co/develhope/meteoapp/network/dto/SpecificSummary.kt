@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SpecificSummary(
     @SerializedName("current_weather")
-    val currentWeather: CurrentWeatherX,
+    val currentWeather: CurrentWeather,
     @SerializedName("elevation")
     val elevation: Int,
     @SerializedName("generationtime_ms")
