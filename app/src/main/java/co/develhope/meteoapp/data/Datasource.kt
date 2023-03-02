@@ -11,6 +11,8 @@ import co.develhope.meteoapp.data.domainmodel.WeatherCondition
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
 import org.threeten.bp.OffsetDateTime
 import java.util.Date
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.days
 
 
 object Datasource {
@@ -19,7 +21,7 @@ object Datasource {
         return listOf<DailyForecastSummary>(
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
-                date = "03/02",
+                date = OffsetDateTime.now(),
                 forecast = Forecast(
                     minTemp = 22,
                     maxTemp = 31,
@@ -30,7 +32,7 @@ object Datasource {
             ),
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
-                date = "04/02",
+                date = OffsetDateTime.now().plusDays(1),
                 forecast = Forecast(
                     minTemp = 18,
                     maxTemp = 22,
@@ -41,7 +43,7 @@ object Datasource {
             ),
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
-                date = "05/02",
+                date = OffsetDateTime.now().plusDays(2),
                 forecast = Forecast(
                     minTemp = 22,
                     maxTemp = 31,
@@ -52,7 +54,7 @@ object Datasource {
             ),
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
-                date = "06/02",
+                date = OffsetDateTime.now().plusDays(3),
                 forecast = Forecast(
                     minTemp = 20,
                     maxTemp = 25,
@@ -63,12 +65,23 @@ object Datasource {
             ),
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
-                date = "07/02",
+                date = OffsetDateTime.now().plusDays(4),
                 forecast = Forecast(
                     minTemp = 24,
                     maxTemp = 30,
                     rainfall = 9,
                     wind = 13,
+                    weatherCondition = WeatherCondition.FOG
+                )
+            ),
+            DailyForecastSummary(
+                place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
+                date = OffsetDateTime.now().plusDays(5),
+                forecast = Forecast(
+                    minTemp = 27,
+                    maxTemp = 31,
+                    rainfall = 0,
+                    wind = 10,
                     weatherCondition = WeatherCondition.FOG
                 )
             )
