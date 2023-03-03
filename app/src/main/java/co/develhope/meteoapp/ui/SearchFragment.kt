@@ -18,7 +18,6 @@ import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
 
 class SearchFragment : Fragment() {
@@ -62,7 +61,7 @@ class SearchFragment : Fragment() {
                     log = 12.4823
                 )
             )
-            Log.d("Wheatercoroutine","Result: ${result.toForecastObjects()}")
+            Log.d("Wheatercoroutine","Result: ${result.toDomain()}")
         }
 
 

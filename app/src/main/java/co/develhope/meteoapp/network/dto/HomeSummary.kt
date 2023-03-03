@@ -28,19 +28,16 @@ data class HomeSummary(
     val utcOffsetSeconds: Int
 )
 {
-    fun toForecastObjects() : List<Forecast> {
-        var forecastObject = mutableListOf<Forecast>()
-        for(i in 0..daily.time.size - 1){
-            forecastObject.add(
-                Forecast(daily.temperature2mMin[i].toInt(),
-                        daily.temperature2mMax[i].toInt(),
-                        daily.rainSum[i].toInt(),
-                        daily.windspeed[i].toInt(),
-                        decodeWMO(daily.weathercode[i])
-            )
+    fun toDomain() : List<Forecast> {
+        return this.daily.time.mapIndexed { i, date ->
+            Forecast(
+                minTemp = daily.temperature2mMin[i].toInt(),
+                maxTemp = daily.temperature2mMax[i].toInt(),
+                rainfall = daily.rainSum[i].toInt(),
+                wind = daily.windspeed[i].toInt(),
+                weatherCondition = decodeWMO(daily.weathercode[i])
             )
         }
-        return forecastObject
     }
 
     //da modificare appena ci saranno più icone per gestire tutti i codici
