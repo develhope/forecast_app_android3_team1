@@ -8,14 +8,12 @@ import co.develhope.meteoapp.data.domainmodel.RowForecast
 import co.develhope.meteoapp.data.domainmodel.SpecyficDayForecastSummary
 import co.develhope.meteoapp.data.domainmodel.TitleForecast
 import co.develhope.meteoapp.data.domainmodel.WeatherCondition
-import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
 import org.threeten.bp.OffsetDateTime
-import java.util.Date
 
 
 object Datasource {
 
-    fun loadDataFromScreen(): List<DailyForecastSummary> {
+  /*  fun loadDataFromScreen(): List<DailyForecastSummary> {
         return listOf<DailyForecastSummary>(
             DailyForecastSummary(
                 place = Place(city = "Palermo", region = "Sicilia", lat = 0.0, log = 0.0),
@@ -25,7 +23,8 @@ object Datasource {
                     maxTemp = 31,
                     rainfall = 0,
                     wind = 12,
-                    weatherCondition = WeatherCondition.SUNNY
+                    weatherCondition = WeatherCondition.SUNNY,
+                    date = date
                 )
             ),
             DailyForecastSummary(
@@ -36,7 +35,8 @@ object Datasource {
                     maxTemp = 22,
                     rainfall = 15,
                     wind = 28,
-                    weatherCondition = WeatherCondition.FOG
+                    weatherCondition = WeatherCondition.FOG,
+                    date = date
                 )
             ),
             DailyForecastSummary(
@@ -47,7 +47,8 @@ object Datasource {
                     maxTemp = 31,
                     rainfall = 0,
                     wind = 12,
-                    weatherCondition = WeatherCondition.SUNNY
+                    weatherCondition = WeatherCondition.SUNNY,
+                    date = date
                 )
             ),
             DailyForecastSummary(
@@ -58,7 +59,8 @@ object Datasource {
                     maxTemp = 25,
                     rainfall = 90,
                     wind = 32,
-                    weatherCondition = WeatherCondition.RAIN
+                    weatherCondition = WeatherCondition.RAIN,
+                    date = date
                 )
             ),
             DailyForecastSummary(
@@ -69,13 +71,14 @@ object Datasource {
                     maxTemp = 30,
                     rainfall = 9,
                     wind = 13,
-                    weatherCondition = WeatherCondition.FOG
+                    weatherCondition = WeatherCondition.FOG,
+                    date = date
                 )
             )
 
 
         )
-    }
+    }*/
 
     private val recentSearchList = mutableListOf(
         Place("Palermo","Sicily",0.0,0.0),

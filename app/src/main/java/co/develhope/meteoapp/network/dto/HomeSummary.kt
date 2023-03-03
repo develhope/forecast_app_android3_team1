@@ -35,7 +35,8 @@ data class HomeSummary(
                 maxTemp = daily.temperature2mMax[i].toInt(),
                 rainfall = daily.rainSum[i].toInt(),
                 wind = daily.windspeed[i].toInt(),
-                weatherCondition = decodeWMO(daily.weathercode[i])
+                weatherCondition = decodeWMO(daily.weathercode[i]),
+                date = date
             )
         }
     }

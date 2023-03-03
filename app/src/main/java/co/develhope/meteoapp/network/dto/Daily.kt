@@ -2,6 +2,7 @@ package co.develhope.meteoapp.network.dto
 
 
 import com.google.gson.annotations.SerializedName
+import org.threeten.bp.OffsetDateTime
 
 data class Daily(
     @SerializedName("precipitation_sum")
@@ -19,7 +20,7 @@ data class Daily(
     @SerializedName("temperature_2m_min")
     val temperature2mMin: List<Double>,
     @SerializedName("time")
-    val time: List<String>,
+    val time: List<OffsetDateTime>,
     @SerializedName("weathercode")
     val weathercode: List<Int>
 )
