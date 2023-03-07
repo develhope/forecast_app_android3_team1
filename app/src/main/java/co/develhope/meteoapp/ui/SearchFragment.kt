@@ -60,7 +60,7 @@ class SearchFragment : Fragment() {
         val searchCoroutine = GlobalScope.launch (Dispatchers.IO){
             val results = NetworkProvider().provideGeocodingService().getCityInfo(location)
             withContext(Dispatchers.Main){
-                if(results != null && location.toString().length >= 2){
+                if(results.results != null){
                     adapter = SearchAdapter(transformDataForSearchAdapter(results.toDomain()))
                     binding.recentsearchlist.adapter = adapter
                     adapter.notifyDataSetChanged()
