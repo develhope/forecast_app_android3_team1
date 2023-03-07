@@ -58,6 +58,8 @@ class HomeFragment : Fragment() {
                 HomeScreenItems.Forecast(it)
             }
         )
+        listToShow.removeAt(3)
+        listToShow.removeLast()
         return listToShow
     }
 
