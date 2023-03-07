@@ -76,12 +76,14 @@
                 android:textSize="@dimen/dimen_cardText_info"
                 android:textColor="@color/white"
                 android:fontFamily="@font/inter"/>
+
             <ImageView
+                android:id="@+id/weathericon"
                 android:layout_width="@dimen/iconSize"
                 android:layout_height="@dimen/iconSize"
-                android:src="@drawable/sun_icon"
                 android:layout_below="@id/dateCard"
-                android:layout_marginTop="@dimen/marginTop_Icon"/>
+                android:layout_marginTop="@dimen/marginTop_Icon"
+                android:src="@drawable/sun_icon" />
             <TextView
                 android:id="@+id/rainfallPercent"
                 android:layout_width="wrap_content"
