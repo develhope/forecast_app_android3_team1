@@ -86,19 +86,24 @@ class SearchFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
                 if(count > before && !s.toString().isNullOrEmpty()){
                     searchNetworkCall(s.toString())
 
-                }else if(count < before && !s.toString().isNullOrEmpty()){
-                   searchNetworkCall(s.toString())
-                }else if(s.toString().isNullOrEmpty()){
-                    adapter.data = emptyList()
-                    adapter.notifyDataSetChanged()
+                }else if(count < before && !s.toString().isNullOrEmpty()) {
+
+                    searchNetworkCall(s.toString())
+
                 }
+
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-
+                if(s.toString().isNullOrEmpty() || s.toString().isBlank()){
+                    adapter.data = emptyList()
+                    adapter.notifyDataSetChanged()
+                }
             }
 
         })

@@ -14,7 +14,7 @@ data class CityInfo(
         return this.results.map {
             Place(
                 it.name ?: "",
-                it?.admin1 ?: "null",
+                it?.admin1 ?: "" ,
                 it.latitude ?: 0.0,
                 it.longitude ?: 0.0
             )

@@ -4,22 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="66dp"
-    android:background="@drawable/background_gradient"
-    android:layout_marginBottom="16dp">
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/background_gradient">
 
     <TextView
         android:id="@+id/citynametextview"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/recent_search_item_margintop"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/inter"
         android:text="Palermo"
         android:textColor="@color/white"
         android:textSize="@dimen/recent_search_item_textsize"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/regiontextview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/citynametextview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
