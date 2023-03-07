@@ -16,8 +16,11 @@ import co.develhope.meteoapp.databinding.FragmentSearchBinding
 import co.develhope.meteoapp.network.NetworkProvider
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.internal.notify
 
 
 class SearchFragment : Fragment() {
@@ -41,35 +44,29 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
-
-
         recentSearch = Datasource.loadRecentSearch()
-        adapter = SearchAdapter(transformDataForSearchAdapter(recentSearch))
-        binding.recentsearchlist.adapter = adapter
         binding.recentsearchlist.layoutManager = LinearLayoutManager(view.context)
 
         //register listener for search location
         searchLocation()
-
-        val job = GlobalScope.launch {
-            val result = NetworkProvider().getDailySummary(
-                Place(
-                    city = "Roma",
-                    region = "Lazio",
-                    lat = 41.8955,
-                    log = 12.4823
-                )
-            )
-            Log.d("Wheatercoroutine","Result: ${result.toDomain()}")
-        }
-
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun searchNetworkCall(location : String)  {
+        val searchCoroutine = GlobalScope.launch (Dispatchers.IO){
+            val results = NetworkProvider().provideGeocodingService().getCityInfo(location)
+            withContext(Dispatchers.Main){
+                if(results != null && location.toString().length >= 2){
+                    adapter = SearchAdapter(transformDataForSearchAdapter(results.toDomain()))
+                    binding.recentsearchlist.adapter = adapter
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }
     }
 
     private fun transformDataForSearchAdapter(list : List<Place>) : List<SearchScreenItems> {
@@ -89,16 +86,19 @@ class SearchFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(count > before && !s.toString().isNullOrEmpty()){
+                    searchNetworkCall(s.toString())
 
+                }else if(count < before && !s.toString().isNullOrEmpty()){
+                   searchNetworkCall(s.toString())
+                }else if(s.toString().isNullOrEmpty()){
+                    adapter.data = emptyList()
+                    adapter.notifyDataSetChanged()
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {
-                val filteredRecentSearch = recentSearch.filter {
-                    it.city.contains(s.toString().toRegex(setOf(RegexOption.IGNORE_CASE )))
-                }
-                adapter = SearchAdapter(transformDataForSearchAdapter(filteredRecentSearch))
-                binding.recentsearchlist.adapter = adapter
-                adapter.notifyDataSetChanged()
+
             }
 
         })

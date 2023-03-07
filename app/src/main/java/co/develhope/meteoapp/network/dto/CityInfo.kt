@@ -13,10 +13,10 @@ data class CityInfo(
     fun toDomain() : List<Place> {
         return this.results.map {
             Place(
-                it.name,
+                it.name ?: "",
                 it?.admin1 ?: "null",
-                it.latitude,
-                it.longitude
+                it.latitude ?: 0.0,
+                it.longitude ?: 0.0
             )
         }
 
