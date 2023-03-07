@@ -7,7 +7,7 @@ import co.develhope.meteoapp.databinding.CardHomeScreenBinding
 
 class CardViewHolder(private val binding: CardHomeScreenBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(cardDetail: HomeScreenItems.Forecast) {
-        binding.dayCard.text = "Oggi"
+        binding.dayCard.text = getItaVersion(cardDetail.forecastSummary.forecast.date.dayOfWeek.name)
         binding.dateCard.text = itemView.context.getString(R.string.date, "${cardDetail.forecastSummary.date.dayOfMonth}/${cardDetail.forecastSummary.date.monthValue}")
         binding.minTempCard.text = itemView.context.getString(R.string.tempMin, cardDetail.forecastSummary.forecast.minTemp.toString())
         binding.maxTempCard.text = itemView.context.getString(R.string.tempMax, cardDetail.forecastSummary.forecast.maxTemp.toString())
@@ -21,6 +21,19 @@ class CardViewHolder(private val binding: CardHomeScreenBinding) : RecyclerView.
             WeatherCondition.SUNNY -> R.drawable.sun_icon
             WeatherCondition.RAIN -> R.drawable.rain_icon
             else -> R.drawable.cloudy_icon
+        }
+    }
+
+    private fun getItaVersion(day : String) : String{
+        return when(day){
+            "MONDAY" -> "Lunedì"
+            "TUESDAY" -> "Martedì"
+            "WEDNESDAY" -> "Mercoledì"
+            "THURSDAY" -> "Giovedì"
+            "FRIDAY" -> "Venerdì"
+            "SATURDAY" -> "Sabato"
+            "SUNDAY" -> "Domenica"
+            else -> ""
         }
     }
 
