@@ -82,7 +82,7 @@ class HomeFragment : Fragment() {
                         lat = 41.8955,
                         log = 12.4823
                     ),
-                    date = "",
+                    date = forecast.date,
                     forecast = forecast
                 )
             }
