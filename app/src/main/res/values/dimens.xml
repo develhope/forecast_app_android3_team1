@@ -10,7 +10,7 @@
     <dimen name="search_bar_padding_left">24dp</dimen>
     <dimen name="search_bar_padding_top">16dp</dimen>
     <dimen name="recent_search_recycler_margintop">16dp</dimen>
-    <dimen name="recent_search_recycler_layoutheight">603dp</dimen>
+    <dimen name="recent_search_recycler_layoutheight">520dp</dimen>
     <dimen name="recent_search_tw_textsize">18sp</dimen>
     <dimen name="search_title_padding_bottom">8dp</dimen>
     <dimen name="dimen_cardText">20sp</dimen>
