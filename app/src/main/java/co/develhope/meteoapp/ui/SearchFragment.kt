@@ -57,7 +57,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun searchNetworkCall(location : String)  {
-        val searchCoroutine = GlobalScope.launch (Dispatchers.IO){
+          GlobalScope.launch (Dispatchers.IO){
             val results = NetworkProvider().provideGeocodingService().getCityInfo(location)
             withContext(Dispatchers.Main){
                 if(results.results != null){
