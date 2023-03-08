@@ -15,6 +15,10 @@ class CardViewHolder(private val binding: CardHomeScreenBinding) : RecyclerView.
         binding.windKmhCard.text = itemView.context.getString(R.string.windKmh, cardDetail.forecastSummary.forecast.wind.toString())
         binding.weathericon.setImageResource(decodeWeatherIcon(cardDetail.forecastSummary.forecast.weatherCondition))
     }
+        binding.cardHomeScreen.setOnClickListener{
+            listener.onCLickCard(cardDetail,position)
+        }
+
 
     private fun decodeWeatherIcon(weatherCondition: WeatherCondition) : Int {
         return when(weatherCondition){

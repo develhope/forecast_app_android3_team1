@@ -5,7 +5,7 @@
     <string name="search_bar_hint">Cerca città</string>
     <string name="ricerche_recenti">Ricerche Recenti</string>
     <string name="today">%s</string>
-    <string name="date">%s</string>
+    <string name="date">%s/%s</string>
     <string name="tempMax">%s °</string>
     <string name="text_temp1">min</string>
     <string name="tempMin">%s °</string>
