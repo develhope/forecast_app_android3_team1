@@ -123,7 +123,7 @@ class SpecificDayFragment : Fragment() {
                 }
             showForecastInSpecificDay(cardForecastSummaryList)
 
-    */    }
+       }
     }
 }
 
