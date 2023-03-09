@@ -4,10 +4,7 @@ import org.threeten.bp.OffsetDateTime
 import java.util.Date
 
 data class TitleForecast(
-    val city: String,
-    val region: String,
-    val lat: Double,
-    val long: Double,
+    val place: Place,
     val titleGiorno: String,
     val titleData: OffsetDateTime
 )

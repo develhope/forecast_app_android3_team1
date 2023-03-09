@@ -1,6 +1,7 @@
 package co.develhope.meteoapp.network.dto
 
 
+import co.develhope.meteoapp.data.domainmodel.CardForecast
 import co.develhope.meteoapp.data.domainmodel.Forecast
 import co.develhope.meteoapp.data.domainmodel.WeatherCondition
 import com.google.gson.annotations.SerializedName
@@ -49,4 +50,5 @@ data class HomeSummary(
             else -> WeatherCondition.SUNNY
         }
     }
+
 }
