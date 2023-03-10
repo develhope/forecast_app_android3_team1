@@ -1,7 +1,7 @@
 package co.develhope.meteoapp.data.domainmodel
 
 data class CardForecast(
-    val percepita: Int,
+    val percepita: Double,
     val humidity: Int,
     val copertura: Int,
     val uv: Int?,

@@ -51,17 +51,24 @@ class SpecificDayFragment : Fragment() {
 
     private fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
         val listShowItem = mutableListOf<SpecyfDayScreenItem>()
-
-        listShowItem.add(SpecyfDayScreenItem.DetailsTitle(forecastSummaryList.first().title))
+        listShowItem.add(SpecyfDayScreenItem.DetailsTitle(getTitleForecast()))
         listShowItem.add(SpecyfDayScreenItem.DetailsRow(forecastSummaryList.first()))
         listShowItem.add(SpecyfDayScreenItem.DetailsCard(forecastSummaryList.first().card))
-
         listShowItem.addAll(forecastSummaryList.map { SpecyfDayScreenItem.DetailsRow(it) })
-
         listShowItem.removeAt(3)
 
         return listShowItem
     }
+
+    private fun getTitleForecast() : TitleForecast{
+     return   TitleForecast(
+            place = getPlace(),
+            date = getSelectedDate()
+        )
+    }
+
+    private fun getPlace() = Place(city = "Roma", region = "Lazio", lat = 41.8955, log = 12.4823)
+
 
 
     override fun onDestroyView() {
@@ -82,11 +89,11 @@ class SpecificDayFragment : Fragment() {
 
 
     private fun getSpecificSummary() {
-        val dateTime = OffsetDateTime.now()
+        val dateTime = getSelectedDate()
         lifecycleScope.launch(Dispatchers.IO) {
             val result = NetworkProvider().getSpecificSummary(
-                41.8955,
-                12.4823,
+                getPlace().lat,
+                getPlace().log,
                 startDate = dateTime,
                 endDate = dateTime
             )
@@ -97,6 +104,8 @@ class SpecificDayFragment : Fragment() {
             }
         }
     }
+
+    private fun getSelectedDate() = OffsetDateTime.now()
 }
 
 //-------------------------------------------------------------------------------------
@@ -134,14 +143,4 @@ class SpecificDayFragment : Fragment() {
        }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
+*/
