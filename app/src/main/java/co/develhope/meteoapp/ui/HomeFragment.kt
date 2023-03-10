@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.develhope.meteoapp.R
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenAdapter
 import co.develhope.meteoapp.data.Datasource
 import co.develhope.meteoapp.data.domainmodel.DailyForecastSummary
@@ -19,6 +21,7 @@ import co.develhope.meteoapp.network.NetworkProvider
 import co.develhope.meteoapp.network.dto.HomeSummary
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import co.develhope.meteoapp.ui.adapter.homescreen.OnClickCardItem
 
 
 class HomeFragment : Fragment() {
@@ -42,7 +45,12 @@ class HomeFragment : Fragment() {
     private fun showForecastInHome(forecastSummaryList: List<DailyForecastSummary>) {
         val listCreated = createHomeScreenItems(forecastSummaryList)
 
-        val adapter = HomeScreenAdapter(listCreated)
+        val adapter = HomeScreenAdapter(listCreated, object: OnClickCardItem{
+            override fun onCLickCard(cardDetail: HomeScreenItems.Forecast, position: Int) {
+
+                findNavController().navigate(R.id.action_homeFragment_to_specificDayFragment)
+            }
+        })
         binding.recycleViewHomeScreen.adapter = adapter
         binding.recycleViewHomeScreen.layoutManager = LinearLayoutManager(requireContext())
     }
