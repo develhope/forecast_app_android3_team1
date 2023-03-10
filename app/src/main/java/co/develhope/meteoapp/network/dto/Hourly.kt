@@ -3,13 +3,13 @@ package co.develhope.meteoapp.network.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class HourlyForecast(
+data class Hourly(
     @SerializedName("rain")
-    val rain: List<Double>,
+    val rain: List<Int>,
     @SerializedName("showers")
-    val showers: List<Double>,
+    val showers: List<Int>,
     @SerializedName("snowfall")
-    val snowfall: List<Double>,
+    val snowfall: List<Int>,
     @SerializedName("temperature_2m")
     val temperature2m: List<Double>,
     @SerializedName("time")

@@ -10,7 +10,7 @@ const val SEARCHITEM = 1
 const val SEARCHTITLE = 0
 
 
-class SearchAdapter(val data: List<SearchScreenItems>) :
+class SearchAdapter(var data: List<SearchScreenItems>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 

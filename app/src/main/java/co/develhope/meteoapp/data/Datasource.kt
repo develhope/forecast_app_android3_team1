@@ -27,7 +27,8 @@ object Datasource {
                     maxTemp = 31,
                     rainfall = 0,
                     wind = 12,
-                    weatherCondition = WeatherCondition.SUNNY
+                    weatherCondition = WeatherCondition.SUNNY,
+                    date = OffsetDateTime.now()
                 )
             ),
             DailyForecastSummary(
@@ -38,7 +39,8 @@ object Datasource {
                     maxTemp = 22,
                     rainfall = 15,
                     wind = 28,
-                    weatherCondition = WeatherCondition.FOG
+                    weatherCondition = WeatherCondition.FOG,
+                    date = OffsetDateTime.now()
                 )
             ),
             DailyForecastSummary(
@@ -49,7 +51,8 @@ object Datasource {
                     maxTemp = 31,
                     rainfall = 0,
                     wind = 12,
-                    weatherCondition = WeatherCondition.SUNNY
+                    weatherCondition = WeatherCondition.SUNNY,
+                    date = OffsetDateTime.now()
                 )
             ),
             DailyForecastSummary(
@@ -60,7 +63,8 @@ object Datasource {
                     maxTemp = 25,
                     rainfall = 90,
                     wind = 32,
-                    weatherCondition = WeatherCondition.RAIN
+                    weatherCondition = WeatherCondition.RAIN,
+                    date = OffsetDateTime.now()
                 )
             ),
             DailyForecastSummary(
@@ -71,7 +75,8 @@ object Datasource {
                     maxTemp = 30,
                     rainfall = 9,
                     wind = 13,
-                    weatherCondition = WeatherCondition.FOG
+                    weatherCondition = WeatherCondition.FOG,
+                    date = OffsetDateTime.now()
                 )
             ),
             DailyForecastSummary(
@@ -82,7 +87,8 @@ object Datasource {
                     maxTemp = 31,
                     rainfall = 0,
                     wind = 10,
-                    weatherCondition = WeatherCondition.FOG
+                    weatherCondition = WeatherCondition.FOG,
+                    date = OffsetDateTime.now()
                 )
             )
 

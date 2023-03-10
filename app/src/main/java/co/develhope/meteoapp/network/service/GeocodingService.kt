@@ -7,5 +7,5 @@ import retrofit2.http.Query
 interface GeocodingService {
 
     @GET("search?")
-    suspend fun getCityInfo(@Query("name") name : String, @Query("language") language : String = "IT") : CityInfo
+    suspend fun getCityInfo(@Query("name") name : String, @Query("language") language : String = "it") : CityInfo
 }

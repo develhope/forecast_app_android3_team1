@@ -50,7 +50,7 @@ class HomeScreenAdapter(private val list: List<HomeScreenItems>, private val lis
         when (holder) {
             is TitleViewHolder -> holder.bind(list[position] as HomeScreenItems.HomeScreenTitle)
             is CardViewHolder -> holder.bind(list[position] as HomeScreenItems.Forecast, position, listener)
-            is NextDaysViewHolder -> holder.bind(list[position] as HomeScreenItems.NextDays)
+            is NextDaysViewHolder -> holder.bind()
         }
     }
 
