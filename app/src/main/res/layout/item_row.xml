@@ -9,7 +9,7 @@
 
     <!-- barra specifiche ora -->
     <TextView
-        android:id="@+id/today_hour_textview"
+        android:id="@+id/today_time_textview"
         style="@style/styleRowTextHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:layout_height="@dimen/margin_32"
         android:layout_marginStart="@dimen/margin_38"
         android:layout_marginTop="@dimen/margin_14"
-        app:layout_constraintStart_toEndOf="@+id/today_hour_textview"
+        app:layout_constraintStart_toEndOf="@+id/today_time_textview"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@drawable/ic_icon_sun" />

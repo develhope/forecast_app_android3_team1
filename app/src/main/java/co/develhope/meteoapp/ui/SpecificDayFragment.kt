@@ -54,7 +54,9 @@ class SpecificDayFragment : Fragment() {
         listShowItem.add(SpecyfDayScreenItem.DetailsTitle(getTitleForecast()))
         listShowItem.add(SpecyfDayScreenItem.DetailsRow(forecastSummaryList.first()))
         listShowItem.add(SpecyfDayScreenItem.DetailsCard(forecastSummaryList.first().card))
+
         listShowItem.addAll(forecastSummaryList.map { SpecyfDayScreenItem.DetailsRow(it) })
+
         listShowItem.removeAt(3)
 
         return listShowItem
@@ -77,15 +79,7 @@ class SpecificDayFragment : Fragment() {
     }
 
 
-    fun showRepos() {
-        /*      Log.d("MainActivity", "list of repos received, size: ${repoResults.size}")
 
-        val list = findViewById<RecyclerView>(R.id.repo_list)
-        list.visibility = View.VISIBLE
-        val adapter = RepoAdapter(repoResults)
-        list.adapter = adapter
-        list.layoutManager = LinearLayoutManager(this)*/
-    }
 
 
     private fun getSpecificSummary() {
@@ -109,7 +103,9 @@ class SpecificDayFragment : Fragment() {
 }
 
 //-------------------------------------------------------------------------------------
-     /*       val cardForecastSummaryList: List<SpecyficDayForecastSummary> =
+
+
+      /*      val cardForecastSummaryList: List<SpecyficDayForecastSummary> =
                 forecastCard.mapIndexed { index, cardForecast ->
                     SpecyficDayForecastSummary(
                         card = CardForecast(
@@ -122,7 +118,7 @@ class SpecificDayFragment : Fragment() {
                         ),
                         row = RowForecast(
                             time = 0,
-                            weatherCondition = this.weatherCondition.getOrNull(index),
+                            weatherCondition = WeatherCondition.RAIN,
                             humidity = 0,
                             temp = 0
                         ),
@@ -134,7 +130,7 @@ class SpecificDayFragment : Fragment() {
                                 log = 12.4823
                             ),
                             titleGiorno = "oggi",
-                            titleData = this.titleData.getOrNull(index)
+                            titleData = dateTime
                         )
                     )
                 }
