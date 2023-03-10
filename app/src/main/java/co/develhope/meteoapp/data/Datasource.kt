@@ -8,6 +8,12 @@ import org.threeten.bp.OffsetDateTime
 
 
 object Datasource {
+    private var selectedPlace : Place? = null
+    fun savePlace(place: Place){
+        selectedPlace = place
+    }
+
+    fun getPlace() : Place? = selectedPlace
 
     fun loadDataFromScreen(): List<DailyForecastSummary> {
         return listOf<DailyForecastSummary>(
@@ -87,6 +93,7 @@ object Datasource {
 
         )
     }
+
 
     private val recentSearchList = mutableListOf(
         Place("Palermo","Sicily",0.0,0.0),
