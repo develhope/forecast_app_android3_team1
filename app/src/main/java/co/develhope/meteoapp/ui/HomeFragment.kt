@@ -46,11 +46,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
-    }
-
     private fun showForecastInHome(forecastSummaryList: List<DailyForecastSummary>) {
         val listCreated = createHomeScreenItems(forecastSummaryList)
 
