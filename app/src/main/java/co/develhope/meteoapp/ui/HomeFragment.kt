@@ -37,9 +37,18 @@ class HomeFragment : Fragment() {
         return view
     }
 
+    override fun onStart() {
+        super.onStart()
+        if(Datasource.getPlace() == null){
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }else{
+            getDailySummary()
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        getDailySummary()
+
     }
 
     private fun showForecastInHome(forecastSummaryList: List<DailyForecastSummary>) {
@@ -74,24 +83,15 @@ class HomeFragment : Fragment() {
     private fun getDailySummary() {
         lifecycleScope.launch {
             val result = NetworkProvider().getDailySummary(
-                Place(
-                    city = "Roma",
-                    region = "Lazio",
-                    lat = 41.8955,
-                    log = 12.4823
-                )
+                Datasource.getPlace()!!
             )
             Log.d("Wheatercoroutine", "Result: ${result.toDomain()}")
             val forecasts: List<Forecast> = result.toDomain()
 
             val forecastSummaryList: List<DailyForecastSummary> = forecasts.mapIndexed { index, forecast ->
                 DailyForecastSummary(
-                    place = Place(
-                        city = "Roma",
-                        region = "Lazio",
-                        lat = 41.8955,
-                        log = 12.4823
-                    ),
+                    Datasource.getPlace()!!
+                    ,
                     date = forecast.date,
                     forecast = forecast
                 )
