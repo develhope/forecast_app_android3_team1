@@ -1,9 +1,10 @@
 package co.develhope.meteoapp.data.domainmodel
 
-import java.time.OffsetDateTime
+import org.threeten.bp.OffsetDateTime
+
 
 data class RowForecast(
-    val time: Int,
+    val time: OffsetDateTime,
     val weatherCondition: WeatherCondition,
     val humidity: Int,
     val temp: Int

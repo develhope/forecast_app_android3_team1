@@ -1,7 +1,6 @@
 package co.develhope.meteoapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.data.domainmodel.*
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
 import co.develhope.meteoapp.network.NetworkProvider
+import co.develhope.meteoapp.network.dto.SpecificSummary
 import co.develhope.meteoapp.ui.adapter.specificday.SpecificDaayAdapter
 import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
+import kotlinx.coroutines.Dispatchers
 
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.threeten.bp.OffsetDateTime
 
 
@@ -81,15 +83,21 @@ class SpecificDayFragment : Fragment() {
 
     private fun getSpecificSummary() {
         val dateTime = OffsetDateTime.now()
-        lifecycleScope.launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             val result = NetworkProvider().getSpecificSummary(
                 41.8955,
                 12.4823,
                 startDate = dateTime,
                 endDate = dateTime
             )
-            val forecastCard: List<CardForecast> = result.toDomainCard()
-            val forecastRow: List<RowForecast> = result.toDomainRow()
+            val hourlyForecast: List<SpecyficDayForecastSummary> = result.toDomain()
+
+            withContext(Dispatchers.Main) {
+                showForecastInSpecificDay(hourlyForecast)
+            }
+        }
+    }
+}
 
 //-------------------------------------------------------------------------------------
      /*       val cardForecastSummaryList: List<SpecyficDayForecastSummary> =

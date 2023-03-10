@@ -27,36 +27,31 @@ data class SpecificSummary(
     val utcOffsetSeconds: Int
 ) {
 
-    fun toDomainRow(): List<RowForecast> {
+    fun toDomain(): List<SpecyficDayForecastSummary> {
         return this.hourly.time.mapIndexed { i, date ->
-            RowForecast(
-                time = hourly.time[i].toInt(),
-                weatherCondition = weaterDecode(hourly.weathercode[i]),
-                humidity = hourly.snowfall[i],
-                temp = hourly.temperature2m[i].toInt()
-            )
+            SpecyficDayForecastSummary(
+                row = RowForecast(
+                    time = date,
+                    weatherCondition = getWeatherCondition(hourly.weathercode[i]),
+                    humidity = hourly.snowfall[i],
+                    temp = hourly.temperature2m[i].toInt()
+                ), card = CardForecast(
+                    percepita = hourly.showers[i],
+                    humidity = hourly.snowfall[i],
+                    copertura = hourly.weathercode[i],
+                    uv = null,
+                    vento = hourly.windspeed10m[i].toInt(),
+                    pioggia = hourly.rain[i],
+                ))
         }
     }
 
     //da modificare appena ci saranno più icone per gestire tutti i codic
-    private fun weaterDecode(weatherCode: Int): WeatherCondition {
+    private fun getWeatherCondition(weatherCode: Int): WeatherCondition {
         return when (weatherCode) {
             in 59..69 -> return WeatherCondition.RAIN
             in 40..50 -> return WeatherCondition.FOG
             else -> WeatherCondition.SUNNY
-        }
-    }
-
-    fun toDomainCard(): List<CardForecast> {
-        return this.hourly.time.mapIndexed { i, date ->
-            CardForecast(
-                percepita = hourly.showers[i],
-                humidity = hourly.snowfall[i],
-                copertura = hourly.weathercode[i],
-                uv = hourly.weathercode[i],
-                vento = hourly.windspeed10m[i].toInt(),
-                pioggia = hourly.rain[i],
-            )
         }
     }
 }

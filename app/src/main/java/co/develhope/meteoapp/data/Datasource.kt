@@ -1,18 +1,10 @@
 package co.develhope.meteoapp.data
 
-import co.develhope.meteoapp.data.domainmodel.CardForecast
 import co.develhope.meteoapp.data.domainmodel.DailyForecastSummary
 import co.develhope.meteoapp.data.domainmodel.Forecast
 import co.develhope.meteoapp.data.domainmodel.Place
-import co.develhope.meteoapp.data.domainmodel.RowForecast
-import co.develhope.meteoapp.data.domainmodel.SpecyficDayForecastSummary
-import co.develhope.meteoapp.data.domainmodel.TitleForecast
 import co.develhope.meteoapp.data.domainmodel.WeatherCondition
-import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
 import org.threeten.bp.OffsetDateTime
-import java.util.Date
-import kotlin.time.Duration
-import kotlin.time.Duration.Companion.days
 
 
 object Datasource {
