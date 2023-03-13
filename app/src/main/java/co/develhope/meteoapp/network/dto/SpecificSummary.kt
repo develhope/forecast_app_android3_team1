@@ -36,10 +36,10 @@ data class SpecificSummary(
                     humidity = hourly.humidity[i].toInt(),
                     temp = hourly.temperature2m[i].toInt()
                 ), card = CardForecast(
-                    percepita = hourly.showers[i],
-                    humidity = hourly.snowfall[i],
-                    copertura = hourly.weathercode[i],
-                    uv = null,
+                    percepita = hourly.apparenttemperature[i],
+                    humidity = hourly.humidity[i].toInt(),
+                    copertura = hourly.cloudcover[i].toInt(),
+                    uv = 7,
                     vento = hourly.windspeed10m[i].toInt(),
                     pioggia = hourly.rain[i],
                 ))
