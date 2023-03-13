@@ -4,27 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    >
+    android:orientation="horizontal">
 
     <!-- barra specifiche ora -->
+
+
+    <!-- divider -->
+
     <TextView
         android:id="@+id/today_time_textview"
         style="@style/styleRowTextHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_24"
-        android:layout_marginTop="@dimen/margin_18"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/ora_giorno"
+        app:layout_constraintEnd_toStartOf="@+id/icon_weather_imageview"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/icon_weather_imageview"
         android:layout_width="@dimen/margin_31"
-        android:layout_height="@dimen/margin_32"
-        android:layout_marginStart="@dimen/margin_38"
-        android:layout_marginTop="@dimen/margin_14"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/temperature_textview"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/today_time_textview"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ImageContrastCheck"
@@ -35,27 +41,28 @@
         style="@style/styleRowTextTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_38"
-        android:layout_marginTop="@dimen/margin_14"
+        android:layout_marginTop="12dp"
         android:text="@string/temperatura_giorno_20"
+        app:layout_constraintEnd_toStartOf="@+id/humidity_textview"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/icon_weather_imageview"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/humidity_textview"
         style="@style/styleRowTextHumidity"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_56"
-        android:layout_marginTop="@dimen/margin_14"
+        android:layout_height="27dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
         android:drawablePadding="@dimen/grandezza_5"
         android:text="@string/humidity_10"
         app:drawableStartCompat="@drawable/ic_icon_humidity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/temperature_textview"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- divider -->
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider"
         android:layout_width="match_parent"
