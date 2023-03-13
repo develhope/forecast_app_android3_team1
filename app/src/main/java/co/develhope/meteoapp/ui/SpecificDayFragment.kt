@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.develhope.meteoapp.R
 import co.develhope.meteoapp.data.Datasource
 
 import co.develhope.meteoapp.data.domainmodel.*
@@ -34,12 +36,22 @@ class SpecificDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSpecificDayBinding.inflate(inflater, container, false)
+
+        super.onStart()
+        if(Datasource.getPlace() == null){
+            findNavController().navigate(R.id.action_specificDayFragment_to_searchFragment)
+        }else{
+            getSpecificSummary()
+        }
+
         val view = binding.root
         return view
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        getSpecificSummary()
+
     }
 
     private fun showForecastInSpecificDay(forecastSummaryList: List<SpecyficDayForecastSummary>) {

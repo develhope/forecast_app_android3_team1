@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_searchFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_specificDayFragment"
+            app:destination="@id/specificDayFragment" />
     </fragment>
     <fragment
         android:id="@+id/specificDayFragment"
@@ -37,5 +40,8 @@
         android:label="fragment_specific_day"
         tools:layout="@layout/fragment_specific_day" >
 
+        <action
+            android:id="@+id/action_specificDayFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
 </navigation>
