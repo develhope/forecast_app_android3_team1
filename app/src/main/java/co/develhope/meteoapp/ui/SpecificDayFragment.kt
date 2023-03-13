@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.develhope.meteoapp.data.Datasource
 
 import co.develhope.meteoapp.data.domainmodel.*
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
@@ -64,12 +65,14 @@ class SpecificDayFragment : Fragment() {
 
     private fun getTitleForecast() : TitleForecast{
      return   TitleForecast(
-            place = getPlace(),
+            place = getPlace()!!,
             date = getSelectedDate()
         )
     }
 
-    private fun getPlace() = Place(city = "Roma", region = "Lazio", lat = 41.8955, log = 12.4823)
+    private fun getPlace() : Place? {
+        return Datasource.getPlace()
+    }
 
 
 
@@ -86,8 +89,8 @@ class SpecificDayFragment : Fragment() {
         val dateTime = getSelectedDate()
         lifecycleScope.launch(Dispatchers.IO) {
             val result = NetworkProvider().getSpecificSummary(
-                getPlace().lat,
-                getPlace().log,
+                getPlace()!!.lat,
+                getPlace()!!.log,
                 startDate = dateTime,
                 endDate = dateTime
             )

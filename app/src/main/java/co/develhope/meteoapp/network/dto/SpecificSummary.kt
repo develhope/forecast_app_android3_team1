@@ -33,7 +33,7 @@ data class SpecificSummary(
                 row = RowForecast(
                     time = date,
                     weatherCondition = getWeatherCondition(hourly.weathercode[i]),
-                    humidity = hourly.snowfall[i],
+                    humidity = hourly.humidity[i].toInt(),
                     temp = hourly.temperature2m[i].toInt()
                 ), card = CardForecast(
                     percepita = hourly.showers[i],

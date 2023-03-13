@@ -16,7 +16,7 @@ interface WheaterService {
     ) : HomeSummary
 
     //endpoint per weeklysummary
-    @GET("forecast?hourly=temperature_2m,rain,showers,snowfall,weathercode,windspeed_10m&current_weather=true&timezone=Europe%2FBerlin")
+    @GET("forecast?hourly=temperature_2m,rain,showers,relativehumidity_2m,snowfall,weathercode,windspeed_10m&current_weather=true&timezone=Europe%2FBerlin")
     suspend fun  getSpecificDaySummary(
         @Query("latitude") latitude: Double,
         @Query("longitude") longitude: Double,

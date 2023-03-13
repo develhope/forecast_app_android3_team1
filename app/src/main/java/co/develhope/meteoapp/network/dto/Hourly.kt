@@ -18,5 +18,7 @@ data class Hourly(
     @SerializedName("weathercode")
     val weathercode: List<Int>,
     @SerializedName("windspeed_10m")
-    val windspeed10m: List<Double>
+    val windspeed10m: List<Double>,
+    @SerializedName("relativehumidity_2m")
+    val humidity : List<Double>
 )

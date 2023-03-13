@@ -6,6 +6,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.data.domainmodel.WeatherCondition
+import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.temporal.ChronoUnit
 
 //--- row ---
 class RowViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -16,7 +18,8 @@ class RowViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
     private val humidityRow: TextView = view.findViewById(R.id.humidity_textview)
 
     fun bind(detailsRow: SpecyfDayScreenItem.DetailsRow) {
-        timeRow.text = itemView.context.getString(R.string.ora_giorno, detailsRow.rowForecast.row.time.toString())
+        timeRow.text = itemView.context.getString(R.string.ora_giorno, detailsRow.rowForecast.row.time.format(
+            DateTimeFormatter.ofPattern("hh:mm")))
         when (detailsRow.rowForecast.row.weatherCondition) {
             WeatherCondition.SUNNY -> weatherRow.setImageResource(R.drawable.ic_icon_sun)
             WeatherCondition.RAIN -> weatherRow.setImageResource(R.drawable.ic_icon_rain)
