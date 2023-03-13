@@ -10,7 +10,7 @@ const val SEARCHITEM = 1
 const val SEARCHTITLE = 0
 
 
-class SearchAdapter(var data: List<SearchScreenItems>) :
+class SearchAdapter(var data: List<SearchScreenItems>, val listener : OnSelectPlace) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
@@ -44,7 +44,7 @@ class SearchAdapter(var data: List<SearchScreenItems>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is RecentSearchTitleHolder -> holder.bind(data[position] as SearchScreenItems.RecentSearchTitle)
-            is SearchTermViewHolder -> holder.bind(data[position] as SearchScreenItems.RecentSearch)
+            is SearchTermViewHolder -> holder.bind(data[position] as SearchScreenItems.RecentSearch, listener)
         }
 
     }

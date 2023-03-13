@@ -1,21 +1,19 @@
 package co.develhope.meteoapp.data
 
-import co.develhope.meteoapp.data.domainmodel.CardForecast
 import co.develhope.meteoapp.data.domainmodel.DailyForecastSummary
 import co.develhope.meteoapp.data.domainmodel.Forecast
 import co.develhope.meteoapp.data.domainmodel.Place
-import co.develhope.meteoapp.data.domainmodel.RowForecast
-import co.develhope.meteoapp.data.domainmodel.SpecyficDayForecastSummary
-import co.develhope.meteoapp.data.domainmodel.TitleForecast
 import co.develhope.meteoapp.data.domainmodel.WeatherCondition
-import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
 import org.threeten.bp.OffsetDateTime
-import java.util.Date
-import kotlin.time.Duration
-import kotlin.time.Duration.Companion.days
 
 
 object Datasource {
+    private var selectedPlace : Place? = null
+    fun savePlace(place: Place){
+        selectedPlace = place
+    }
+
+    fun getPlace() : Place? = selectedPlace
 
     fun loadDataFromScreen(): List<DailyForecastSummary> {
         return listOf<DailyForecastSummary>(
@@ -96,6 +94,7 @@ object Datasource {
         )
     }
 
+
     private val recentSearchList = mutableListOf(
         Place("Palermo","Sicily",0.0,0.0),
         Place("Catanzaro","Calabria",0.0,0.0),
@@ -108,177 +107,178 @@ object Datasource {
         return recentSearchList
     }
 
-    fun loadData(): List<SpecyficDayForecastSummary> {
-        return mutableListOf(
-            SpecyficDayForecastSummary(
-                title = TitleForecast(
-                    city = "Torino",
-                    region = "Piemonte",
-                    lat = 2.3,
-                    long = 4.4,
-                    titleGiorno = "Oggi",
-                    titleData = OffsetDateTime.now()
-                ),
-                row = RowForecast (
-                    time = OffsetDateTime.now().hour.plus(1),
-                    weatherCondition = WeatherCondition.SUNNY,
-                    humidity = 20,
-                    temp = 30
-                ),
-                card = CardForecast(
-                    percepita = 45,
-                    humidity = 60,
-                    copertura = 24,
-                    uv = 5,
-                    vento = 7,
-                    pioggia = 0
-                )
-            ),
-            SpecyficDayForecastSummary(
-                title = TitleForecast(
-                    city = "Torino",
-                    region = "Piemonte",
-                    lat = 2.3,
-                    long = 4.4,
-                    titleGiorno = "Oggi",
-                    titleData = OffsetDateTime.now()
-                ),
-                row = RowForecast (
-                    time = OffsetDateTime.now().hour.plus(2),
-                    weatherCondition = WeatherCondition.CLOUDY,
-                    humidity = 10,
-                    temp = 21
-                ),
-                card = CardForecast(
-                    percepita = 4,
-                    humidity = 60,
-                    copertura = 24,
-                    uv = 5,
-                    vento = 7,
-                    pioggia = 0
-                )
-            ),
-            SpecyficDayForecastSummary(
-                title = TitleForecast(
-                    city = "Torino",
-                    region = "Piemonte",
-                    lat = 2.3,
-                    long = 4.4,
-                    titleGiorno = "Oggi",
-                    titleData = OffsetDateTime.now()
-                ),
-                row = RowForecast (
-                    time = OffsetDateTime.now().hour.plus(3),
-                    weatherCondition = WeatherCondition.RAIN,
-                    humidity = 55,
-                    temp = 41
-                ),
-                card = CardForecast(
-                    percepita = 5,
-                    humidity = 60,
-                    copertura = 24,
-                    uv = 5,
-                    vento = 7,
-                    pioggia = 0
-                )
-            ),
-            SpecyficDayForecastSummary(
-                title = TitleForecast(
-                    city = "Torino",
-                    region = "Piemonte",
-                    lat = 2.3,
-                    long = 4.4,
-                    titleGiorno = "Oggi",
-                    titleData = OffsetDateTime.now()
-                ),
-                row = RowForecast (
-                    time = OffsetDateTime.now().hour.plus(4),
-                    weatherCondition = WeatherCondition.SUNNY,
-                    humidity = 0,
-                    temp = 31
-                ),
-                card = CardForecast(
-                    percepita = 45,
-                    humidity = 60,
-                    copertura = 24,
-                    uv = 5,
-                    vento = 7,
-                    pioggia = 10
-                )
-            ),
-            SpecyficDayForecastSummary(
-                title = TitleForecast(
-                    city = "Torino",
-                    region = "Piemonte",
-                    lat = 2.3,
-                    long = 4.4,
-                    titleGiorno = "Oggi",
-                    titleData = OffsetDateTime.now()
-                ),
-                row = RowForecast (
-                    time = OffsetDateTime.now().hour.plus(5),
-                    weatherCondition = WeatherCondition.SUNNY,
-                    humidity = 0,
-                    temp = 31
-                ),
-                card = CardForecast(
-                    percepita = 45,
-                    humidity = 60,
-                    copertura = 24,
-                    uv = 5,
-                    vento = 7,
-                    pioggia = 20
-                )
-            ),
-            SpecyficDayForecastSummary(
-                title = TitleForecast(
-                    city = "Torino",
-                    region = "Piemonte",
-                    lat = 2.3,
-                    long = 4.4,
-                    titleGiorno = "Oggi",
-                    titleData = OffsetDateTime.now()
-                ),
-                row = RowForecast (
-                    time = OffsetDateTime.now().hour.plus(6),
-                    weatherCondition = WeatherCondition.SUNNY,
-                    humidity = 0,
-                    temp = 31
-                ),
-                card = CardForecast(
-                    percepita = 45,
-                    humidity = 60,
-                    copertura = 24,
-                    uv = 5,
-                    vento = 7,
-                    pioggia = 0
-                )
-            ),
-            SpecyficDayForecastSummary(
-                title = TitleForecast(
-                    city = "Torino",
-                    region = "Piemonte",
-                    lat = 2.3,
-                    long = 4.4,
-                    titleGiorno = "Oggi",
-                    titleData = OffsetDateTime.now()
-                ),
-                row = RowForecast (
-                    time = OffsetDateTime.now().hour.plus(7),
-                    weatherCondition = WeatherCondition.SUNNY,
-                    humidity = 0,
-                    temp = 31
-                ),
-                card = CardForecast(
-                    percepita = 45,
-                    humidity = 60,
-                    copertura = 24,
-                    uv = 5,
-                    vento = 7,
-                    pioggia = 0
-                )
-            )
 
-        )
-    }
+    /* fun loadData(): List<SpecyficDayForecastSummary> {
+         return mutableListOf(
+             SpecyficDayForecastSummary(
+                 title = TitleForecast(
+                     city = "Torino",
+                     region = "Piemonte",
+                     lat = 2.3,
+                     long = 4.4,
+                     titleGiorno = "Oggi",
+                     titleData = OffsetDateTime.now()
+                 ),
+                 row = RowForecast (
+                     time = OffsetDateTime.now().hour.plus(1),
+                     weatherCondition = WeatherCondition.SUNNY,
+                     humidity = 20,
+                     temp = 30
+                 ),
+                 card = CardForecast(
+                     percepita = 45,
+                     humidity = 60,
+                     copertura = 24,
+                     uv = 5,
+                     vento = 7,
+                     pioggia = 0
+                 )
+             ),
+             SpecyficDayForecastSummary(
+                 title = TitleForecast(
+                     city = "Torino",
+                     region = "Piemonte",
+                     lat = 2.3,
+                     long = 4.4,
+                     titleGiorno = "Oggi",
+                     titleData = OffsetDateTime.now()
+                 ),
+                 row = RowForecast (
+                     time = OffsetDateTime.now().hour.plus(2),
+                     weatherCondition = WeatherCondition.CLOUDY,
+                     humidity = 10,
+                     temp = 21
+                 ),
+                 card = CardForecast(
+                     percepita = 4,
+                     humidity = 60,
+                     copertura = 24,
+                     uv = 5,
+                     vento = 7,
+                     pioggia = 0
+                 )
+             ),
+             SpecyficDayForecastSummary(
+                 title = TitleForecast(
+                     city = "Torino",
+                     region = "Piemonte",
+                     lat = 2.3,
+                     long = 4.4,
+                     titleGiorno = "Oggi",
+                     titleData = OffsetDateTime.now()
+                 ),
+                 row = RowForecast (
+                     time = OffsetDateTime.now().hour.plus(3),
+                     weatherCondition = WeatherCondition.RAIN,
+                     humidity = 55,
+                     temp = 41
+                 ),
+                 card = CardForecast(
+                     percepita = 5,
+                     humidity = 60,
+                     copertura = 24,
+                     uv = 5,
+                     vento = 7,
+                     pioggia = 0
+                 )
+             ),
+             SpecyficDayForecastSummary(
+                 title = TitleForecast(
+                     city = "Torino",
+                     region = "Piemonte",
+                     lat = 2.3,
+                     long = 4.4,
+                     titleGiorno = "Oggi",
+                     titleData = OffsetDateTime.now()
+                 ),
+                 row = RowForecast (
+                     time = OffsetDateTime.now().hour.plus(4),
+                     weatherCondition = WeatherCondition.SUNNY,
+                     humidity = 0,
+                     temp = 31
+                 ),
+                 card = CardForecast(
+                     percepita = 45,
+                     humidity = 60,
+                     copertura = 24,
+                     uv = 5,
+                     vento = 7,
+                     pioggia = 10
+                 )
+             ),
+             SpecyficDayForecastSummary(
+                 title = TitleForecast(
+                     city = "Torino",
+                     region = "Piemonte",
+                     lat = 2.3,
+                     long = 4.4,
+                     titleGiorno = "Oggi",
+                     titleData = OffsetDateTime.now()
+                 ),
+                 row = RowForecast (
+                     time = OffsetDateTime.now().hour.plus(5),
+                     weatherCondition = WeatherCondition.SUNNY,
+                     humidity = 0,
+                     temp = 31
+                 ),
+                 card = CardForecast(
+                     percepita = 45,
+                     humidity = 60,
+                     copertura = 24,
+                     uv = 5,
+                     vento = 7,
+                     pioggia = 20
+                 )
+             ),
+             SpecyficDayForecastSummary(
+                 title = TitleForecast(
+                     city = "Torino",
+                     region = "Piemonte",
+                     lat = 2.3,
+                     long = 4.4,
+                     titleGiorno = "Oggi",
+                     titleData = OffsetDateTime.now()
+                 ),
+                 row = RowForecast (
+                     time = OffsetDateTime.now().hour.plus(6),
+                     weatherCondition = WeatherCondition.SUNNY,
+                     humidity = 0,
+                     temp = 31
+                 ),
+                 card = CardForecast(
+                     percepita = 45,
+                     humidity = 60,
+                     copertura = 24,
+                     uv = 5,
+                     vento = 7,
+                     pioggia = 0
+                 )
+             ),
+             SpecyficDayForecastSummary(
+                 title = TitleForecast(
+                     city = "Torino",
+                     region = "Piemonte",
+                     lat = 2.3,
+                     long = 4.4,
+                     titleGiorno = "Oggi",
+                     titleData = OffsetDateTime.now()
+                 ),
+                 row = RowForecast (
+                     time = OffsetDateTime.now().hour.plus(7),
+                     weatherCondition = WeatherCondition.SUNNY,
+                     humidity = 0,
+                     temp = 31
+                 ),
+                 card = CardForecast(
+                     percepita = 45,
+                     humidity = 60,
+                     copertura = 24,
+                     uv = 5,
+                     vento = 7,
+                     pioggia = 0
+                 )
+             )
+
+         )
+     }*/
 }
