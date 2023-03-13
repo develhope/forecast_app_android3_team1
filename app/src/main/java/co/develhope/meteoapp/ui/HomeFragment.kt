@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
         if (Datasource.getPlace() != null) {
             lifecycleScope.launch {
                 val result = NetworkProvider().getDailySummary(Datasource.getPlace()!!)
-                Log.d("Wheatercoroutine", "Result: ${result.toDomain()}")
+                
                 val forecasts: List<Forecast> = result.toDomain()
 
                 val forecastSummaryList: List<DailyForecastSummary> =
