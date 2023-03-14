@@ -36,17 +36,7 @@ class SearchFragment : Fragment() {
 
     private lateinit var recentSearch : List<Place>
 
-    private val selectPlace = object : OnSelectPlace{
 
-        override fun selectPlace(place: Place) {
-            Datasource.savePlace(place)
-            if(Datasource.getPlace() != null){
-                Toast.makeText(requireContext(), "${place.city},${place.region}", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
-            }
-        }
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,7 +66,13 @@ class SearchFragment : Fragment() {
             val results = NetworkProvider().provideGeocodingService().getCityInfo(location)
             withContext(Dispatchers.Main){
                 if(results.results != null){
-                    adapter = SearchAdapter(transformDataForSearchAdapter(results.toDomain()), selectPlace)
+                    adapter = SearchAdapter(transformDataForSearchAdapter(results.toDomain()), onItemClick = {
+                        Datasource.savePlace(it)
+                        if(Datasource.getPlace() != null){
+                            Toast.makeText(requireContext(), "${it.city},${it.region}", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
+                        }
+                    })
                     binding.recentsearchlist.adapter = adapter
                     adapter.notifyDataSetChanged()
                 }

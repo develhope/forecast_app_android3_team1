@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
+import co.develhope.meteoapp.data.domainmodel.Place
 
 const val SEARCHITEM = 1
 const val SEARCHTITLE = 0
 
 
-class SearchAdapter(var data: List<SearchScreenItems>, val listener : OnSelectPlace) :
+class SearchAdapter(var data: List<SearchScreenItems>, val onItemClick : (Place) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
@@ -44,10 +45,12 @@ class SearchAdapter(var data: List<SearchScreenItems>, val listener : OnSelectPl
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is RecentSearchTitleHolder -> holder.bind(data[position] as SearchScreenItems.RecentSearchTitle)
-            is SearchTermViewHolder -> holder.bind(data[position] as SearchScreenItems.RecentSearch, listener)
+            is SearchTermViewHolder -> holder.bind(data[position] as SearchScreenItems.RecentSearch, onItemClick )
         }
 
     }
+
+
 
     override fun getItemCount(): Int {
         return data.size
