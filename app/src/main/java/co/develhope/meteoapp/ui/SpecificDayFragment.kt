@@ -62,14 +62,19 @@ class SpecificDayFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
+    private fun getTime(): OffsetDateTime = OffsetDateTime.now()
+
     private fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
         val listShowItem = mutableListOf<SpecyfDayScreenItem>()
+
+        val filterLists =
+            forecastSummaryList.filter{ specyficDayForecastSummary -> specyficDayForecastSummary.row.time.isAfter(getTime())  }
+
         listShowItem.add(SpecyfDayScreenItem.DetailsTitle(getTitleForecast()))
-        listShowItem.add(SpecyfDayScreenItem.DetailsRow(forecastSummaryList.first()))
-        listShowItem.add(SpecyfDayScreenItem.DetailsCard(forecastSummaryList.first().card))
+        listShowItem.add(SpecyfDayScreenItem.DetailsRow(filterLists.first()))
+        listShowItem.add(SpecyfDayScreenItem.DetailsCard(filterLists.first().card))
 
-        listShowItem.addAll(forecastSummaryList.map { SpecyfDayScreenItem.DetailsRow(it) })
-
+        listShowItem.addAll(filterLists.map { SpecyfDayScreenItem.DetailsRow(it) })
         listShowItem.removeAt(3)
 
         return listShowItem
@@ -92,9 +97,6 @@ class SpecificDayFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
-
 
 
     private fun getSpecificSummary() {

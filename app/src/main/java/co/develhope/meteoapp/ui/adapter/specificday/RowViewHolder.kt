@@ -19,7 +19,7 @@ class RowViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(detailsRow: SpecyfDayScreenItem.DetailsRow) {
         timeRow.text = itemView.context.getString(R.string.ora_giorno, detailsRow.rowForecast.row.time.format(
-            DateTimeFormatter.ofPattern("hh:mm")))
+            DateTimeFormatter.ofPattern("HH:mm")))
         when (detailsRow.rowForecast.row.weatherCondition) {
             WeatherCondition.SUNNY -> weatherRow.setImageResource(R.drawable.ic_icon_sun)
             WeatherCondition.RAIN -> weatherRow.setImageResource(R.drawable.ic_icon_rain)
