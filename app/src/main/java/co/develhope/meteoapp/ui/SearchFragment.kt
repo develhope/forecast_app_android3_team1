@@ -22,6 +22,7 @@ import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.selects.select
 import kotlinx.coroutines.withContext
 import okhttp3.internal.notify
 
@@ -32,11 +33,24 @@ class SearchFragment : Fragment() {
     private var _binding : FragmentSearchBinding? = null
     val binding get() = _binding!!
 
-    private lateinit var adapter : SearchAdapter
+
 
     private lateinit var recentSearch : List<Place>
 
 
+
+
+    private fun setupAdapter(places : List<Place>){
+        val adapter : SearchAdapter = SearchAdapter(transformDataForSearchAdapter(places), selectPlace())
+        binding.recentsearchlist.adapter = adapter
+    }
+    private fun selectPlace(): (Place) -> Unit = {
+        Datasource.savePlace(it)
+        if (Datasource.getPlace() != null) {
+            Toast.makeText(requireContext() , "${it.city},${it.region}" , Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,15 +80,8 @@ class SearchFragment : Fragment() {
             val results = NetworkProvider().provideGeocodingService().getCityInfo(location)
             withContext(Dispatchers.Main){
                 if(results.results != null){
-                    adapter = SearchAdapter(transformDataForSearchAdapter(results.toDomain()), onItemClick = {
-                        Datasource.savePlace(it)
-                        if(Datasource.getPlace() != null){
-                            Toast.makeText(requireContext(), "${it.city},${it.region}", Toast.LENGTH_SHORT).show()
-                            findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
-                        }
-                    })
-                    binding.recentsearchlist.adapter = adapter
-                    adapter.notifyDataSetChanged()
+
+                    setupAdapter(results.toDomain())
                 }
             }
         }
@@ -112,8 +119,7 @@ class SearchFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 if(s.toString().isNullOrEmpty() || s.toString().isBlank()){
-                    adapter.data = emptyList()
-                    adapter.notifyDataSetChanged()
+                    setupAdapter(emptyList())
                 }
             }
 
