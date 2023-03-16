@@ -27,14 +27,13 @@
     <ImageView
         android:id="@+id/icon_weather_imageview"
         android:layout_width="@dimen/margin_31"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="@dimen/margin_31"
+        android:layout_marginTop="2dp"
         app:layout_constraintEnd_toStartOf="@+id/temperature_textview"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/today_time_textview"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@drawable/ic_icon_sun" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@drawable/_1_sun_light" />
 
     <TextView
         android:id="@+id/temperature_textview"
@@ -67,7 +66,7 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/elevation_12"
+        android:layout_marginTop="15dp"
         app:dividerInsetEnd="@dimen/margin_16"
         app:dividerInsetStart="@dimen/margin_16"
         app:layout_constraintBottom_toBottomOf="parent"

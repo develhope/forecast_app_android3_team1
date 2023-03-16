@@ -84,7 +84,7 @@
                 android:layout_height="@dimen/iconSize"
                 android:layout_below="@id/dateCard"
                 android:layout_marginTop="@dimen/marginTop_Icon"
-                android:src="@drawable/sun_icon" />
+                android:src="@drawable/_1_sun_light" />
             <TextView
                 android:id="@+id/rainfallPercent"
                 android:layout_width="wrap_content"

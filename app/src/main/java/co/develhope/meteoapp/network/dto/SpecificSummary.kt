@@ -2,6 +2,7 @@ package co.develhope.meteoapp.network.dto
 
 
 import co.develhope.meteoapp.data.domainmodel.*
+import co.develhope.meteoapp.ui.utils.decodeWMO
 import com.google.gson.annotations.SerializedName
 
 data class SpecificSummary(
@@ -32,26 +33,20 @@ data class SpecificSummary(
             SpecyficDayForecastSummary(
                 row = RowForecast(
                     time = date,
-                    weatherCondition = getWeatherCondition(hourly.weathercode[i]),
-                    humidity = hourly.humidity[i].toInt(),
-                    temp = hourly.temperature2m[i].toInt()
+                    weatherCondition = decodeWMO(hourly.weathercode[i]),
+                    humidity = hourly.humidity[i],
+                    temp = hourly.temperature2m[i]
                 ), card = CardForecast(
                     percepita = hourly.apparenttemperature[i],
-                    humidity = hourly.humidity[i].toInt(),
-                    copertura = hourly.cloudcover[i].toInt(),
-                    uv = 7,
-                    vento = hourly.windspeed10m[i].toInt(),
-                    pioggia = hourly.rain[i],
+                    humidity = hourly.humidity[i],
+                    copertura = hourly.cloudcover[i],
+                    uv = 7.0,
+                    vento = hourly.windspeed10m[i],
+                    pioggia = hourly.rain[i].toInt(),
                 ))
         }
     }
 
     //da modificare appena ci saranno più icone per gestire tutti i codic
-    private fun getWeatherCondition(weatherCode: Int): WeatherCondition {
-        return when (weatherCode) {
-            in 59..69 -> return WeatherCondition.RAIN
-            in 40..50 -> return WeatherCondition.FOG
-            else -> WeatherCondition.SUNNY
-        }
-    }
+
 }

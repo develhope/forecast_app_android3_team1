@@ -6,7 +6,7 @@ import org.threeten.bp.OffsetDateTime
 
 data class Hourly(
     @SerializedName("rain")
-    val rain: List<Int>,
+    val rain: List<Double>,
     @SerializedName("showers")
     val showers: List<Double>,
     @SerializedName("snowfall")
