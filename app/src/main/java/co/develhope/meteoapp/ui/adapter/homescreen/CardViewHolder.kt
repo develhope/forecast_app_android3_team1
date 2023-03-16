@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.data.domainmodel.WeatherCondition
 import co.develhope.meteoapp.databinding.CardHomeScreenBinding
+import co.develhope.meteoapp.ui.utils.decodeWeatherIcon
 import java.text.FieldPosition
 
 class CardViewHolder(private val binding: CardHomeScreenBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -22,13 +23,7 @@ class CardViewHolder(private val binding: CardHomeScreenBinding) : RecyclerView.
 
 
 
-    private fun decodeWeatherIcon(weatherCondition: WeatherCondition) : Int {
-        return when(weatherCondition){
-            WeatherCondition.SUNNY -> R.drawable.sun_icon
-            WeatherCondition.RAIN -> R.drawable.rain_icon
-            else -> R.drawable.cloudy_icon
-        }
-    }
+
 
     private fun getItaVersion(day : String) : String{
         return when(day){

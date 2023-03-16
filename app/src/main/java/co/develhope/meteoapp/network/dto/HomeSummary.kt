@@ -4,6 +4,7 @@ package co.develhope.meteoapp.network.dto
 import co.develhope.meteoapp.data.domainmodel.CardForecast
 import co.develhope.meteoapp.data.domainmodel.Forecast
 import co.develhope.meteoapp.data.domainmodel.WeatherCondition
+import co.develhope.meteoapp.ui.utils.decodeWMO
 import com.google.gson.annotations.SerializedName
 
 data class HomeSummary(
@@ -43,12 +44,6 @@ data class HomeSummary(
     }
 
     //da modificare appena ci saranno più icone per gestire tutti i codici
-    private fun decodeWMO(weatherCode : Int) : WeatherCondition {
-        return when(weatherCode){
-          in 59..69 -> return WeatherCondition.RAIN
-            in 40..50 -> return WeatherCondition.FOG
-            else -> WeatherCondition.SUNNY
-        }
-    }
+
 
 }
