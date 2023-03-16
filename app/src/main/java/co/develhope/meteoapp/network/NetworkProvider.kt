@@ -103,8 +103,8 @@ class NetworkProvider {
         return wheaterService.getSpecificDaySummary(
             latitude,
             longitude,
-            startDate,
-            endDate
+            startDate.toLocalDate(),
+            endDate.toLocalDate()
         )
     }
 }

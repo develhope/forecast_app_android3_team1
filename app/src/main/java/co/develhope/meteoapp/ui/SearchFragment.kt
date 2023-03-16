@@ -7,13 +7,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.data.Datasource
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
 import co.develhope.meteoapp.network.NetworkProvider
+import co.develhope.meteoapp.ui.adapter.searchscreen.OnSelectPlace
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
 import kotlinx.coroutines.Dispatchers
@@ -32,6 +35,8 @@ class SearchFragment : Fragment() {
     private lateinit var adapter : SearchAdapter
 
     private lateinit var recentSearch : List<Place>
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,7 +66,13 @@ class SearchFragment : Fragment() {
             val results = NetworkProvider().provideGeocodingService().getCityInfo(location)
             withContext(Dispatchers.Main){
                 if(results.results != null){
-                    adapter = SearchAdapter(transformDataForSearchAdapter(results.toDomain()))
+                    adapter = SearchAdapter(transformDataForSearchAdapter(results.toDomain()), onItemClick = {
+                        Datasource.savePlace(it)
+                        if(Datasource.getPlace() != null){
+                            Toast.makeText(requireContext(), "${it.city},${it.region}", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
+                        }
+                    })
                     binding.recentsearchlist.adapter = adapter
                     adapter.notifyDataSetChanged()
                 }

@@ -13,9 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_24"
-        android:layout_marginTop="61dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="@dimen/margin_24"
         android:text="@string/place"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

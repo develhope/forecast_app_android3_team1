@@ -37,9 +37,13 @@ class HomeFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        getDailySummary()
+    override fun onStart() {
+        super.onStart()
+        if(Datasource.getPlace() == null){
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }else{
+            getDailySummary()
+        }
     }
 
     private fun showForecastInHome(forecastSummaryList: List<DailyForecastSummary>) {
@@ -72,31 +76,22 @@ class HomeFragment : Fragment() {
     }
 
     private fun getDailySummary() {
-        lifecycleScope.launch {
-            val result = NetworkProvider().getDailySummary(
-                Place(
-                    city = "Roma",
-                    region = "Lazio",
-                    lat = 41.8955,
-                    log = 12.4823
-                )
-            )
-            Log.d("Wheatercoroutine", "Result: ${result.toDomain()}")
-            val forecasts: List<Forecast> = result.toDomain()
+        if (Datasource.getPlace() != null) {
+            lifecycleScope.launch {
+                val result = NetworkProvider().getDailySummary(Datasource.getPlace()!!)
+                
+                val forecasts: List<Forecast> = result.toDomain()
 
-            val forecastSummaryList: List<DailyForecastSummary> = forecasts.mapIndexed { index, forecast ->
-                DailyForecastSummary(
-                    place = Place(
-                        city = "Roma",
-                        region = "Lazio",
-                        lat = 41.8955,
-                        log = 12.4823
-                    ),
-                    date = forecast.date,
-                    forecast = forecast
-                )
+                val forecastSummaryList: List<DailyForecastSummary> =
+                    forecasts.mapIndexed { index, forecast ->
+                        DailyForecastSummary(
+                            Datasource.getPlace()!!,
+                            date = forecast.date,
+                            forecast = forecast
+                        )
+                    }
+                showForecastInHome(forecastSummaryList)
             }
-            showForecastInHome(forecastSummaryList)
         }
     }
 }

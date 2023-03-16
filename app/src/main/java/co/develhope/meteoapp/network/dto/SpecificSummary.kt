@@ -1,6 +1,7 @@
 package co.develhope.meteoapp.network.dto
 
 
+import co.develhope.meteoapp.data.domainmodel.*
 import com.google.gson.annotations.SerializedName
 
 data class SpecificSummary(
@@ -24,4 +25,33 @@ data class SpecificSummary(
     val timezoneAbbreviation: String,
     @SerializedName("utc_offset_seconds")
     val utcOffsetSeconds: Int
-)
+) {
+
+    fun toDomain(): List<SpecyficDayForecastSummary> {
+        return this.hourly.time.mapIndexed { i, date ->
+            SpecyficDayForecastSummary(
+                row = RowForecast(
+                    time = date,
+                    weatherCondition = getWeatherCondition(hourly.weathercode[i]),
+                    humidity = hourly.humidity[i].toInt(),
+                    temp = hourly.temperature2m[i].toInt()
+                ), card = CardForecast(
+                    percepita = hourly.apparenttemperature[i],
+                    humidity = hourly.humidity[i].toInt(),
+                    copertura = hourly.cloudcover[i].toInt(),
+                    uv = 7,
+                    vento = hourly.windspeed10m[i].toInt(),
+                    pioggia = hourly.rain[i],
+                ))
+        }
+    }
+
+    //da modificare appena ci saranno più icone per gestire tutti i codic
+    private fun getWeatherCondition(weatherCode: Int): WeatherCondition {
+        return when (weatherCode) {
+            in 59..69 -> return WeatherCondition.RAIN
+            in 40..50 -> return WeatherCondition.FOG
+            else -> WeatherCondition.SUNNY
+        }
+    }
+}
