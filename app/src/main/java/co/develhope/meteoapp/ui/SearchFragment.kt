@@ -35,7 +35,6 @@ class SearchFragment : Fragment() {
 
 
 
-    private lateinit var recentSearch : List<Place>
 
 
 
@@ -63,7 +62,8 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        recentSearch = Datasource.loadRecentSearch()
+        val  recentSearch = Datasource.loadRecentSearch()
+        setupAdapter(recentSearch)
         binding.recentsearchlist.layoutManager = LinearLayoutManager(view.context)
 
         //register listener for search location
