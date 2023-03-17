@@ -9,9 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.R
+import co.develhope.meteoapp.SearchViewModel
 import co.develhope.meteoapp.data.Datasource
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
@@ -33,23 +35,9 @@ class SearchFragment : Fragment() {
     private var _binding : FragmentSearchBinding? = null
     val binding get() = _binding!!
 
+    private lateinit var viewModel : SearchViewModel
 
 
-
-
-
-
-    private fun setupAdapter(places : List<Place>){
-        val adapter : SearchAdapter = SearchAdapter(transformDataForSearchAdapter(places), selectPlace())
-        binding.recentsearchlist.adapter = adapter
-    }
-    private fun selectPlace(): (Place) -> Unit = {
-        Datasource.savePlace(it)
-        if (Datasource.getPlace() != null) {
-            Toast.makeText(requireContext() , "${it.city},${it.region}" , Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,27 +53,22 @@ class SearchFragment : Fragment() {
         val  recentSearch = Datasource.loadRecentSearch()
         setupAdapter(recentSearch)
         binding.recentsearchlist.layoutManager = LinearLayoutManager(view.context)
-
+        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
         //register listener for search location
         searchLocation()
+        viewModel.placeLocation.observe(viewLifecycleOwner){
+            setupAdapter(it)
+        }
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    private fun searchNetworkCall(location : String)  {
-          GlobalScope.launch (Dispatchers.IO){
-            val results = NetworkProvider().provideGeocodingService().getCityInfo(location)
-            withContext(Dispatchers.Main){
-                if(results.results != null){
 
-                    setupAdapter(results.toDomain())
-                }
-            }
-        }
-    }
 
     private fun transformDataForSearchAdapter(list : List<Place>) : List<SearchScreenItems> {
         val recentSearchList = mutableListOf<SearchScreenItems>()
@@ -94,6 +77,20 @@ class SearchFragment : Fragment() {
             recentSearchList.add(SearchScreenItems.RecentSearch(it))
         }
         return recentSearchList
+    }
+
+    private fun setupAdapter(places : List<Place>){
+        val adapter : SearchAdapter = SearchAdapter(transformDataForSearchAdapter(places), selectPlace())
+        binding.recentsearchlist.adapter = adapter
+    }
+
+
+    private fun selectPlace(): (Place) -> Unit = {
+        Datasource.savePlace(it)
+        if (Datasource.getPlace() != null) {
+            Toast.makeText(requireContext() , "${it.city},${it.region}" , Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
+        }
     }
 
 
@@ -106,11 +103,11 @@ class SearchFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
                 if(count > before && !s.toString().isNullOrEmpty()){
-                    searchNetworkCall(s.toString())
+                   viewModel.searchNetworkCall(s.toString())
 
                 }else if(count < before && !s.toString().isNullOrEmpty()) {
 
-                    searchNetworkCall(s.toString())
+                    viewModel.searchNetworkCall(s.toString())
 
                 }
 
