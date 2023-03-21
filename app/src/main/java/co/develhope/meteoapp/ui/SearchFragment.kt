@@ -63,7 +63,8 @@ class SearchFragment : Fragment() {
 
     private fun searchNetworkCall(location : String)  {
           GlobalScope.launch (Dispatchers.IO){
-            val results = NetworkProvider().provideGeocodingService().getCityInfo(location)
+            val results = NetworkProvider().provideGeocodingService().getCityInfo(location,
+            requireContext().getString(R.string.language))
             withContext(Dispatchers.Main){
                 if(results.results != null){
                     adapter = SearchAdapter(transformDataForSearchAdapter(results.toDomain()), onItemClick = {

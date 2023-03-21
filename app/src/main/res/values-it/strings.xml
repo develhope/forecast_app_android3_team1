@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">meteoapp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="search_bar_hint">Search City</string>
-    <string name="ricerche_recenti">Recent Search</string>
+    <string name="search_bar_hint">Cerca città</string>
+    <string name="ricerche_recenti">Ricerche Recenti</string>
     <string name="today">%s</string>
     <string name="date">%s</string>
     <string name="tempMax">%s °</string>
@@ -14,9 +15,9 @@
     <string name="rainfallPercent">%s %%</string>
     <string name="rainfall">precip.</string>
     <string name="windKmh">%s Km/h</string>
-    <string name="wind">wind</string>
+    <string name="wind">vento</string>
     <string name="nextDays">%s</string>
-    <string name="next_days">Next 5 days</string>
+    <string name="next_days">PROSSIMI 5 GIORNI</string>
 
     //=== string Specyfic day ===
 
@@ -32,11 +33,11 @@
 
     //--- card ---
     <string name="percepita_card">percepita</string>
-    <string name="indice_uv_card">index UV</string>
-    <string name="umidit_card">humidity</string>
-    <string name="vento_card">wind</string>
-    <string name="copertura_card">coverage</string>
-    <string name="pioggia_card">rain</string>
+    <string name="indice_uv_card">indice UV</string>
+    <string name="umidit_card">umidità</string>
+    <string name="vento_card">vento</string>
+    <string name="copertura_card">copertura</string>
+    <string name="pioggia_card">pioggia</string>
 
     <string name="percepita_40">40°</string>
     <string name="UV_5_10">5/10</string>
@@ -60,16 +61,14 @@
     <string name="simbol_cm">%scm</string>
     <string name="simbol_virgola">%s, %s</string>
     <string name="home">Home</string>
-    <string name="oggi">Today</string>
-    <string name="domani">Tomorrow</string>
-    <string name="cerca">Search</string>
+    <string name="oggi">Oggi</string>
+    <string name="domani">Domani</string>
+    <string name="cerca">Cerca</string>
     <string name="UV_valore">%s/10</string>
     <string name="vento_valore">SSE %skm/h</string>
     <string name="pioggia_valore">%scm</string>
 
-    <string name="language">en</string>
-
+    <string name="language">it</string>
 
 
 </resources>
-
