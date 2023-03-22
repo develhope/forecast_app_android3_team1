@@ -88,10 +88,6 @@ class NetworkProvider {
 
     // mancano le funzioni che vanno usate per le chiamate di rete
 
-    suspend fun searchPlaceByName(name : String) : CityInfo {
-        val geocodingService = provideGeocodingService()
-        return geocodingService.getCityInfo(name)
-    }
 
     suspend fun getDailySummary(place : Place) : HomeSummary {
         val wheaterService = provideWeatherService()
