@@ -11,7 +11,7 @@ const val SEARCHITEM = 1
 const val SEARCHTITLE = 0
 
 
-class SearchAdapter(var data: List<SearchScreenItems>, val onItemClick : (Place) -> Unit) :
+class SearchAdapter(private val  data: List<SearchScreenItems>, private val onItemClick : (Place) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
