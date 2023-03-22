@@ -103,11 +103,11 @@ class SearchFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
                 if(count > before && !s.toString().isNullOrEmpty()){
-                   viewModel.searchNetworkCall(s.toString())
+                   viewModel.searchNetworkCall(s.toString(), requireContext().getString(R.string.language))
 
                 }else if(count < before && !s.toString().isNullOrEmpty()) {
 
-                    viewModel.searchNetworkCall(s.toString())
+                    viewModel.searchNetworkCall(s.toString(), requireContext().getString(R.string.language))
 
                 }
 
