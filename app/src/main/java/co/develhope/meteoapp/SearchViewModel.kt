@@ -17,9 +17,9 @@ class SearchViewModel : ViewModel() {
 
 
 
-    fun searchNetworkCall(location : String)  {
+    fun searchNetworkCall(location : String, language:  String)  {
         GlobalScope.launch (Dispatchers.IO){
-            val results = NetworkProvider().provideGeocodingService().getCityInfo(location)
+            val results = NetworkProvider().provideGeocodingService().getCityInfo(location, language)
             withContext(Dispatchers.Main){
                 if(results.results != null){
 
