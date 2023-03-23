@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenAdapter
 import co.develhope.meteoapp.data.Datasource
@@ -39,9 +40,10 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        if(Datasource.getPlace() == null){
+        if(MeteoApp.preferences?.getCurrentPlace() == null){
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }else{
+            Log.d("Current Place home: " , "${MeteoApp.preferences?.getCurrentPlace()}")
             getDailySummary()
         }
     }
@@ -76,16 +78,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun getDailySummary() {
-        if (Datasource.getPlace() != null) {
+        if (MeteoApp.preferences?.getCurrentPlace() != null) {
             lifecycleScope.launch {
-                val result = NetworkProvider().getDailySummary(Datasource.getPlace()!!)
+                val result = NetworkProvider().getDailySummary(MeteoApp.preferences?.getCurrentPlace()!!)
                 
                 val forecasts: List<Forecast> = result.toDomain()
 
                 val forecastSummaryList: List<DailyForecastSummary> =
                     forecasts.mapIndexed { index, forecast ->
                         DailyForecastSummary(
-                            Datasource.getPlace()!!,
+                            MeteoApp.preferences?.getCurrentPlace()!!,
                             date = forecast.date,
                             forecast = forecast
                         )

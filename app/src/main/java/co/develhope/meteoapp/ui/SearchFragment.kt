@@ -12,21 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.SearchViewModel
 import co.develhope.meteoapp.data.Datasource
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
-import co.develhope.meteoapp.network.NetworkProvider
-import co.develhope.meteoapp.ui.adapter.searchscreen.OnSelectPlace
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.selects.select
-import kotlinx.coroutines.withContext
-import okhttp3.internal.notify
 
 
 class SearchFragment : Fragment() {
@@ -86,9 +78,8 @@ class SearchFragment : Fragment() {
 
 
     private fun selectPlace(): (Place) -> Unit = {
-        Datasource.savePlace(it)
-        if (Datasource.getPlace() != null) {
-            Toast.makeText(requireContext() , "${it.city},${it.region}" , Toast.LENGTH_SHORT).show()
+        MeteoApp.preferences?.savePlace(place = it)
+        if(MeteoApp.preferences?.getCurrentPlace() != null){
             findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
         }
     }
