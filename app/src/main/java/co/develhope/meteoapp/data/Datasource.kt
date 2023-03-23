@@ -1,9 +1,7 @@
 package co.develhope.meteoapp.data
 
-import co.develhope.meteoapp.data.domainmodel.DailyForecastSummary
-import co.develhope.meteoapp.data.domainmodel.Forecast
+import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.data.domainmodel.Place
-import co.develhope.meteoapp.data.domainmodel.WeatherCondition
 import org.threeten.bp.OffsetDateTime
 
 
@@ -14,7 +12,11 @@ object Datasource {
         recentSearchList.add(place)
     }
 
-    fun getPlace() : Place? = selectedPlace
+   // fun getPlace() : Place? = selectedPlace
+
+    fun getPlace() : Place? {
+        return MeteoApp.preferences?.getCurrentPlace()
+    }
 
 
 
@@ -29,6 +31,7 @@ object Datasource {
         recentSearchList.add(place)
     }
 
-
+    fun getSelectedDate() = OffsetDateTime.now()
+    fun getTime(): OffsetDateTime = OffsetDateTime.now()
 
 }
