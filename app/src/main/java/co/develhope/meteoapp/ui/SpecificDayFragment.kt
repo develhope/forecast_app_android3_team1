@@ -99,24 +99,6 @@ class SpecificDayFragment : Fragment() {
         _binding = null
     }
 
-
-    private fun getSpecificSummary() {
-        val dateTime = getSelectedDate()
-        lifecycleScope.launch(Dispatchers.IO) {
-            val result = NetworkProvider().getSpecificSummary(
-                getPlace()!!.lat,
-                getPlace()!!.log,
-                startDate = dateTime,
-                endDate = dateTime
-            )
-            val hourlyForecast: List<SpecyficDayForecastSummary> = result.toDomain()
-
-            withContext(Dispatchers.Main) {
-                showForecastInSpecificDay(hourlyForecast)
-            }
-        }
-    }
-
     private fun getSelectedDate() = OffsetDateTime.now()
 }
 
