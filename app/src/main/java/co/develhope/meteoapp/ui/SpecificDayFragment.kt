@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.data.Datasource
 
@@ -38,7 +39,7 @@ class SpecificDayFragment : Fragment() {
         _binding = FragmentSpecificDayBinding.inflate(inflater, container, false)
 
         super.onStart()
-        if(Datasource.getPlace() == null){
+        if(MeteoApp.preferences?.getCurrentPlace() == null){
             findNavController().navigate(R.id.action_specificDayFragment_to_searchFragment)
         }else{
             getSpecificSummary()
@@ -88,7 +89,7 @@ class SpecificDayFragment : Fragment() {
     }
 
     private fun getPlace() : Place? {
-        return Datasource.getPlace()
+        return MeteoApp.preferences?.getCurrentPlace()
     }
 
 
