@@ -25,6 +25,10 @@ object Datasource {
         return recentSearchList
     }
 
+    fun addToRecentSearch(place : Place){
+        recentSearchList.add(place)
+    }
+
 
 
 }

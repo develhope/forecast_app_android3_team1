@@ -1,6 +1,7 @@
 package co.develhope.meteoapp.ui
 
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -79,6 +80,7 @@ class SearchFragment : Fragment() {
 
     private fun selectPlace(): (Place) -> Unit = {
         MeteoApp.preferences?.savePlace(place = it)
+        Datasource.addToRecentSearch(it)
         if(MeteoApp.preferences?.getCurrentPlace() != null){
             findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
         }

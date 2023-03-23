@@ -25,4 +25,6 @@ class ApplicationPreferences(context : Context) {
        return json.fromJson(currentPlace, Place::class.java)
    }
 
+
+
 }
