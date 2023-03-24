@@ -8,27 +8,29 @@ import com.google.gson.reflect.TypeToken
 
 class ApplicationPreferences(context : Context) {
 
-    private val appPreferences = "currentplace"
-    private val sharedPreferences : SharedPreferences = context.
-    getSharedPreferences(appPreferences,Context.MODE_PRIVATE)
-
-    fun savePlace(place : Place) {
-        return with(sharedPreferences.edit()){
+    private val appPreferences = "meteoappsp"
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences(appPreferences, Context.MODE_PRIVATE)
+    private val PLACE = "place"
+    private val PLACES = "places"
+    fun savePlace(place: Place) {
+        return with(sharedPreferences.edit()) {
             val json = Gson()
             val placeJson = json.toJson(place)
-            putString("place",placeJson)
+            putString(PLACE, placeJson)
             apply()
         }
     }
 
-   fun getCurrentPlace() : Place? {
-       val currentPlace = sharedPreferences.getString("place", null)
-       val json = Gson()
+    fun getCurrentPlace(): Place? {
+        val currentPlace = sharedPreferences.getString(PLACE, null)
+        val json = Gson()
        return json.fromJson(currentPlace, Place::class.java)
    }
 
+    //--------------------
     fun loadRecentSearch() : List<Place> {
-        val currentPlace = sharedPreferences.getString("places", null)
+        val currentPlace = sharedPreferences.getString(PLACES, null)
         val json = Gson()
         return currentPlace?.let {
             val itemType = object : TypeToken<List<Place>>() {}.type
@@ -40,7 +42,7 @@ class ApplicationPreferences(context : Context) {
         return with(sharedPreferences.edit()){
             val json = Gson()
             val placeJson = json.toJson(places)
-            putString("places",placeJson)
+            putString(PLACES, placeJson)
             apply()
         }
     }
