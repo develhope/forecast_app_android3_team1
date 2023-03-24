@@ -79,7 +79,7 @@ class SearchFragment : Fragment() {
         binding.recentsearchlist.adapter = adapter
     }
 
-
+//spostare il dati nel ViewModel
     private fun selectPlace(): (Place) -> Unit = {
         MeteoApp.preferences?.savePlace(place = it)
         Datasource.addToRecentSearch(it)
