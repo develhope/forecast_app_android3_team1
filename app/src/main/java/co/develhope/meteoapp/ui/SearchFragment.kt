@@ -79,10 +79,17 @@ class SearchFragment : Fragment() {
         binding.recentsearchlist.adapter = adapter
     }
 
-//spostare il dati nel ViewModel
+//spostare nel ViewModel
+    private fun uppdateResentSearch(place: Place){
+    val list = MeteoApp.preferences?.loadRecentSearch()?: emptyList()
+    // logica 10 posiz
+    MeteoApp.preferences?.saveRecentSearch(list)
+    }
+
     private fun selectPlace(): (Place) -> Unit = {
         MeteoApp.preferences?.savePlace(place = it)
-        Datasource.addToRecentSearch(it)
+        uppdateResentSearch(it)
+
         if(MeteoApp.preferences?.getCurrentPlace() != null){
             findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
         }

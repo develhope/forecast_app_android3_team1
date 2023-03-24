@@ -13,10 +13,11 @@ class ApplicationPreferences(context : Context) {
         context.getSharedPreferences(appPreferences, Context.MODE_PRIVATE)
     private val PLACE = "place"
     private val PLACES = "places"
+    private val gson = Gson()
+
     fun savePlace(place: Place) {
         return with(sharedPreferences.edit()) {
-            val json = Gson()
-            val placeJson = json.toJson(place)
+            val placeJson = gson.toJson(place)
             putString(PLACE, placeJson)
             apply()
         }
@@ -24,24 +25,23 @@ class ApplicationPreferences(context : Context) {
 
     fun getCurrentPlace(): Place? {
         val currentPlace = sharedPreferences.getString(PLACE, null)
-        val json = Gson()
-       return json.fromJson(currentPlace, Place::class.java)
+       return gson.fromJson(currentPlace, Place::class.java)
    }
 
     //--------------------
     fun loadRecentSearch() : List<Place> {
         val currentPlace = sharedPreferences.getString(PLACES, null)
-        val json = Gson()
+
         return currentPlace?.let {
             val itemType = object : TypeToken<List<Place>>() {}.type
-            json.fromJson(it, itemType)
+            gson.fromJson(it, itemType)
         }?: emptyList()
     }
 
     fun saveRecentSearch(places :  List<Place>){
         return with(sharedPreferences.edit()){
-            val json = Gson()
-            val placeJson = json.toJson(places)
+
+            val placeJson = gson.toJson(places)
             putString(PLACES, placeJson)
             apply()
         }
