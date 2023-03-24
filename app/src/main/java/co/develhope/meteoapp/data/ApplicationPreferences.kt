@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import co.develhope.meteoapp.data.domainmodel.Place
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class ApplicationPreferences(context : Context) {
 
@@ -29,7 +30,10 @@ class ApplicationPreferences(context : Context) {
     fun loadRecentSearch() : List<Place> {
         val currentPlace = sharedPreferences.getString("places", null)
         val json = Gson()
-        return json.fromJson(currentPlace, List<Place>::class.java)
+        return currentPlace?.let {
+            val itemType = object : TypeToken<List<Place>>() {}.type
+            json.fromJson(it, itemType)
+        }?: emptyList()
     }
 
     fun saveRecentSearch(places :  List<Place>){
