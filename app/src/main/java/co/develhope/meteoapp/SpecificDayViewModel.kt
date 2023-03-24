@@ -23,8 +23,8 @@ class SpecificDayViewModel : ViewModel() {
     fun getSpecificSummary(place: Place, date: OffsetDateTime) {
         viewModelScope.launch(Dispatchers.Main) {
             val result = NetworkProvider().getSpecificSummary(
-                Datasource.getPlace()!!.lat,
-                Datasource.getPlace()!!.log,
+                MeteoApp.preferences?.getCurrentPlace()!!.lat,
+                MeteoApp.preferences?.getCurrentPlace()!!.log,
                 startDate = date,
                 endDate = date
             )

@@ -43,7 +43,7 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val  recentSearch = Datasource.loadRecentSearch()
+        val  recentSearch = MeteoApp.preferences?.loadRecentSearch() ?: emptyList()
         setupAdapter(recentSearch)
         binding.recentsearchlist.layoutManager = LinearLayoutManager(view.context)
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
@@ -54,7 +54,10 @@ class SearchFragment : Fragment() {
         }
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        setupAdapter(MeteoApp.preferences?.loadRecentSearch()!!)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -65,7 +68,7 @@ class SearchFragment : Fragment() {
 
     private fun transformDataForSearchAdapter(list : List<Place>) : List<SearchScreenItems> {
         val recentSearchList = mutableListOf<SearchScreenItems>()
-        if(Datasource.loadRecentSearch().size > 0) {
+        if(MeteoApp.preferences?.loadRecentSearch()!!.isNotEmpty()) {
             recentSearchList.add(SearchScreenItems.RecentSearchTitle(requireContext().getString(R.string.ricerche_recenti)))
         }
         list.forEach {
@@ -80,15 +83,23 @@ class SearchFragment : Fragment() {
     }
 
 //spostare nel ViewModel
-    private fun uppdateResentSearch(place: Place){
+    private fun updateRecentSearch(place: Place){
     val list = MeteoApp.preferences?.loadRecentSearch()?: emptyList()
-    // logica 10 posiz
-    MeteoApp.preferences?.saveRecentSearch(list)
+    Log.d("Update","$list")
+    val newList = list.toMutableList()
+    newList.add(place)
+    if(newList.size > 6){
+        newList.removeFirst()
+        MeteoApp.preferences?.saveRecentSearch(newList)
+        return
+    }
+    MeteoApp.preferences?.saveRecentSearch(newList)
+    Log.d("Updateshared","${MeteoApp.preferences?.loadRecentSearch()}")
     }
 
     private fun selectPlace(): (Place) -> Unit = {
         MeteoApp.preferences?.savePlace(place = it)
-        uppdateResentSearch(it)
+        updateRecentSearch(it)
 
         if(MeteoApp.preferences?.getCurrentPlace() != null){
             findNavController().navigate(R.id.action_searchFragment_to_homeFragment)

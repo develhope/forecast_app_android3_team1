@@ -36,8 +36,8 @@ class SpecificDayFragment : Fragment() {
         if(MeteoApp.preferences?.getCurrentPlace() == null){
             findNavController().navigate(R.id.action_specificDayFragment_to_searchFragment)
         }else{
-            viewModel.getTitleForecast(Datasource.getPlace()!!, getSelectedDate())
-            viewModel.getSpecificSummary(Datasource.getPlace()!!, getSelectedDate())
+            viewModel.getTitleForecast(MeteoApp.preferences?.getCurrentPlace()!! , getSelectedDate())
+            viewModel.getSpecificSummary(MeteoApp.preferences?.getCurrentPlace()!!, getSelectedDate())
 
             viewModel.specificDayForecastList.observe(viewLifecycleOwner){
                 val specificDayItem: List<SpecyfDayScreenItem> = createSpecyfDayScreenItem(it)
@@ -60,7 +60,7 @@ class SpecificDayFragment : Fragment() {
             forecastSummaryList.filter{ specyficDayForecastSummary -> specyficDayForecastSummary.row.time.isAfter(getTime())  }
 
         listShowItem.add(SpecyfDayScreenItem.DetailsTitle(
-            TitleForecast(Datasource.getPlace()!!, getSelectedDate())))
+            TitleForecast(MeteoApp.preferences?.getCurrentPlace()!!, getSelectedDate())))
         listShowItem.add(SpecyfDayScreenItem.DetailsRow(filterLists.first()))
         listShowItem.add(SpecyfDayScreenItem.DetailsCard(filterLists.first().card))
 
