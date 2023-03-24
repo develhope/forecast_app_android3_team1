@@ -76,24 +76,4 @@ class HomeFragment : Fragment() {
         listToShow.removeLast()
         return listToShow
     }
-
-    private fun getDailySummary() {
-        if (MeteoApp.preferences?.getCurrentPlace() != null) {
-            lifecycleScope.launch {
-                val result = NetworkProvider().getDailySummary(MeteoApp.preferences?.getCurrentPlace()!!)
-                
-                val forecasts: List<Forecast> = result.toDomain()
-
-                val forecastSummaryList: List<DailyForecastSummary> =
-                    forecasts.mapIndexed { index, forecast ->
-                        DailyForecastSummary(
-                            MeteoApp.preferences?.getCurrentPlace()!!,
-                            date = forecast.date,
-                            forecast = forecast
-                        )
-                    }
-                showForecastInHome(forecastSummaryList)
-            }
-        }
-    }
 }
