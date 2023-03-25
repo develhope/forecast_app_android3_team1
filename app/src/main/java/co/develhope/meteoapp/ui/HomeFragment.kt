@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.develhope.meteoapp.HomeViewModel
 import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenAdapter
@@ -28,12 +30,14 @@ import co.develhope.meteoapp.ui.adapter.homescreen.OnClickCardItem
 class HomeFragment : Fragment() {
     private var bindingHomeScreen: FragmentHomeScreenBinding? = null
     private val binding get() = bindingHomeScreen!!
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         bindingHomeScreen = FragmentHomeScreenBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         val view = binding.root
         return view
     }
@@ -44,20 +48,18 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }else{
             Log.d("Current Place home: " , "${MeteoApp.preferences?.getCurrentPlace()}")
-            getDailySummary()
+            viewModel.getDailySummary()
         }
-    }
+        viewModel.homeForecastList.observe(viewLifecycleOwner){
+            val homeItem: List<HomeScreenItems> = createHomeScreenItems(it)
+            val adapter = HomeScreenAdapter(homeItem, object: OnClickCardItem{
+                override fun onCLickCard(cardDetail: HomeScreenItems.Forecast, position: Int) {
 
-    private fun showForecastInHome(forecastSummaryList: List<DailyForecastSummary>) {
-        val listCreated = createHomeScreenItems(forecastSummaryList)
-
-        val adapter = HomeScreenAdapter(listCreated, object: OnClickCardItem{
-            override fun onCLickCard(cardDetail: HomeScreenItems.Forecast, position: Int) {
-
-                findNavController().navigate(R.id.action_homeFragment_to_specificDayFragment)
-            }
-        })
-        binding.recycleViewHomeScreen.adapter = adapter
+                    findNavController().navigate(R.id.action_homeFragment_to_specificDayFragment)
+                }
+            })
+            binding.recycleViewHomeScreen.adapter = adapter
+        }
         binding.recycleViewHomeScreen.layoutManager = LinearLayoutManager(requireContext())
     }
 
@@ -75,25 +77,5 @@ class HomeFragment : Fragment() {
         listToShow.removeAt(3)
         listToShow.removeLast()
         return listToShow
-    }
-
-    private fun getDailySummary() {
-        if (MeteoApp.preferences?.getCurrentPlace() != null) {
-            lifecycleScope.launch {
-                val result = NetworkProvider().getDailySummary(MeteoApp.preferences?.getCurrentPlace()!!)
-                
-                val forecasts: List<Forecast> = result.toDomain()
-
-                val forecastSummaryList: List<DailyForecastSummary> =
-                    forecasts.mapIndexed { index, forecast ->
-                        DailyForecastSummary(
-                            MeteoApp.preferences?.getCurrentPlace()!!,
-                            date = forecast.date,
-                            forecast = forecast
-                        )
-                    }
-                showForecastInHome(forecastSummaryList)
-            }
-        }
     }
 }
