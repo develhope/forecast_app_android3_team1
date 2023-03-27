@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/expandbutton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -53,12 +54,10 @@
         android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
         android:drawablePadding="@dimen/grandezza_5"
         android:text="@string/humidity_10"
         app:drawableStartCompat="@drawable/ic_icon_humidity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toEndOf="@+id/temperature_textview"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,6 +71,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/temperature_textview"
         tools:layout_editor_absoluteX="@dimen/margin_16" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_icon" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
