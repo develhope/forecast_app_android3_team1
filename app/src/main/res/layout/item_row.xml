@@ -2,10 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/expandbutton"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
     <!-- barra specifiche ora -->
 
@@ -57,7 +55,7 @@
         android:drawablePadding="@dimen/grandezza_5"
         android:text="@string/humidity_10"
         app:drawableStartCompat="@drawable/ic_icon_humidity"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/expandcard"
         app:layout_constraintStart_toEndOf="@+id/temperature_textview"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,15 +66,15 @@
         android:layout_marginTop="15dp"
         app:dividerInsetEnd="@dimen/margin_16"
         app:dividerInsetStart="@dimen/margin_16"
-        app:layout_constraintTop_toBottomOf="@id/temperature_textview"
-         />
+        app:layout_constraintTop_toBottomOf="@id/temperature_textview" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/expandcard"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
+        android:rotation="180"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/arrow_icon" />
@@ -87,18 +85,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_8"
+        android:visibility="gone"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/radius_8"
         app:cardElevation="@dimen/elevation_12"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <!-- Title, text _ sx1-->
