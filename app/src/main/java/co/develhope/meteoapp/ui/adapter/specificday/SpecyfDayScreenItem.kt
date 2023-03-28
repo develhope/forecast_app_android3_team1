@@ -21,11 +21,4 @@ sealed class SpecyfDayScreenItem {
         ) : SpecyfDayScreenItem() {
         override val viewType: Int = 1
     }
-
-    //--- per la card con le info dettagliate
-    data class DetailsCard(
-        val cardForecast: CardForecast,
-    ) : SpecyfDayScreenItem() {
-        override val viewType: Int = 2
-    }
 }
