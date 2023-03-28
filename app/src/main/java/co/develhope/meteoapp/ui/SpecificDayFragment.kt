@@ -52,7 +52,7 @@ class SpecificDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
-
+//in VM
     private fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
         val listShowItem = mutableListOf<SpecyfDayScreenItem>()
 
@@ -61,11 +61,10 @@ class SpecificDayFragment : Fragment() {
 
         listShowItem.add(SpecyfDayScreenItem.DetailsTitle(
             TitleForecast(MeteoApp.preferences?.getCurrentPlace()!!, getSelectedDate())))
-        listShowItem.add(SpecyfDayScreenItem.DetailsRow(filterLists.first()))
-        listShowItem.add(SpecyfDayScreenItem.DetailsCard(filterLists.first().card))
+
+
 
         listShowItem.addAll(filterLists.map { SpecyfDayScreenItem.DetailsRow(it) })
-        listShowItem.removeAt(3)
 
         return listShowItem
     }

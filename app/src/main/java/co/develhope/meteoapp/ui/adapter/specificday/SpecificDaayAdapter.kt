@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
+import co.develhope.meteoapp.ui.adapter.homescreen.CardViewHolder
 
 class SpecificDaayAdapter(private val dataset: List<SpecyfDayScreenItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -32,21 +33,9 @@ class SpecificDaayAdapter(private val dataset: List<SpecyfDayScreenItem>) :
                     )
                 )
             }
-            2 -> {
-                CardViewHolder(
-                    LayoutInflater.from(parent.context).inflate(
-                        R.layout.item_card, parent, false
-                    )
-                )
-            }
             else -> {
                 Log.e("item adapter", "error type")
-                CardViewHolder(
-
-                    LayoutInflater.from(parent.context).inflate(
-                        R.layout.item_blank, parent, false
-                    )
-                )
+                throw java.lang.IllegalArgumentException("error")
             }
         }
     }
@@ -54,7 +43,6 @@ class SpecificDaayAdapter(private val dataset: List<SpecyfDayScreenItem>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is TitleViewHolder -> holder.bind(dataset[position] as SpecyfDayScreenItem.DetailsTitle)
-            is CardViewHolder -> holder.bind(dataset[position] as SpecyfDayScreenItem.DetailsCard)
             is RowViewHolder -> holder.bind(dataset[position] as SpecyfDayScreenItem.DetailsRow)
         }
     }
