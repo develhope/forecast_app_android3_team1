@@ -7,23 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.HomeViewModel
 import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenAdapter
-import co.develhope.meteoapp.data.Datasource
-import co.develhope.meteoapp.data.domainmodel.DailyForecastSummary
-import co.develhope.meteoapp.data.domainmodel.Forecast
-import co.develhope.meteoapp.data.domainmodel.Place
-import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenItems
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
-import co.develhope.meteoapp.network.NetworkProvider
-import co.develhope.meteoapp.network.dto.HomeSummary
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenAdapter
+import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenItems
 import co.develhope.meteoapp.ui.adapter.homescreen.OnClickCardItem
 
 
@@ -51,7 +42,7 @@ class HomeFragment : Fragment() {
             viewModel.getDailySummary()
         }
         viewModel.homeForecastList.observe(viewLifecycleOwner){
-            val homeItem: List<HomeScreenItems> = createHomeScreenItems(it)
+            val homeItem: List<HomeScreenItems> = viewModel.createHomeScreenItems(it)
             val adapter = HomeScreenAdapter(homeItem, object: OnClickCardItem{
                 override fun onCLickCard(cardDetail: HomeScreenItems.Forecast, position: Int) {
 
@@ -63,19 +54,5 @@ class HomeFragment : Fragment() {
         binding.recycleViewHomeScreen.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private fun createHomeScreenItems(forecastSummaryList: List<DailyForecastSummary>): List<HomeScreenItems> {
-        val listToShow = mutableListOf<HomeScreenItems>()
-        listToShow.add(HomeScreenItems.HomeScreenTitle(forecastSummaryList.first().place))
-        listToShow.add(HomeScreenItems.Forecast(forecastSummaryList.first()))
-        listToShow.add(HomeScreenItems.NextDays)
 
-        listToShow.addAll(
-            forecastSummaryList.map {
-                HomeScreenItems.Forecast(it)
-            }
-        )
-        listToShow.removeAt(3)
-        listToShow.removeLast()
-        return listToShow
-    }
 }
