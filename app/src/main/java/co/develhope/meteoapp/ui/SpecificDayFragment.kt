@@ -68,7 +68,6 @@ class SpecificDayFragment : Fragment() {
 
         return listShowItem
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
