@@ -4,7 +4,7 @@ import androidx.lifecycle.*
 import co.develhope.meteoapp.data.domainmodel.DailyForecastSummary
 import co.develhope.meteoapp.data.domainmodel.Forecast
 import co.develhope.meteoapp.network.NetworkProvider
-import co.develhope.meteoapp.network.dto.Daily
+import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenItems
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
@@ -30,6 +30,22 @@ class HomeViewModel : ViewModel() {
                 _homeForecastList.value = forecastSummaryList
             }
         }
+    }
+
+    fun createHomeScreenItems(forecastSummaryList: List<DailyForecastSummary>): List<HomeScreenItems> {
+        val listToShow = mutableListOf<HomeScreenItems>()
+        listToShow.add(HomeScreenItems.HomeScreenTitle(forecastSummaryList.first().place))
+        listToShow.add(HomeScreenItems.Forecast(forecastSummaryList.first()))
+        listToShow.add(HomeScreenItems.NextDays)
+
+        listToShow.addAll(
+            forecastSummaryList.map {
+                HomeScreenItems.Forecast(it)
+            }
+        )
+        listToShow.removeAt(3)
+        listToShow.removeLast()
+        return listToShow
     }
 
 
