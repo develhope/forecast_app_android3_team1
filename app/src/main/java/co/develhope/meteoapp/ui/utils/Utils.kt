@@ -1,7 +1,12 @@
 package co.develhope.meteoapp.ui.utils
 
+import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
+import co.develhope.meteoapp.data.Datasource
+import co.develhope.meteoapp.data.domainmodel.SpecyficDayForecastSummary
+import co.develhope.meteoapp.data.domainmodel.TitleForecast
 import co.develhope.meteoapp.data.domainmodel.WeatherCondition
+import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
 
 //set icon
 fun decodeWeatherIcon(weatherCondition: WeatherCondition): Int {
@@ -26,4 +31,24 @@ fun decodeWMO(weatherCode: Int): WeatherCondition {
         in 94..99 -> return WeatherCondition.HEAVYRAIN
         else -> WeatherCondition.SUNNY
     }
+}
+
+fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
+    val listShowItem = mutableListOf<SpecyfDayScreenItem>()
+
+    val filterLists =
+        forecastSummaryList.filter{ specyficDayForecastSummary -> specyficDayForecastSummary.row.time.isAfter(
+            Datasource.getTime()
+        )  }
+
+    listShowItem.add(
+        SpecyfDayScreenItem.DetailsTitle(
+        TitleForecast(MeteoApp.preferences?.getCurrentPlace()!!, Datasource.getSelectedDate())
+        ))
+
+
+
+    listShowItem.addAll(filterLists.map { SpecyfDayScreenItem.DetailsRow(it) })
+
+    return listShowItem
 }
