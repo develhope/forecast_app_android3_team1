@@ -75,11 +75,11 @@ class RowViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
     }
 
     private fun arrowAnimation(){
-        if(arrowExpand.rotation == 180f){
-            arrowExpand.rotation = 0f
+        if(arrowExpand.rotation == 0f){
+            arrowExpand.rotation = 180f
 
         }else{
-            arrowExpand.rotation = 180f
+            arrowExpand.rotation = 0f
         }
     }
 
