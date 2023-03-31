@@ -11,11 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.SpecificDayViewModel
-import co.develhope.meteoapp.data.Datasource
 import co.develhope.meteoapp.data.Datasource.getSelectedDate
-import co.develhope.meteoapp.data.Datasource.getTime
-
-import co.develhope.meteoapp.data.domainmodel.*
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
 import co.develhope.meteoapp.ui.adapter.specificday.SpecificDaayAdapter
 import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
