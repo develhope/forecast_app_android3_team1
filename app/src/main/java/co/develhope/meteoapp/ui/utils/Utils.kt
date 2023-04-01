@@ -35,20 +35,14 @@ fun decodeWMO(weatherCode: Int): WeatherCondition {
 
 fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
     val listShowItem = mutableListOf<SpecyfDayScreenItem>()
-
     val filterLists =
         forecastSummaryList.filter{ specyficDayForecastSummary -> specyficDayForecastSummary.row.time.isAfter(
             Datasource.getTime()
         )  }
-
     listShowItem.add(
         SpecyfDayScreenItem.DetailsTitle(
         TitleForecast(MeteoApp.preferences?.getCurrentPlace()!!, Datasource.getSelectedDate())
         ))
-
-
-
     listShowItem.addAll(filterLists.map { SpecyfDayScreenItem.DetailsRow(it) })
-
     return listShowItem
 }

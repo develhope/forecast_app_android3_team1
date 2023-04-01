@@ -1,9 +1,11 @@
 package co.develhope.meteoapp.ui.adapter.specificday
 
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.R
+import org.threeten.bp.OffsetDateTime
 
 class TitleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
@@ -15,8 +17,23 @@ class TitleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
     fun bind(detailsTitle: SpecyfDayScreenItem.DetailsTitle) {
         placeTitle.text =  "${detailsTitle.titleForecast.place.city},${detailsTitle.titleForecast.place.region}"
         dataTitle.text = itemView.context.getString(R.string.data_today, detailsTitle.titleForecast.date.dayOfWeek.name, detailsTitle.titleForecast.date.dayOfMonth.toString(),detailsTitle.titleForecast.date.month.name)
-        dayTitle.text = "Oggi,"
+        dayTitle.text = setDay(detailsTitle.titleForecast.date)
 
+    }
+
+    private fun setDay(date : OffsetDateTime) : String {
+        Log.d("Set Day date: " , "$date")
+        return when (date.dayOfMonth) {
+            OffsetDateTime.now().dayOfMonth -> {
+                "Oggi"
+            }
+            OffsetDateTime.now().plusDays(1).dayOfMonth -> {
+                "Domani"
+            }
+            else -> {
+                ""
+            }
+        }
     }
 
 }

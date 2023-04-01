@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.SpecificDayViewModel
-import co.develhope.meteoapp.data.Datasource.getSelectedDate
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
 import co.develhope.meteoapp.ui.adapter.specificday.SpecificDaayAdapter
 import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
@@ -41,7 +40,7 @@ class SpecificDayFragment : Fragment() {
         if (MeteoApp.preferences?.getCurrentPlace() == null) {
             findNavController().navigate(R.id.action_specificDayFragment_to_searchFragment)
         } else {
-            viewModel.getTitleForecast(MeteoApp.preferences?.getCurrentPlace()!!, getSelectedDate())
+
             viewModel.getSpecificSummary(
                 MeteoApp.preferences?.getCurrentPlace()!!,
                 OffsetDateTime.now()
@@ -58,7 +57,7 @@ class SpecificDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
-//in VM
+
 
 
     override fun onDestroyView() {

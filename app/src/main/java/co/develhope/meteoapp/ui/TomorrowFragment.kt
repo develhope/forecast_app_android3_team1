@@ -15,6 +15,7 @@ import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
 import co.develhope.meteoapp.ui.adapter.specificday.SpecificDaayAdapter
 import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
 import co.develhope.meteoapp.ui.utils.createSpecyfDayScreenItem
+import org.threeten.bp.OffsetDateTime
 
 class TomorrowFragment : Fragment() {
 
@@ -40,13 +41,10 @@ class TomorrowFragment : Fragment() {
         if (MeteoApp.preferences?.getCurrentPlace() == null) {
             findNavController().navigate(R.id.action_specificDayFragment_to_searchFragment)
         } else {
-            viewModel.getTitleForecast(
-                MeteoApp.preferences?.getCurrentPlace()!!,
-                Datasource.getSelectedDate()
-            )
+
             viewModel.getSpecificSummary(
                 MeteoApp.preferences?.getCurrentPlace()!!,
-                Datasource.getSelectedDate()
+                OffsetDateTime.now().plusDays(1)
             )
 
             viewModel.specificDayForecastList.observe(viewLifecycleOwner) {

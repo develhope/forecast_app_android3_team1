@@ -35,12 +35,5 @@ class SpecificDayViewModel : ViewModel() {
             }
         }
     }
-    fun getTitleForecast(place: Place, date: OffsetDateTime) : TitleForecast{
-        return   TitleForecast(
-            place = place,
-            date = date
-        ).also {
-            _titleForecast.value = it
-        }
-    }
+
 }
