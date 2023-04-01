@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.SpecificDayViewModel
+import co.develhope.meteoapp.data.Datasource
+import co.develhope.meteoapp.data.domainmodel.SpecyficDayForecastSummary
+import co.develhope.meteoapp.data.domainmodel.TitleForecast
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
 import co.develhope.meteoapp.ui.adapter.specificday.SpecificDaayAdapter
 import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
-import co.develhope.meteoapp.ui.utils.createSpecyfDayScreenItem
 import org.threeten.bp.OffsetDateTime
 
 class SpecificDayFragment : Fragment() {
@@ -63,6 +65,20 @@ class SpecificDayFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
+        val listShowItem = mutableListOf<SpecyfDayScreenItem>()
+        val filterLists =
+            forecastSummaryList.filter{ specyficDayForecastSummary -> specyficDayForecastSummary.row.time.isAfter(
+                Datasource.getTime()
+            )  }
+        listShowItem.add(
+            SpecyfDayScreenItem.DetailsTitle(
+                TitleForecast(MeteoApp.preferences?.getCurrentPlace()!!, OffsetDateTime.now())
+            ))
+        listShowItem.addAll(filterLists.map { SpecyfDayScreenItem.DetailsRow(it) })
+        return listShowItem
     }
 }
 

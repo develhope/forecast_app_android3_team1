@@ -45,8 +45,11 @@ class HomeFragment : Fragment() {
             val homeItem: List<HomeScreenItems> = viewModel.createHomeScreenItems(it)
             val adapter = HomeScreenAdapter(homeItem, object: OnClickCardItem{
                 override fun onCLickCard(cardDetail: HomeScreenItems.Forecast, position: Int) {
+                    val action = HomeFragmentDirections.actionHomeFragmentToTomorrowFragment(
+                        cardDetail.forecastSummary.date.toString()
+                    )
+                    findNavController().navigate(action)
 
-                    findNavController().navigate(R.id.action_homeFragment_to_specificDayFragment)
                 }
             })
             binding.recycleViewHomeScreen.adapter = adapter

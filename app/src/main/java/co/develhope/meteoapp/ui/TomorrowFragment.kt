@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.SpecificDayViewModel
 import co.develhope.meteoapp.data.Datasource
+import co.develhope.meteoapp.data.domainmodel.SpecyficDayForecastSummary
+import co.develhope.meteoapp.data.domainmodel.TitleForecast
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
 import co.develhope.meteoapp.ui.adapter.specificday.SpecificDaayAdapter
 import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
-import co.develhope.meteoapp.ui.utils.createSpecyfDayScreenItem
 import org.threeten.bp.OffsetDateTime
 
 class TomorrowFragment : Fragment() {
@@ -23,6 +25,8 @@ class TomorrowFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel : SpecificDayViewModel
+
+    val args : TomorrowFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,7 +48,7 @@ class TomorrowFragment : Fragment() {
 
             viewModel.getSpecificSummary(
                 MeteoApp.preferences?.getCurrentPlace()!!,
-                OffsetDateTime.now().plusDays(1)
+                selectDate()
             )
 
             viewModel.specificDayForecastList.observe(viewLifecycleOwner) {
@@ -55,8 +59,32 @@ class TomorrowFragment : Fragment() {
         }
     }
 
+    private fun selectDate() : OffsetDateTime {
+        val selectedDate = args.date.toString()
+        return when(selectedDate){
+            "tomorrow" -> OffsetDateTime.now().plusDays(1)
+            else -> {
+                return OffsetDateTime.parse(selectedDate)
+            }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
+        val listShowItem = mutableListOf<SpecyfDayScreenItem>()
+        val filterLists =
+            forecastSummaryList.filter{ specyficDayForecastSummary -> specyficDayForecastSummary.row.time.isAfter(
+                Datasource.getTime()
+            )  }
+        listShowItem.add(
+            SpecyfDayScreenItem.DetailsTitle(
+                TitleForecast(MeteoApp.preferences?.getCurrentPlace()!!, selectDate())
+            ))
+        listShowItem.addAll(filterLists.map { SpecyfDayScreenItem.DetailsRow(it) })
+        return listShowItem
     }
 }
