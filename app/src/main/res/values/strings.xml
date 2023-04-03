@@ -17,10 +17,13 @@
     <string name="wind">wind</string>
     <string name="nextDays">%s</string>
     <string name="next_days">Next 5 days</string>
+    <string name="todaylabel">Today</string>
+    <string name="tomorrowlabel">Tomorrow</string>
 
-    //=== string Specyfic day ===
 
-    //--- titile ---
+
+
+
 
     <string name="data_today">%s %s %s</string>
 

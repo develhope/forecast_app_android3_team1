@@ -1,12 +1,7 @@
 package co.develhope.meteoapp.ui.utils
 
-import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
-import co.develhope.meteoapp.data.Datasource
-import co.develhope.meteoapp.data.domainmodel.SpecyficDayForecastSummary
-import co.develhope.meteoapp.data.domainmodel.TitleForecast
 import co.develhope.meteoapp.data.domainmodel.WeatherCondition
-import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
 
 //set icon
 fun decodeWeatherIcon(weatherCondition: WeatherCondition): Int {
@@ -33,4 +28,22 @@ fun decodeWMO(weatherCode: Int): WeatherCondition {
     }
 }
 
+fun getDayItaVersion(day : String) : String{
+    return when(day){
+        "MONDAY" -> "Lunedì"
+        "TUESDAY" -> "Martedì"
+        "WEDNESDAY" -> "Mercoledì"
+        "THURSDAY" -> "Giovedì"
+        "FRIDAY" -> "Venerdì"
+        "SATURDAY" -> "Sabato"
+        "SUNDAY" -> "Domenica"
+        else -> ""
+    }
+}
 
+fun getMonthItaVersion(month : String) : String {
+    return when(month){
+        "APRIL" -> "Aprile"
+        else -> ""
+    }
+}

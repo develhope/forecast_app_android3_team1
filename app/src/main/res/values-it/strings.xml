@@ -18,6 +18,10 @@
     <string name="wind">vento</string>
     <string name="nextDays">%s</string>
     <string name="next_days">PROSSIMI 5 GIORNI</string>
+    <string name="todaylabel">Oggi</string>
+    <string name="tomorrowlabel">Domani</string>
+
+
 
     //=== string Specyfic day ===
 
