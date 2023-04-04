@@ -3,9 +3,11 @@ package co.develhope.meteoapp.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import co.develhope.meteoapp.data.MeteoGetPreferencesEvent
+import co.develhope.meteoapp.data.MeteoSavePreferencesEvent
+import co.develhope.meteoapp.data.PlaceResources
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.data.repository.PreferencesRepository
-import co.develhope.meteoapp.network.NetworkProvider
 import co.develhope.meteoapp.network.repository.NetworkRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -36,4 +38,35 @@ class SearchViewModel @Inject constructor(
             }
         }
     }
+
+    fun onPreferencesEvent(event : MeteoSavePreferencesEvent){
+        when(event){
+            is MeteoSavePreferencesEvent.SavePlaceEvent -> {
+                preferences.savePlace(event.data)
+            }
+            is MeteoSavePreferencesEvent.SaveRecentSearchEvent -> {
+
+            }
+        }
+    }
+
+    fun onGetPreferencesResource(event : MeteoGetPreferencesEvent) : PlaceResources {
+        when(event){
+            is MeteoGetPreferencesEvent.GetCurrentPlaceEvent -> {
+                val preferences = preferences.getCurrentPlace()
+                if(preferences != null){
+                    return PlaceResources.Success(preferences)
+                }else{
+                    return PlaceResources.Failed("No place Saved")
+                }
+            }
+            is MeteoGetPreferencesEvent.GetRecentSearchEvent -> {
+                return PlaceResources.Failed("Implement this")
+            }
+
+        }
+    }
+
+
+
 }
