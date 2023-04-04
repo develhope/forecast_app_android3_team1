@@ -100,8 +100,9 @@ class SearchFragment : Fragment() {
         viewModel.onPreferencesEvent(MeteoSavePreferencesEvent.SavePlaceEvent(it))
         updateRecentSearch(it)
 
-        val currentPlace = viewModel.onGetPreferencesResource(MeteoGetPreferencesEvent.GetCurrentPlaceEvent())
-        Log.d("Repository Preferences: " , "$currentPlace")
+        val currentPlace =
+            viewModel.onGetPreferencesResource(MeteoGetPreferencesEvent.GetCurrentPlaceEvent())
+        Log.d("Repository Preferences: ", "$currentPlace")
         if (currentPlace != null) {
             findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
         }
