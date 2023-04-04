@@ -12,12 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.HomeViewModel
 import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
+import co.develhope.meteoapp.data.MeteoGetPreferencesEvent
+import co.develhope.meteoapp.data.PlaceResources
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenAdapter
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenItems
 import co.develhope.meteoapp.ui.adapter.homescreen.OnClickCardItem
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var bindingHomeScreen: FragmentHomeScreenBinding? = null
     private val binding get() = bindingHomeScreen!!
@@ -35,10 +38,10 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        if(MeteoApp.preferences?.getCurrentPlace() == null){
+        val currentPlace = viewModel.onGetPreferencesResource(MeteoGetPreferencesEvent.GetCurrentPlaceEvent())
+        if(currentPlace is PlaceResources.Failed){
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }else{
-            Log.d("Current Place home: " , "${MeteoApp.preferences?.getCurrentPlace()}")
             viewModel.getDailySummary()
         }
         viewModel.homeForecastList.observe(viewLifecycleOwner){
