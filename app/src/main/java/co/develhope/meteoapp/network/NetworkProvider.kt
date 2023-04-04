@@ -103,4 +103,8 @@ class NetworkProvider {
             endDate.toLocalDate()
         )
     }
+
+    suspend fun getCityInfo(location : String, language : String) : CityInfo{
+       return  provideGeocodingService().getCityInfo(location, language)
+    }
 }

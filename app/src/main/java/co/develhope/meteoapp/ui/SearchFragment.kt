@@ -20,8 +20,9 @@ import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
 
 

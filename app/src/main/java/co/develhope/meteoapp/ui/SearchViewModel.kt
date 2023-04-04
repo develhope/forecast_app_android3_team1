@@ -5,12 +5,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.network.NetworkProvider
+import co.develhope.meteoapp.network.repository.NetworkRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class SearchViewModel : ViewModel() {
+@HiltViewModel
+class SearchViewModel @Inject constructor(
+    private val repository : NetworkRepository
+): ViewModel() {
 
     private var _placeLocation = MutableLiveData<List<Place>>()
     val placeLocation : LiveData<List<Place>> = _placeLocation
@@ -19,7 +25,7 @@ class SearchViewModel : ViewModel() {
 
     fun searchNetworkCall(location : String, language:  String)  {
         GlobalScope.launch (Dispatchers.IO){
-            val results = NetworkProvider().provideGeocodingService().getCityInfo(location, language)
+            val results = repository.getCityInfo(location, language)
             withContext(Dispatchers.Main){
                 if(results.results != null){
 

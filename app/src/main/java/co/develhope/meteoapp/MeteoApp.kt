@@ -2,7 +2,9 @@ package co.develhope.meteoapp
 
 import android.app.Application
 import co.develhope.meteoapp.data.ApplicationPreferences
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class MeteoApp : Application() {
 
 
