@@ -1,8 +1,10 @@
 package co.develhope.meteoapp.ui
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.data.MeteoGetPreferencesEvent
 import co.develhope.meteoapp.data.MeteoSavePreferencesEvent
 import co.develhope.meteoapp.data.PlaceResources
@@ -45,7 +47,7 @@ class SearchViewModel @Inject constructor(
                 preferences.savePlace(event.data)
             }
             is MeteoSavePreferencesEvent.SaveRecentSearchEvent -> {
-
+                preferences.saveRecentSearch(event.data)
             }
         }
     }
@@ -61,10 +63,30 @@ class SearchViewModel @Inject constructor(
                 }
             }
             is MeteoGetPreferencesEvent.GetRecentSearchEvent -> {
-                return PlaceResources.Failed("Implement this")
+                val resources = preferences.loadRecentSearch()
+                if(resources !=  null){
+                    return PlaceResources.ResourceSuccess(resources)
+                }else{
+                    return PlaceResources.Failed("No place list saved")
+                }
             }
 
         }
+    }
+
+    fun updateRecentSearch(place: Place) {
+        val list = MeteoApp.preferences?.loadRecentSearch() ?: emptyList()
+        Log.d("Update", "$list")
+        val newList = list.toMutableList()
+        newList.add(place)
+        if (newList.size > 6) {
+            newList.removeFirst()
+            onPreferencesEvent(MeteoSavePreferencesEvent.SaveRecentSearchEvent(newList))
+
+            return
+        }
+        onPreferencesEvent(MeteoSavePreferencesEvent.SaveRecentSearchEvent(newList))
+        Log.d("Updateshared", "${MeteoApp.preferences?.loadRecentSearch()}")
     }
 
 

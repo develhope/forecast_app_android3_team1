@@ -16,4 +16,9 @@ sealed class MeteoGetPreferencesEvent {
 sealed class PlaceResources {
     data class Success(val data : Place) : PlaceResources()
     data class Failed(val message : String) : PlaceResources()
+
+    data class ResourceSuccess(val data : List<Place>) : PlaceResources()
+
 }
+
+

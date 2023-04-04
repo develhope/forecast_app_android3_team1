@@ -15,6 +15,7 @@ import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.data.MeteoGetPreferencesEvent
 import co.develhope.meteoapp.data.MeteoSavePreferencesEvent
+import co.develhope.meteoapp.data.PlaceResources
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
@@ -41,11 +42,11 @@ class SearchFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
         val recentSearch = MeteoApp.preferences?.loadRecentSearch() ?: emptyList()
         setupAdapter(recentSearch)
         binding.recentsearchlist.layoutManager = LinearLayoutManager(view.context)
-        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
+
         //register listener for search location
         searchLocation()
         viewModel.placeLocation.observe(viewLifecycleOwner) {
@@ -55,7 +56,13 @@ class SearchFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        setupAdapter(MeteoApp.preferences?.loadRecentSearch()!!)
+        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
+        val resources = viewModel.onGetPreferencesResource(MeteoGetPreferencesEvent.GetRecentSearchEvent())
+        if(resources is PlaceResources.ResourceSuccess){
+            setupAdapter(resources.data)
+        }else{
+            setupAdapter(emptyList())
+        }
     }
 
     override fun onDestroyView() {
@@ -66,9 +73,11 @@ class SearchFragment : Fragment() {
 
     private fun transformDataForSearchAdapter(list: List<Place>): List<SearchScreenItems> {
         val recentSearchList = mutableListOf<SearchScreenItems>()
-        if (MeteoApp.preferences?.loadRecentSearch()!!.isNotEmpty()) {
+        val recentSearch = viewModel.onGetPreferencesResource(MeteoGetPreferencesEvent.GetRecentSearchEvent())
+        if(recentSearch is PlaceResources.ResourceSuccess){
             recentSearchList.add(SearchScreenItems.RecentSearchTitle(requireContext().getString(R.string.ricerche_recenti)))
         }
+
         list.forEach {
             recentSearchList.add(SearchScreenItems.RecentSearch(it))
         }
@@ -82,26 +91,13 @@ class SearchFragment : Fragment() {
     }
 
     //spostare nel ViewModel
-    private fun updateRecentSearch(place: Place) {
-        val list = MeteoApp.preferences?.loadRecentSearch() ?: emptyList()
-        Log.d("Update", "$list")
-        val newList = list.toMutableList()
-        newList.add(place)
-        if (newList.size > 6) {
-            newList.removeFirst()
-            MeteoApp.preferences?.saveRecentSearch(newList)
-            return
-        }
-        MeteoApp.preferences?.saveRecentSearch(newList)
-        Log.d("Updateshared", "${MeteoApp.preferences?.loadRecentSearch()}")
-    }
+
 
     private fun selectPlace(): (Place) -> Unit = {
         viewModel.onPreferencesEvent(MeteoSavePreferencesEvent.SavePlaceEvent(it))
-        updateRecentSearch(it)
+        viewModel.updateRecentSearch(it)
 
-        val currentPlace =
-            viewModel.onGetPreferencesResource(MeteoGetPreferencesEvent.GetCurrentPlaceEvent())
+        val currentPlace = viewModel.onGetPreferencesResource(MeteoGetPreferencesEvent.GetCurrentPlaceEvent())
         Log.d("Repository Preferences: ", "$currentPlace")
         if (currentPlace != null) {
             findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
