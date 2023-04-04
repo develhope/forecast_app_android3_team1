@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import co.develhope.meteoapp.data.domainmodel.Place
+import co.develhope.meteoapp.data.repository.PreferencesRepository
 import co.develhope.meteoapp.network.NetworkProvider
 import co.develhope.meteoapp.network.repository.NetworkRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val repository : NetworkRepository
+    private val repository : NetworkRepository,
+    private val preferences : PreferencesRepository
 ): ViewModel() {
 
     private var _placeLocation = MutableLiveData<List<Place>>()
