@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.ViewCompat.animate
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.Transition
 import androidx.transition.TransitionManager
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.ui.utils.decodeWeatherIcon

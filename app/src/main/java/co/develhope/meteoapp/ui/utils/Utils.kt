@@ -27,3 +27,23 @@ fun decodeWMO(weatherCode: Int): WeatherCondition {
         else -> WeatherCondition.SUNNY
     }
 }
+
+fun getDayItaVersion(day : String) : String{
+    return when(day){
+        "MONDAY" -> "Lunedì"
+        "TUESDAY" -> "Martedì"
+        "WEDNESDAY" -> "Mercoledì"
+        "THURSDAY" -> "Giovedì"
+        "FRIDAY" -> "Venerdì"
+        "SATURDAY" -> "Sabato"
+        "SUNDAY" -> "Domenica"
+        else -> ""
+    }
+}
+
+fun getMonthItaVersion(month : String) : String {
+    return when(month){
+        "APRIL" -> "Aprile"
+        else -> ""
+    }
+}

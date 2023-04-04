@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.fragment.navArgs
 import co.develhope.meteoapp.MeteoApp
 import co.develhope.meteoapp.R
 import co.develhope.meteoapp.SpecificDayViewModel
@@ -19,23 +19,26 @@ import co.develhope.meteoapp.ui.adapter.specificday.SpecificDaayAdapter
 import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
 import org.threeten.bp.OffsetDateTime
 
-class SpecificDayFragment : Fragment() {
+class TomorrowFragment : Fragment() {
 
-    private var _binding: FragmentSpecificDayBinding? = null
+    private var _binding : FragmentSpecificDayBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: SpecificDayViewModel
+
+    private lateinit var viewModel : SpecificDayViewModel
+
+    val args : TomorrowFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSpecificDayBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[SpecificDayViewModel::class.java]
 
-
         setupObserver()
 
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     private fun setupObserver() {
@@ -45,7 +48,7 @@ class SpecificDayFragment : Fragment() {
 
             viewModel.getSpecificSummary(
                 MeteoApp.preferences?.getCurrentPlace()!!,
-                OffsetDateTime.now()
+                selectDate()
             )
 
             viewModel.specificDayForecastList.observe(viewLifecycleOwner) {
@@ -56,11 +59,15 @@ class SpecificDayFragment : Fragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+    private fun selectDate() : OffsetDateTime {
+        val selectedDate = args.date.toString()
+        return when(selectedDate){
+            "tomorrow" -> OffsetDateTime.now().plusDays(1)
+            else -> {
+                return OffsetDateTime.parse(selectedDate)
+            }
+        }
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -75,10 +82,9 @@ class SpecificDayFragment : Fragment() {
             )  }
         listShowItem.add(
             SpecyfDayScreenItem.DetailsTitle(
-                TitleForecast(MeteoApp.preferences?.getCurrentPlace()!!, OffsetDateTime.now())
+                TitleForecast(MeteoApp.preferences?.getCurrentPlace()!!, selectDate())
             ))
         listShowItem.addAll(filterLists.map { SpecyfDayScreenItem.DetailsRow(it) })
         return listShowItem
     }
 }
-
