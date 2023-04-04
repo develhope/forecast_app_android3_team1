@@ -14,8 +14,7 @@
             android:id="@+id/action_homeFragment_to_specificDayFragment"
             app:destination="@id/specificDayFragment"
             app:popUpTo="@id/homeFragment"
-            app:popUpToSaveState="true"
-            />
+            app:popUpToSaveState="true" />
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
@@ -35,10 +34,14 @@
 
         <action
             android:id="@+id/action_searchFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/from_left" />
         <action
             android:id="@+id/action_searchFragment_to_specificDayFragment"
             app:destination="@id/specificDayFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_tomorrowFragment"
+            app:destination="@id/tomorrowFragment" />
     </fragment>
     <fragment
         android:id="@+id/specificDayFragment"
@@ -49,6 +52,13 @@
         <action
             android:id="@+id/action_specificDayFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_specificDayFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/from_left" />
+        <action
+            android:id="@+id/action_specificDayFragment_to_tomorrowFragment"
+            app:destination="@id/tomorrowFragment" />
     </fragment>
     <fragment
         android:id="@+id/tomorrowFragment"
@@ -56,10 +66,17 @@
         android:label="TomorrowFragment" >
         <action
             android:id="@+id/action_tomorrowFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/from_left" />
         <argument
             android:name="date"
             app:argType="string"
             android:defaultValue="tomorrow" />
+        <action
+            android:id="@+id/action_tomorrowFragment_to_specificDayFragment"
+            app:destination="@id/specificDayFragment" />
+        <action
+            android:id="@+id/action_tomorrowFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
 </navigation>
