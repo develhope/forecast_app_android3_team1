@@ -19,6 +19,7 @@ import co.develhope.meteoapp.network.isOnline
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenAdapter
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenItems
 import co.develhope.meteoapp.ui.adapter.homescreen.OnClickCardItem
+import co.develhope.meteoapp.ui.dialog.InternetConnectionDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,6 +48,8 @@ class HomeFragment : Fragment() {
                 viewModel.getDailySummary()
             }else{
                 Log.d("Connection Problems", "No connection")
+                val dialog = InternetConnectionDialog(requireContext())
+                dialog.show(childFragmentManager, "")
             }
         }
         viewModel.homeForecastList.observe(viewLifecycleOwner){
