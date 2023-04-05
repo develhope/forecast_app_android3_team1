@@ -15,6 +15,7 @@ import co.develhope.meteoapp.R
 import co.develhope.meteoapp.data.MeteoGetPreferencesEvent
 import co.develhope.meteoapp.data.PlaceResources
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
+import co.develhope.meteoapp.network.isOnline
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenAdapter
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenItems
 import co.develhope.meteoapp.ui.adapter.homescreen.OnClickCardItem
@@ -42,7 +43,11 @@ class HomeFragment : Fragment() {
         if(currentPlace is PlaceResources.Failed){
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }else{
-            viewModel.getDailySummary()
+            if(isOnline(requireContext())) {
+                viewModel.getDailySummary()
+            }else{
+                Log.d("Connection Problems", "No connection")
+            }
         }
         viewModel.homeForecastList.observe(viewLifecycleOwner){
             val homeItem: List<HomeScreenItems> = viewModel.createHomeScreenItems(it)
