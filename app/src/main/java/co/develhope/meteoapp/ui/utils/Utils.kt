@@ -16,10 +16,11 @@ fun decodeWeatherIcon(weatherCondition: WeatherCondition): Int {
 
     }
 }
+
 //
 fun decodeWMO(weatherCode: Int): WeatherCondition {
     return when (weatherCode) {
-        1,2,3 -> return WeatherCondition.CLOUDY
+        1, 2, 3 -> return WeatherCondition.CLOUDY
         in 40..50 -> return WeatherCondition.FOG
         in 59..69 -> return WeatherCondition.RAIN
         in 70..79 -> return WeatherCondition.SNOW

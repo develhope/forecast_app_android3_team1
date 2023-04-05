@@ -15,7 +15,8 @@ class HomeViewModel : ViewModel() {
     fun getDailySummary() {
         if (MeteoApp.preferences?.getCurrentPlace() != null) {
             viewModelScope.launch {
-                val result = NetworkProvider().getDailySummary(MeteoApp.preferences?.getCurrentPlace()!!)
+                val result =
+                    NetworkProvider().getDailySummary(MeteoApp.preferences?.getCurrentPlace()!!)
 
                 val forecasts: List<Forecast> = result.toDomain()
 

@@ -35,15 +35,15 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        if(MeteoApp.preferences?.getCurrentPlace() == null){
+        if (MeteoApp.preferences?.getCurrentPlace() == null) {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
-        }else{
-            Log.d("Current Place home: " , "${MeteoApp.preferences?.getCurrentPlace()}")
+        } else {
+            Log.d("Current Place home: ", "${MeteoApp.preferences?.getCurrentPlace()}")
             viewModel.getDailySummary()
         }
-        viewModel.homeForecastList.observe(viewLifecycleOwner){
+        viewModel.homeForecastList.observe(viewLifecycleOwner) {
             val homeItem: List<HomeScreenItems> = viewModel.createHomeScreenItems(it)
-            val adapter = HomeScreenAdapter(homeItem, object: OnClickCardItem{
+            val adapter = HomeScreenAdapter(homeItem, object : OnClickCardItem {
                 override fun onCLickCard(cardDetail: HomeScreenItems.Forecast, position: Int) {
                     val action = HomeFragmentDirections.actionHomeFragmentToTomorrowFragment(
                         cardDetail.forecastSummary.date.toString()
