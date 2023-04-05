@@ -71,7 +71,7 @@
     <string name="pioggia_valore">%scm</string>
 
     <string name="language">en</string>
-
+    <string name="riprova">Retry connect</string>
 
 
 </resources>
