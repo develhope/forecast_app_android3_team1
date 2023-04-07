@@ -1,11 +1,13 @@
 package co.develhope.meteoapp
 
+import android.util.Log
 import androidx.lifecycle.*
 import co.develhope.meteoapp.data.MeteoGetPreferencesEvent
 import co.develhope.meteoapp.data.PlaceResources
 import co.develhope.meteoapp.data.domainmodel.DailyForecastSummary
 import co.develhope.meteoapp.data.domainmodel.Forecast
 import co.develhope.meteoapp.data.repository.PreferencesRepository
+import co.develhope.meteoapp.network.HomeWeatherResponse
 import co.develhope.meteoapp.network.NetworkProvider
 import co.develhope.meteoapp.network.repository.NetworkRepository
 import co.develhope.meteoapp.ui.adapter.homescreen.HomeScreenItems
@@ -27,16 +29,20 @@ class HomeViewModel @Inject constructor(
         if (currentPlace != null) {
             viewModelScope.launch {
                 val result = repository.getDailySummary(currentPlace)
-                val forecasts: List<Forecast> = result.toDomain()
-                val forecastSummaryList: List<DailyForecastSummary> =
-                    forecasts.mapIndexed { index, forecast ->
-                        DailyForecastSummary(
-                            preferences.getCurrentPlace()!!,
-                            date = forecast.date,
-                            forecast = forecast
-                        )
-                    }
-                _homeForecastList.value = forecastSummaryList
+                if(result is HomeWeatherResponse.HomeWeatherSuccess){
+                    val forecasts: List<Forecast> = result.response.toDomain()
+                    val forecastSummaryList: List<DailyForecastSummary> =
+                        forecasts.mapIndexed { index, forecast ->
+                            DailyForecastSummary(
+                                preferences.getCurrentPlace()!!,
+                                date = forecast.date,
+                                forecast = forecast
+                            )
+                        }
+                    _homeForecastList.value = forecastSummaryList
+                }else if(result is HomeWeatherResponse.HomeWeatherFail){
+                    Log.d("Network Error: ", "$result")
+                }
             }
         }
     }

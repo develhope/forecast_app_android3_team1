@@ -89,9 +89,16 @@ class NetworkProvider {
     // mancano le funzioni che vanno usate per le chiamate di rete
 
 
-    suspend fun getDailySummary(place : Place) : HomeSummary {
+    suspend fun getDailySummary(place : Place) : HomeWeatherResponse {
         val wheaterService = provideWeatherService()
-        return wheaterService.getDailyWehaterSummary(place.lat,place.log)
+        var response : HomeSummary?
+        try{
+            response = wheaterService.getDailyWehaterSummary(place.lat,place.log)
+            return HomeWeatherResponse.HomeWeatherSuccess(response)
+        }catch(e : java.lang.Exception){
+            return HomeWeatherResponse.HomeWeatherFail(e)
+        }
+
     }
 
     suspend fun getSpecificSummary(latitude : Double, longitude : Double, startDate: OffsetDateTime, endDate: OffsetDateTime) : SpecificSummary{
@@ -104,13 +111,13 @@ class NetworkProvider {
         )
     }
 
-    suspend fun getCityInfo(location : String, language : String) : NetworkResponse{
-        var response : CityInfo? = null
+    suspend fun getCityInfo(location : String, language : String) : GeoResponse{
+        var response: CityInfo?
         try{
             response = provideGeocodingService().getCityInfo(location, language)
-            return NetworkResponse.NetworkSuccess(response)
+            return GeoResponse.GeoSuccess(response)
         }catch(e : Exception){
-            return NetworkResponse.NetworkProblems(e)
+            return GeoResponse.GeoProblems(e)
         }
     }
 }

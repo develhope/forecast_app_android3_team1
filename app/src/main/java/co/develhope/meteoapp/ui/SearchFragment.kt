@@ -20,6 +20,7 @@ import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.databinding.FragmentSearchBinding
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchAdapter
 import co.develhope.meteoapp.ui.adapter.searchscreen.SearchScreenItems
+import co.develhope.meteoapp.ui.dialog.InternetConnectionDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,6 +52,11 @@ class SearchFragment : Fragment() {
         searchLocation()
         viewModel.placeLocation.observe(viewLifecycleOwner) {
             setupAdapter(it)
+        }
+
+        viewModel.error.observe(viewLifecycleOwner){
+            val dialog = InternetConnectionDialog(requireContext())
+            dialog.show(childFragmentManager, "")
         }
     }
 

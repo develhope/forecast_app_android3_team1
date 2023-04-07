@@ -10,7 +10,7 @@ import co.develhope.meteoapp.data.MeteoSavePreferencesEvent
 import co.develhope.meteoapp.data.PlaceResources
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.data.repository.PreferencesRepository
-import co.develhope.meteoapp.network.NetworkResponse
+import co.develhope.meteoapp.network.GeoResponse
 import co.develhope.meteoapp.network.repository.NetworkRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -37,10 +37,11 @@ class SearchViewModel @Inject constructor(
         GlobalScope.launch (Dispatchers.IO){
             val results = repository.getCityInfo(location, language)
             withContext(Dispatchers.Main){
-                if(results is NetworkResponse.NetworkSuccess && results.response.results != null){
+                if(results is GeoResponse.GeoSuccess && results.response.results != null){
                     Log.d("Network Response: " , "$results")
                     _placeLocation.value = results.response.toDomain()
-                }else if(results is NetworkResponse.NetworkProblems){
+                }else if(results is GeoResponse.GeoProblems){
+                    Log.d("Network Response" , "${results.exception.message}")
                     _error.value = results.exception
                 }
             }

@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
 import co.develhope.meteoapp.network.dto.CityInfo
+import co.develhope.meteoapp.network.dto.HomeSummary
 
 fun isOnline(context: Context): Boolean {
     val connectivityManager =
@@ -26,7 +27,12 @@ fun isOnline(context: Context): Boolean {
     return false
 }
 
-sealed class NetworkResponse {
-    data class NetworkSuccess(val response : CityInfo) : NetworkResponse()
-    data class NetworkProblems(val exception: java.lang.Exception) : NetworkResponse()
+sealed class GeoResponse {
+    data class GeoSuccess(val response : CityInfo) : GeoResponse()
+    data class GeoProblems(val exception: java.lang.Exception) : GeoResponse()
+}
+
+sealed class HomeWeatherResponse {
+    data class HomeWeatherSuccess(val response : HomeSummary) : HomeWeatherResponse()
+    data class HomeWeatherFail(val response : java.lang.Exception) : HomeWeatherResponse()
 }

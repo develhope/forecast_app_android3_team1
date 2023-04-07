@@ -2,8 +2,8 @@ package co.develhope.meteoapp.network.repository
 
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.network.NetworkProvider
-import co.develhope.meteoapp.network.NetworkResponse
-import co.develhope.meteoapp.network.dto.CityInfo
+import co.develhope.meteoapp.network.GeoResponse
+import co.develhope.meteoapp.network.HomeWeatherResponse
 import co.develhope.meteoapp.network.dto.HomeSummary
 import co.develhope.meteoapp.network.dto.SpecificSummary
 import org.threeten.bp.OffsetDateTime
@@ -13,7 +13,7 @@ class NetworkRepositoryImpl @Inject constructor(
     private val  provider : NetworkProvider
 ) : NetworkRepository {
 
-    override suspend fun getDailySummary(place: Place): HomeSummary {
+    override suspend fun getDailySummary(place: Place): HomeWeatherResponse {
        return provider.getDailySummary(place)
     }
 
@@ -31,7 +31,7 @@ class NetworkRepositoryImpl @Inject constructor(
         )
     }
 
-    override suspend fun getCityInfo(location: String, language: String): NetworkResponse {
+    override suspend fun getCityInfo(location: String, language: String): GeoResponse {
         return provider.getCityInfo(location, language)
     }
 }
