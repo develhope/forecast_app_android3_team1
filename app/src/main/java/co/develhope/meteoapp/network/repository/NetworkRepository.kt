@@ -1,6 +1,7 @@
 package co.develhope.meteoapp.network.repository
 
 import co.develhope.meteoapp.data.domainmodel.Place
+import co.develhope.meteoapp.network.NetworkResponse
 import co.develhope.meteoapp.network.dto.CityInfo
 import co.develhope.meteoapp.network.dto.HomeSummary
 import co.develhope.meteoapp.network.dto.SpecificSummary
@@ -17,6 +18,6 @@ interface NetworkRepository {
         endDate : OffsetDateTime
     ) : SpecificSummary
 
-    suspend fun getCityInfo(location : String, language : String) : CityInfo
+    suspend fun getCityInfo(location : String, language : String) : NetworkResponse
 
 }

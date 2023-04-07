@@ -2,6 +2,7 @@ package co.develhope.meteoapp.network.repository
 
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.network.NetworkProvider
+import co.develhope.meteoapp.network.NetworkResponse
 import co.develhope.meteoapp.network.dto.CityInfo
 import co.develhope.meteoapp.network.dto.HomeSummary
 import co.develhope.meteoapp.network.dto.SpecificSummary
@@ -30,7 +31,7 @@ class NetworkRepositoryImpl @Inject constructor(
         )
     }
 
-    override suspend fun getCityInfo(location: String, language: String): CityInfo {
+    override suspend fun getCityInfo(location: String, language: String): NetworkResponse {
         return provider.getCityInfo(location, language)
     }
 }

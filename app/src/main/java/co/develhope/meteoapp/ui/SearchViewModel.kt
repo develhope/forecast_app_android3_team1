@@ -10,6 +10,7 @@ import co.develhope.meteoapp.data.MeteoSavePreferencesEvent
 import co.develhope.meteoapp.data.PlaceResources
 import co.develhope.meteoapp.data.domainmodel.Place
 import co.develhope.meteoapp.data.repository.PreferencesRepository
+import co.develhope.meteoapp.network.NetworkResponse
 import co.develhope.meteoapp.network.repository.NetworkRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -27,15 +28,20 @@ class SearchViewModel @Inject constructor(
     private var _placeLocation = MutableLiveData<List<Place>>()
     val placeLocation : LiveData<List<Place>> = _placeLocation
 
+    private var _error = MutableLiveData<java.lang.Exception>()
+    val error : LiveData<java.lang.Exception> = _error
+
 
 
     fun searchNetworkCall(location : String, language:  String)  {
         GlobalScope.launch (Dispatchers.IO){
             val results = repository.getCityInfo(location, language)
             withContext(Dispatchers.Main){
-                if(results.results != null){
-
-                    _placeLocation.value = results.toDomain()
+                if(results is NetworkResponse.NetworkSuccess && results.response.results != null){
+                    Log.d("Network Response: " , "$results")
+                    _placeLocation.value = results.response.toDomain()
+                }else if(results is NetworkResponse.NetworkProblems){
+                    _error.value = results.exception
                 }
             }
         }

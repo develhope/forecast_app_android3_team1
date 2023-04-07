@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
+import co.develhope.meteoapp.network.dto.CityInfo
 
 fun isOnline(context: Context): Boolean {
     val connectivityManager =
@@ -23,4 +24,9 @@ fun isOnline(context: Context): Boolean {
         }
     }
     return false
+}
+
+sealed class NetworkResponse {
+    data class NetworkSuccess(val response : CityInfo) : NetworkResponse()
+    data class NetworkProblems(val exception: java.lang.Exception) : NetworkResponse()
 }

@@ -104,7 +104,13 @@ class NetworkProvider {
         )
     }
 
-    suspend fun getCityInfo(location : String, language : String) : CityInfo{
-       return  provideGeocodingService().getCityInfo(location, language)
+    suspend fun getCityInfo(location : String, language : String) : NetworkResponse{
+        var response : CityInfo? = null
+        try{
+            response = provideGeocodingService().getCityInfo(location, language)
+            return NetworkResponse.NetworkSuccess(response)
+        }catch(e : Exception){
+            return NetworkResponse.NetworkProblems(e)
+        }
     }
 }
