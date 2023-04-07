@@ -24,6 +24,9 @@ class HomeViewModel @Inject constructor(
     val homeForecastList: LiveData<List<DailyForecastSummary>>
         get() = _homeForecastList
 
+    private var  _error : MutableLiveData<Exception> = MutableLiveData()
+    val error : LiveData<java.lang.Exception> = _error
+
     fun getDailySummary() {
         val currentPlace = preferences.getCurrentPlace()
         if (currentPlace != null) {
@@ -42,6 +45,7 @@ class HomeViewModel @Inject constructor(
                     _homeForecastList.value = forecastSummaryList
                 }else if(result is HomeWeatherResponse.HomeWeatherFail){
                     Log.d("Network Error: ", "$result")
+                    _error.value = result.response
                 }
             }
         }

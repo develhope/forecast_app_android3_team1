@@ -65,6 +65,12 @@ class HomeFragment : Fragment() {
             })
             binding.recycleViewHomeScreen.adapter = adapter
         }
+
+        viewModel.error.observe(viewLifecycleOwner){
+            val dialog = InternetConnectionDialog(requireContext())
+            dialog.show(childFragmentManager, "")
+        }
+
         binding.recycleViewHomeScreen.layoutManager = LinearLayoutManager(requireContext())
     }
 
