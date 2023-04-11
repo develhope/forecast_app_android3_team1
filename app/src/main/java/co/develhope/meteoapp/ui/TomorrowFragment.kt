@@ -17,6 +17,7 @@ import co.develhope.meteoapp.data.domainmodel.TitleForecast
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
 import co.develhope.meteoapp.ui.adapter.specificday.SpecificDaayAdapter
 import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
+import co.develhope.meteoapp.ui.dialog.InternetConnectionDialog
 import dagger.hilt.android.AndroidEntryPoint
 import org.threeten.bp.OffsetDateTime
 
@@ -56,6 +57,11 @@ class TomorrowFragment : Fragment() {
 
                 val adapter = SpecificDaayAdapter(it)
                 binding.recyclerView.adapter = adapter
+            }
+
+            viewModel.error.observe(viewLifecycleOwner){
+                val dialog = InternetConnectionDialog(requireContext())
+                dialog.show(childFragmentManager, "")
             }
         }
     }
