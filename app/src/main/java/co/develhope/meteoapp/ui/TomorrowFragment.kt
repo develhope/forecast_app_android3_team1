@@ -49,20 +49,19 @@ class TomorrowFragment : Fragment() {
         } else {
 
             viewModel.getSpecificSummary(
-                MeteoApp.preferences?.getCurrentPlace()!!,
                 selectDate()
             )
 
             viewModel.specificDayForecastList.observe(viewLifecycleOwner) {
-                val specificDayItem: List<SpecyfDayScreenItem> = createSpecyfDayScreenItem(it)
-                val adapter = SpecificDaayAdapter(specificDayItem)
+
+                val adapter = SpecificDaayAdapter(it)
                 binding.recyclerView.adapter = adapter
             }
         }
     }
 
     private fun selectDate() : OffsetDateTime {
-        val selectedDate = args.date.toString()
+        val selectedDate = args.date
         return when(selectedDate){
             "tomorrow" -> OffsetDateTime.now().plusDays(1)
             else -> {
@@ -76,17 +75,5 @@ class TomorrowFragment : Fragment() {
         _binding = null
     }
 
-    fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
-        val listShowItem = mutableListOf<SpecyfDayScreenItem>()
-        val filterLists =
-            forecastSummaryList.filter{ specyficDayForecastSummary -> specyficDayForecastSummary.row.time.isAfter(
-                Datasource.getTime()
-            )  }
-        listShowItem.add(
-            SpecyfDayScreenItem.DetailsTitle(
-                TitleForecast(MeteoApp.preferences?.getCurrentPlace()!!, selectDate())
-            ))
-        listShowItem.addAll(filterLists.map { SpecyfDayScreenItem.DetailsRow(it) })
-        return listShowItem
-    }
+
 }

@@ -46,13 +46,11 @@ class SpecificDayFragment : Fragment() {
         } else {
 
             viewModel.getSpecificSummary(
-                MeteoApp.preferences?.getCurrentPlace()!!,
                 OffsetDateTime.now()
             )
 
             viewModel.specificDayForecastList.observe(viewLifecycleOwner) {
-                val specificDayItem: List<SpecyfDayScreenItem> = createSpecyfDayScreenItem(it)
-                val adapter = SpecificDaayAdapter(specificDayItem)
+                val adapter = SpecificDaayAdapter(it)
                 binding.recyclerView.adapter = adapter
             }
         }
@@ -69,18 +67,6 @@ class SpecificDayFragment : Fragment() {
         _binding = null
     }
 
-    fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>): List<SpecyfDayScreenItem> {
-        val listShowItem = mutableListOf<SpecyfDayScreenItem>()
-        val filterLists =
-            forecastSummaryList.filter{ specyficDayForecastSummary -> specyficDayForecastSummary.row.time.isAfter(
-                Datasource.getTime()
-            )  }
-        listShowItem.add(
-            SpecyfDayScreenItem.DetailsTitle(
-                TitleForecast(MeteoApp.preferences?.getCurrentPlace()!!, OffsetDateTime.now())
-            ))
-        listShowItem.addAll(filterLists.map { SpecyfDayScreenItem.DetailsRow(it) })
-        return listShowItem
-    }
+
 }
 

@@ -10,6 +10,7 @@ import co.develhope.meteoapp.network.NetworkProvider
 import co.develhope.meteoapp.network.SpecificWeatherResponse
 import co.develhope.meteoapp.network.dto.SpecificSummary
 import co.develhope.meteoapp.network.repository.NetworkRepository
+import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,8 +24,8 @@ class SpecificDayViewModel @Inject constructor(
     private val preferences : PreferencesRepository
 ) : ViewModel() {
 
-    private var _specificDayForecastList: MutableLiveData<List<SpecyficDayForecastSummary>> = MutableLiveData()
-    val specificDayForecastList: LiveData<List<SpecyficDayForecastSummary>>
+    private var _specificDayForecastList: MutableLiveData<List<SpecyfDayScreenItem>> = MutableLiveData()
+    val specificDayForecastList: LiveData<List<SpecyfDayScreenItem>>
         get() = _specificDayForecastList
     private var _titleForecast: MutableLiveData<TitleForecast> = MutableLiveData()
     val titleForecast: LiveData<TitleForecast>
@@ -33,7 +34,7 @@ class SpecificDayViewModel @Inject constructor(
     private var _error : MutableLiveData<java.lang.Exception> = MutableLiveData()
     val error get() = _error
 
-    fun getSpecificSummary(place: Place, date: OffsetDateTime) {
+    fun getSpecificSummary(date: OffsetDateTime) {
         viewModelScope.launch(Dispatchers.Main) {
             val result = preferences.getCurrentPlace()?.let {
                 networkRepository.getSpecificSummary(
@@ -49,12 +50,26 @@ class SpecificDayViewModel @Inject constructor(
             if(result is SpecificWeatherResponse.SpecificWeatherSuccess){
                 hourlyForecast = result.response.toDomain()
                 withContext(Dispatchers.Main) {
-                    _specificDayForecastList.value = hourlyForecast!!
+                    _specificDayForecastList.value = createSpecyfDayScreenItem(hourlyForecast, date)
                 }
             }else if(result is SpecificWeatherResponse.SpecificWeatherFail){
                 _error.value = result.exception
             }
         }
+    }
+
+    fun createSpecyfDayScreenItem(forecastSummaryList: List<SpecyficDayForecastSummary>, date: OffsetDateTime): List<SpecyfDayScreenItem> {
+        val listShowItem = mutableListOf<SpecyfDayScreenItem>()
+        val filterLists =
+            forecastSummaryList.filter{ specyficDayForecastSummary -> specyficDayForecastSummary.row.time.isAfter(
+                Datasource.getTime()
+            )  }
+        listShowItem.add(
+            SpecyfDayScreenItem.DetailsTitle(
+                TitleForecast(preferences.getCurrentPlace()!!,date)
+            ))
+        listShowItem.addAll(filterLists.map { SpecyfDayScreenItem.DetailsRow(it) })
+        return listShowItem
     }
 
 }
