@@ -101,14 +101,20 @@ class NetworkProvider {
 
     }
 
-    suspend fun getSpecificSummary(latitude : Double, longitude : Double, startDate: OffsetDateTime, endDate: OffsetDateTime) : SpecificSummary{
+    suspend fun getSpecificSummary(latitude : Double, longitude : Double, startDate: OffsetDateTime, endDate: OffsetDateTime) : SpecificWeatherResponse{
         val wheaterService = provideWeatherService()
-        return wheaterService.getSpecificDaySummary(
-            latitude,
-            longitude,
-            startDate.toLocalDate(),
-            endDate.toLocalDate()
-        )
+        var response : SpecificSummary? = null
+        try{
+            response = wheaterService.getSpecificDaySummary(
+                latitude,
+                longitude,
+                startDate.toLocalDate(),
+                endDate.toLocalDate()
+            )
+            return SpecificWeatherResponse.SpecificWeatherSuccess(response)
+        }catch(e : java.lang.Exception){
+            return SpecificWeatherResponse.SpecificWeatherFail(e)
+        }
     }
 
     suspend fun getCityInfo(location : String, language : String) : GeoResponse{

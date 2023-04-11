@@ -17,8 +17,10 @@ import co.develhope.meteoapp.data.domainmodel.TitleForecast
 import co.develhope.meteoapp.databinding.FragmentSpecificDayBinding
 import co.develhope.meteoapp.ui.adapter.specificday.SpecificDaayAdapter
 import co.develhope.meteoapp.ui.adapter.specificday.SpecyfDayScreenItem
+import dagger.hilt.android.AndroidEntryPoint
 import org.threeten.bp.OffsetDateTime
 
+@AndroidEntryPoint
 class SpecificDayFragment : Fragment() {
 
     private var _binding: FragmentSpecificDayBinding? = null
